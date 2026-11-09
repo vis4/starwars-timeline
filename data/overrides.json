@@ -1,0 +1,167 @@
+{
+  "_comment": "Hand-curated values merged over the parsed Wookieepedia data. 'universe' years: negative = BBY, positive = ABY.",
+  "ep1": {
+    "label": "The Phantom Menace",
+    "universe": {
+      "start": -32,
+      "end": -32
+    }
+  },
+  "ep2": {
+    "label": "Attack of the Clones",
+    "universe": {
+      "start": -22,
+      "end": -22
+    }
+  },
+  "ep3": {
+    "label": "Revenge of the Sith",
+    "universe": {
+      "start": -19,
+      "end": -19
+    }
+  },
+  "ep4": {
+    "label": "A New Hope",
+    "universe": {
+      "start": 0,
+      "end": 0
+    }
+  },
+  "ep5": {
+    "label": "The Empire Strikes Back",
+    "universe": {
+      "start": 3,
+      "end": 3
+    }
+  },
+  "ep6": {
+    "label": "Return of the Jedi",
+    "universe": {
+      "start": 4,
+      "end": 4
+    }
+  },
+  "ep7": {
+    "label": "The Force Awakens"
+  },
+  "ep8": {
+    "label": "The Last Jedi",
+    "poster": "TheLastJediPoster.jpg"
+  },
+  "ep9": {
+    "label": "The Rise of Skywalker"
+  },
+  "tcw-film": {
+    "label": "The Clone Wars (film)",
+    "universe": {
+      "start": -22,
+      "end": -22
+    }
+  },
+  "rogue-one": {
+    "label": "Rogue One"
+  },
+  "solo": {
+    "label": "Solo"
+  },
+  "mando-grogu": {
+    "label": "The Mandalorian & Grogu"
+  },
+  "tcw": {
+    "label": "The Clone Wars",
+    "poster": "SWTCW-poster.jpg"
+  },
+  "rebels": {
+    "label": "Rebels"
+  },
+  "resistance": {
+    "label": "Resistance"
+  },
+  "mandalorian": {
+    "label": "The Mandalorian"
+  },
+  "bad-batch": {
+    "label": "The Bad Batch"
+  },
+  "boba-fett": {
+    "label": "The Book of Boba Fett",
+    "poster": "Bobofficialposter.jpg"
+  },
+  "kenobi": {
+    "label": "Obi-Wan Kenobi",
+    "poster": "ObiWanKenobiOfficialPoster.png"
+  },
+  "andor": {
+    "label": "Andor"
+  },
+  "tales-jedi": {
+    "label": "Tales of the Jedi",
+    "poster": "StarWarsTalesOfTheJedi-Poster-Getty.jpg"
+  },
+  "ahsoka": {
+    "label": "Ahsoka"
+  },
+  "yja": {
+    "label": "Young Jedi Adventures"
+  },
+  "tales-empire": {
+    "label": "Tales of the Empire",
+    "poster": "StarWarsTalesOfTheEmpire-Poster-Getty.png"
+  },
+  "acolyte": {
+    "label": "The Acolyte",
+    "poster": "AcolytePost-Poster.jpg"
+  },
+  "skeleton-crew": {
+    "label": "Skeleton Crew",
+    "poster": "SkeletonCrew-OfficialPoster.jpg"
+  },
+  "tales-underworld": {
+    "label": "Tales of the Underworld",
+    "poster": "TotU-Poster.png"
+  },
+  "maul": {
+    "label": "Maul – Shadow Lord"
+  },
+  "holiday-special": {
+    "label": "Holiday Special"
+  },
+  "caravan": {
+    "label": "Caravan of Courage"
+  },
+  "battle-endor": {
+    "label": "The Battle for Endor"
+  },
+  "droids": {
+    "label": "Droids"
+  },
+  "ewoks": {
+    "label": "Ewoks"
+  },
+  "clone-wars-2003": {
+    "label": "Clone Wars (2003)",
+    "poster": "CloneWarsPoster.jpg"
+  },
+  "starfighter": {
+    "label": "Starfighter"
+  },
+  "rey-film": {
+    "label": "Untitled Rey film"
+  },
+  "kinberg": {
+    "label": "Untitled Kinberg trilogy"
+  },
+  "mangold": {
+    "label": "Dawn of the Jedi film (Mangold)"
+  },
+  "filoni-film": {
+    "label": "Untitled Filoni film"
+  },
+  "lando": {
+    "label": "Lando"
+  },
+  "rogue-squadron": {
+    "label": "Rogue Squadron"
+  }
+}

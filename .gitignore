@@ -1,0 +1,4 @@
+.DS_Store
+__pycache__/
+# original download; the extracted font + license live in fonts/
+star-jedi-font.zip

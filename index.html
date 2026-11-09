@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Star Wars Screen Timeline</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root {
+  /* One theme only: deep space. */
+  color-scheme: dark;
+  --space: #000;
+  --surface: #000;               /* halos around text and marks */
+  --surface-2: rgb(255 255 255 / 0.035);
+  --panel: rgb(10 12 18 / 0.92);
+  --text-primary: #f2f1ec;
+  --text-secondary: #c3c2b7;
+  --text-muted: #8e8d86;
+  --grid: rgb(255 255 255 / 0.07);
+  --grid-strong: rgb(255 255 255 / 0.14);
+  --axis: rgb(255 255 255 / 0.22);
+  --accent: #ffe81f;             /* opening-crawl yellow */
+  --live: #3987e5;
+  --animated: #d95926;
+  --legends: #8a8983;
+  --ref: rgb(255 232 31 / 0.45);
+}
+* { box-sizing: border-box; }
+html { background: var(--space); }
+body {
+  margin: 0; background: transparent; color: var(--text-primary);
+  font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+#stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+main { max-width: 1400px; margin: 0 auto; padding: 28px 16px 48px; }
+/* Star Jedi by Boba Fonts (freeware, see fonts/info.txt) */
+@font-face {
+  font-family: "Star Jedi";
+  src: url("fonts/StarJedi-web.ttf") format("truetype");
+  font-display: swap;
+}
+header { text-align: center; padding: 12px 0 8px; }
+.kicker {
+  margin: 8px 0 14px; color: #4fb3ff; font-size: 15px; letter-spacing: 0.02em;
+}
+h1 {
+  margin: 0 auto 14px; color: var(--accent); font-family: "Star Jedi", ui-sans-serif, system-ui, sans-serif;
+  font-weight: normal; font-size: clamp(30px, 5.6vw, 64px); line-height: 1.05; letter-spacing: 0.04em;
+  text-shadow: 0 0 28px rgb(255 232 31 / 0.3);
+  text-wrap: balance;
+}
+.sub { color: var(--text-secondary); margin: 0 auto 24px; max-width: 62ch; }
+.controls {
+  display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center;
+  position: sticky; top: 0; z-index: 5; padding: 10px 0;
+  background: rgb(0 0 0 / 0.75); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.seg { display: inline-flex; border: 1px solid var(--axis); border-radius: 8px; overflow: hidden; }
+.seg button {
+  font: inherit; border: 0; background: transparent; color: var(--text-secondary);
+  padding: 6px 14px; cursor: pointer;
+}
+.seg button + button { border-left: 1px solid var(--axis); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #000; font-weight: 600; }
+.checks input { accent-color: var(--accent); }
+.checks { display: flex; gap: 14px; flex-wrap: wrap; color: var(--text-secondary); }
+.checks label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
+.swatch-dashed { border: 1.5px dashed var(--text-secondary); border-radius: 50%; }
+.chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+svg { display: block; overflow: visible; }
+.lane-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; fill: var(--text-muted); }
+.lane-bg { fill: var(--surface-2); }
+.tick text { fill: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.tick line { stroke: var(--grid); }
+.tick.major line { stroke: var(--grid-strong); }
+.domain { display: none; }
+.ref line { stroke: var(--ref); stroke-dasharray: 2 3; }
+.ref text { fill: var(--text-secondary); font-size: 11px; font-style: italic; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.scale-break { fill: none; stroke: var(--axis); stroke-dasharray: 6 4; }
+.item { cursor: pointer; }
+.item-label { font-size: 12.5px; fill: var(--text-primary); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.item-label.legends { fill: var(--text-secondary); font-style: italic; }
+.item-label.planned { fill: var(--text-secondary); }
+.leader { stroke: var(--axis); stroke-width: 1px; fill: none; }
+.item.hover .item-label { font-weight: 600; }
+.item.hover .leader { stroke: var(--text-secondary); }
+.label-hit { fill: transparent; }
+.mark { stroke: var(--surface); stroke-width: 2px; }
+.mark.upcoming { fill: none !important; stroke-dasharray: 3 2; stroke-width: 1.5px; }
+.span { stroke-width: 2px; stroke-linecap: round; }
+.connector { stroke-width: 1.5px; stroke-dasharray: 1 3; fill: none; }
+.extra { fill: var(--surface); stroke-width: 2px; }
+.tooltip {
+  position: fixed; pointer-events: none; z-index: 10; max-width: 420px;
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--panel); color: var(--text-primary); border: 1px solid var(--axis);
+  border-radius: 8px; padding: 10px 12px; font-size: 13px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), 0 8px 32px rgb(0 0 0 / 0.8); opacity: 0; transition: opacity .12s;
+}
+.tooltip h3 { margin: 0 0 4px; font-size: 14px; color: var(--accent); }
+.tooltip .poster {
+  flex: none; width: 104px; border-radius: 4px; background: var(--surface-2);
+  object-fit: cover; display: block;
+}
+.tooltip .body { min-width: 0; }
+.tooltip .meta { color: var(--text-secondary); margin-bottom: 6px; }
+.tooltip table { border-collapse: collapse; }
+.tooltip td { padding: 1px 10px 1px 0; vertical-align: top; }
+.tooltip td:first-child { color: var(--text-secondary); white-space: nowrap; }
+footer { margin-top: 24px; color: var(--text-muted); font-size: 12px; }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<main>
+  <header>
+    <p class="kicker">A long time ago in a galaxy far, far away….</p>
+    <h1>Star Wars Screen Timeline</h1>
+    <p class="sub">Every film and TV series, placed by when it happens in the galaxy far, far away, or by when it came out. Hover for details, click to open it on Wookieepedia.</p>
+  </header>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Time axis">
+      <button data-axis="universe" aria-pressed="true">In-universe (BBY/ABY)</button>
+      <button data-axis="release" aria-pressed="false">Release date</button>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" data-filter="live" checked><span class="swatch" style="background:var(--live)"></span>Live action</label>
+      <label><input type="checkbox" data-filter="animated" checked><span class="swatch" style="background:var(--animated)"></span>Animated</label>
+      <label><input type="checkbox" data-filter="upcoming" checked><span class="swatch swatch-dashed"></span>Upcoming</label>
+      <label><input type="checkbox" data-filter="legends"><span class="swatch" style="background:var(--legends)"></span>Legends (non-canon)</label>
+    </div>
+  </div>
+
+  <div class="chart-wrap"><svg id="chart"></svg></div>
+  <div class="tooltip" id="tip"></div>
+
+  <footer>
+    Data: <a href="https://starwars.fandom.com/wiki/Main_Page">Wookieepedia</a> (CC BY-SA 3.0), fetched <span id="generated"></span>. Posters © Lucasfilm, loaded from Wookieepedia.
+    In-universe years marked “c.” are approximate; the in-universe scale is linear between 20 BBY and 40 ABY and logarithmic before that.
+    Hollow dots are prologues/epilogues. Dashed outlines are announced, not yet aired.
+  </footer>
+</main>
+
+<script>
+// Starfield: 4 layers of stars that scroll at different speeds (parallax). Each layer is
+// rendered once into a viewport-sized tile that wraps vertically; on scroll we only blit.
+// Seeded, so the sky looks the same on every load. Still under prefers-reduced-motion.
+const STAR_LAYERS = [
+  // speed: fraction of page scroll · density: px² per star · size and brightness ranges
+  { speed: 0.04, density: 900,  r: [0.25, 0.6], a: [0.15, 0.45], glow: 0 },
+  { speed: 0.12, density: 2200, r: [0.35, 0.9], a: [0.25, 0.65], glow: 0 },
+  { speed: 0.25, density: 6000, r: [0.5, 1.3],  a: [0.4, 0.9],   glow: 0.15 },
+  { speed: 0.45, density: 24000, r: [0.9, 1.9], a: [0.7, 1],     glow: 0.6 },
+];
+const NEBULA_SPEED = 0.02;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const starfield = { tiles: [], W: 0, H: 0, dpr: 1 };
+
+function buildStarTiles() {
+  const dpr = window.devicePixelRatio || 1;
+  const W = window.innerWidth, H = window.innerHeight;
+  Object.assign(starfield, { W, H, dpr, tiles: [] });
+  const tints = ["255 255 255", "255 255 255", "255 255 255", "200 220 255", "255 240 210"];
+  STAR_LAYERS.forEach((L, li) => {
+    const tile = document.createElement("canvas");
+    tile.width = W * dpr; tile.height = H * dpr;
+    const ctx = tile.getContext("2d");
+    ctx.scale(dpr, dpr);
+    const rand = d3.randomLcg(1977 + li);
+    const n = Math.round(W * H / L.density);
+    for (let i = 0; i < n; i++) {
+      const x = rand() * W, y = rand() * H, m = rand() ** 2;
+      const r = L.r[0] + m * (L.r[1] - L.r[0]);
+      const tint = tints[Math.floor(rand() * tints.length)];
+      const glow = rand() < L.glow;
+      // draw at y and y±H so stars crossing the tile edge wrap seamlessly
+      for (const yy of [y, y - H, y + H]) {
+        if (glow) {
+          const g = ctx.createRadialGradient(x, yy, 0, x, yy, r * 5);
+          g.addColorStop(0, `rgb(${tint} / 0.35)`);
+          g.addColorStop(1, `rgb(${tint} / 0)`);
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(x, yy, r * 5, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = `rgb(${tint} / ${L.a[0] + m * (L.a[1] - L.a[0])})`;
+        ctx.beginPath(); ctx.arc(x, yy, r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    starfield.tiles.push(tile);
+  });
+  const canvas = document.getElementById("stars");
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  paintStars();
+}
+
+function paintStars() {
+  const { W, H, dpr, tiles } = starfield;
+  const ctx = document.getElementById("stars").getContext("2d");
+  const s = reduceMotion.matches ? 0 : window.scrollY;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, W, H);
+
+  // two very faint nebula glows, drifting slowest of all
+  const ny = -s * NEBULA_SPEED;
+  for (const [x, y, r, c] of [[0.82, 0.18, 0.55, "60 90 200"], [0.12, 0.85, 0.5, "150 60 160"]]) {
+    const g = ctx.createRadialGradient(x * W, y * H + ny, 0, x * W, y * H + ny, r * Math.max(W, H));
+    g.addColorStop(0, `rgb(${c} / 0.10)`);
+    g.addColorStop(1, `rgb(${c} / 0)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // blit tiles in device pixels
+  tiles.forEach((tile, i) => {
+    const off = ((s * STAR_LAYERS[i].speed * dpr) % tile.height + tile.height) % tile.height;
+    ctx.drawImage(tile, 0, -off);
+    ctx.drawImage(tile, 0, tile.height - off);
+  });
+}
+
+buildStarTiles();
+let starsFrame = 0, starsTimer;
+window.addEventListener("scroll", () => {
+  if (!starsFrame) starsFrame = requestAnimationFrame(() => { starsFrame = 0; paintStars(); });
+}, { passive: true });
+window.addEventListener("resize", () => { clearTimeout(starsTimer); starsTimer = setTimeout(buildStarTiles, 150); });
+reduceMotion.addEventListener?.("change", paintStars);
+
+// Story families. Works in the same lane share a column; a lane only splits into
+// side-by-side sub-columns where its works overlap in time.
+const LANES = [
+  { key: "saga", label: "Skywalker Saga", ids: ["ep1", "ep2", "ep3", "ep4", "ep5", "ep6", "ep7", "ep8", "ep9", "rey-film", "kinberg"] },
+  { key: "spinoffs", label: "Live-action spin-offs", ids: ["mangold", "acolyte", "kenobi", "solo", "andor", "rogue-one", "starfighter", "lando", "rogue-squadron"] },
+  { key: "mando", label: "Mandoverse", ids: ["mandalorian", "boba-fett", "skeleton-crew", "ahsoka", "mando-grogu", "filoni-film"] },
+  { key: "clonewars", label: "Clone Wars & Rebels", ids: ["tcw-film", "tcw", "bad-batch", "maul", "rebels"] },
+  { key: "tales", label: "Tales of …", ids: ["tales-jedi", "tales-empire", "tales-underworld"] },
+  { key: "other", label: "Other animation", ids: ["yja", "resistance"] },
+  { key: "legends", label: "Legends", ids: [] }, // filled with every Legends work
+];
+const REFS = {
+  universe: [
+    { at: -32, label: "Battle of Naboo" },
+    { at: -19, label: "Order 66" },
+    { at: 0, label: "Battle of Yavin" },
+    { at: 4, label: "Battle of Endor" },
+    { at: 34, label: "Starkiller Base" },
+  ],
+  release: [{ at: new Date(), label: "Today" }],
+};
+
+const AXIS_W = 74, TOP = 72, GAP = 4;
+let COL_W = 18, BAR_W = 10, LANE_PAD = 12; // tightened on narrow screens, see layout()
+const LABEL_FONT = 12.5, LINE_H = 15, MIN_LABEL_W = 64;
+const parseDate = d3.utcParse("%Y-%m-%d");
+const fmtDate = d3.utcFormat("%b %-d, %Y");
+const today = new Date();
+
+const state = { axis: "universe", live: true, animated: true, legends: false, upcoming: true };
+const svg = d3.select("#chart");
+const tip = d3.select("#tip");
+let data;
+
+const fmtNum = d3.format(",");
+const fmtYear = y => y < 0 ? `${fmtNum(-y)} BBY` : y === 0 ? "0 BBY" : `${fmtNum(y)} ABY`;
+const color = w => w.canon === "legends" ? "var(--legends)" : w.format === "live" ? "var(--live)" : "var(--animated)";
+
+// Both scales accept two extra values: TBA (works without a date on this axis, drawn in a
+// row below the axis) and, in-universe, years before FAR_PAST (drawn in a slot above it).
+const TBA = Infinity, FAR_PAST = -1000, FAR_H = 56, TBA_GAP = 48;
+const isPlanned = w => w.release.status === "tba" || w.release.status === "upcoming";
+
+function makeScale() {
+  let base, ticks, major, fmt, yearPx, top = TOP;
+  const hasFar = state.axis === "universe" &&
+    data.works.some(w => visible(w) && w.universe && w.universe.start < FAR_PAST);
+  if (hasFar) top += FAR_H;
+
+  if (state.axis === "universe") {
+    // Symlog centered on `center`: exactly linear within ±c years of it (20 BBY–40 ABY),
+    // logarithmic beyond. The log part is c·(1 + ln(|u|/c)), which meets the linear
+    // part with the same slope.
+    const c = 30, center = 10;
+    yearPx = 15;
+    const f = v => {
+      const u = v - center;
+      return Math.abs(u) <= c ? u : Math.sign(u) * c * (1 + Math.log(Math.abs(u) / c));
+    };
+    const lo = -240, hi = 55;
+    const lin = d3.scaleLinear().domain([f(lo), f(hi)]).range([top, top + (f(hi) - f(lo)) * yearPx]);
+    base = v => lin(f(v));
+    base.range = () => lin.range();
+    const farYears = hasFar ? [...new Set(data.works.filter(w => visible(w) && w.universe?.start < FAR_PAST)
+      .map(w => w.universe.start))] : [];
+    ticks = [...farYears, -232, -200, -150, -100, -80, -60, -50, -40, -30, ...d3.range(-20, 41, 5), 50];
+    major = new Set([-100, -20, 0, 20, 40]);
+    fmt = fmtYear;
+  } else {
+    base = d3.scaleUtc().domain([new Date(Date.UTC(1977, 0, 1)), new Date(Date.UTC(2028, 0, 1))])
+      .range([top, top + 51 * 30]);
+    ticks = d3.range(1977, 2028).map(yr => new Date(Date.UTC(yr, 0, 1)));
+    major = new Set([1980, 1990, 2000, 2010, 2020].map(yr => +new Date(Date.UTC(yr, 0, 1))));
+    fmt = d => d.getUTCFullYear() % 5 === 0 || d.getUTCFullYear() === 1977 ? d.getUTCFullYear() : "";
+    yearPx = 30;
+  }
+
+  const end = base.range()[1];
+  const tbaY = end + TBA_GAP;
+  const y = v => v === TBA ? tbaY : (typeof v === "number" && v < FAR_PAST) ? TOP + FAR_H / 2 - 6 : base(v);
+  y.range = () => [TOP, tbaY + 12];
+  y.ticks_ = [...ticks, TBA];
+  y.major = major;
+  y.fmt = v => v === TBA ? (state.axis === "universe" ? "Unknown" : "TBA") : fmt(v);
+  y.yearPx = yearPx;
+  y.breakPx = [...(hasFar ? [top - 18] : []), end + TBA_GAP / 2];
+  return y;
+}
+
+// Vertical geometry of one work under the current axis: parts (bars/dots), spans, markers.
+function geometry(w, y) {
+  const g = { parts: [], spans: [], markers: [] };
+  if (state.axis === "release") {
+    if (w.kind === "film") {
+      g.parts.push({ type: "dot", cy: y(w.release.start ? parseDate(w.release.start) : TBA), upcoming: isPlanned(w) });
+    } else {
+      for (const s of w.seasons) {
+        const a = parseDate(s.start);
+        let b = s.end ? parseDate(s.end) : null;
+        if (s.status === "upcoming") b = d3.utcDay.offset(a, 75);
+        else if (!b || b > today) b = today;
+        const y0 = y(a);
+        g.parts.push({ type: "bar", y0, y1: Math.max(y(b), y0 + 5), upcoming: s.status === "upcoming" });
+      }
+      if (g.parts.length > 1) g.spans.push({ y0: g.parts[0].y0, y1: d3.max(g.parts, p => p.y1) });
+    }
+  } else {
+    const u = w.universe;
+    if (!u) {
+      g.parts.push({ type: "dot", cy: y(TBA), upcoming: true });
+    } else if (w.kind === "film") {
+      g.parts.push({ type: "dot", cy: y(u.start + 0.5), upcoming: isPlanned(w) });
+    } else {
+      for (const s of w.segments || [u]) {
+        const y0 = y(s.start);
+        g.parts.push({ type: "bar", y0, y1: Math.max(y(s.end + 1), y0 + 5) });
+      }
+      if (w.segments) g.spans.push({ y0: y(u.start), y1: y(u.end + 1) });
+    }
+    for (const m of w.markers || []) g.markers.push({ cy: y(m.year + 0.5) });
+    if (!u) g.markers = [];
+  }
+  g.top = d3.min(g.parts, p => p.type === "dot" ? p.cy - 6 : p.y0);
+  g.bottom = d3.max(g.parts, p => p.type === "dot" ? p.cy + 6 : p.y1);
+  g.anchor = g.parts[0].type === "dot" ? g.parts[0].cy : g.top + 6;
+  return g;
+}
+
+function shift(g, dy) {
+  for (const p of g.parts) { if (p.type === "dot") p.cy += dy; else { p.y0 += dy; p.y1 += dy; } }
+  g.top += dy; g.bottom += dy; g.anchor += dy;
+}
+
+function visible(w) {
+  if (w.canon === "legends" && !state.legends) return false;
+  if (w.format === "live" && !state.live) return false;
+  if (w.format === "animated" && !state.animated) return false;
+  if (isPlanned(w) && !state.upcoming) return false;
+  return true;
+}
+
+function layout(y) {
+  const laneOf = {};
+  for (const l of LANES) for (const id of l.ids) laneOf[id] = l.key;
+  for (const w of data.works) if (!laneOf[w.id]) laneOf[w.id] = w.canon === "legends" ? "legends" : "other";
+
+  const avail = Math.max(document.querySelector(".chart-wrap").clientWidth, 320);
+  const narrow = avail < 1000;
+  COL_W = narrow ? 13 : 18; BAR_W = narrow ? 8 : 10; LANE_PAD = narrow ? 8 : 12;
+
+  // --- 1. per lane: pack works into sub-columns ---
+  const groups = [];
+  for (const lane of LANES) {
+    const ws = data.works.filter(w => laneOf[w.id] === lane.key && visible(w))
+      .map(w => ({ w, g: geometry(w, y) })).filter(d => d.g)
+      // same start → keep release order (The Force Awakens before The Last Jedi, both 34 ABY)
+      .sort((a, b) => a.g.top - b.g.top || d3.ascending(a.w.release.start || "9999", b.w.release.start || "9999"));
+    if (!ws.length) continue;
+
+    // Greedy interval packing into sub-columns. A film that only just collides
+    // (same year as the previous one) is nudged down instead of opening a new column.
+    const bottoms = [];
+    for (const d of ws) {
+      let col = bottoms.findIndex(b => b + GAP <= d.g.top);
+      if (col < 0 && d.g.parts.length === 1 && d.g.parts[0].type === "dot") {
+        // stack tightly (2px) and allow up to one year's height of nudge, so films in
+        // consecutive years stay in a single column and in order
+        const maxNudge = Math.max(16, y.yearPx);
+        col = bottoms.findIndex(b => b + 2 - d.g.top <= maxNudge);
+        if (col >= 0) shift(d.g, Math.max(0, bottoms[col] + 2 - d.g.top));
+      }
+      if (col < 0) { col = bottoms.length; bottoms.push(-Infinity); }
+      bottoms[col] = d.g.bottom;
+      d.col = col;
+    }
+    for (const d of ws) d.fullW = textWidth(d.w.label, LABEL_FONT);
+    groups.push({
+      key: lane.key, label: lane.label, ws, nCols: bottoms.length,
+      marksW: LANE_PAD + bottoms.length * COL_W + 8,
+      need: d3.max(ws, d => d.fullW) + 10,
+    });
+  }
+
+  // --- 2. split the available width: each lane's marks strip is fixed, the rest goes to
+  // label columns. Lanes with short titles only take what they need (water-filling). ---
+  const free = avail - AXIS_W - d3.sum(groups, g => g.marksW) - 4;
+  let lo = 0, hi = d3.max(groups, g => g.need);
+  for (let i = 0; i < 30; i++) {
+    const cap = (lo + hi) / 2;
+    if (d3.sum(groups, g => Math.min(g.need, cap)) > free) hi = cap; else lo = cap;
+  }
+  for (const g of groups) g.labelW = Math.max(MIN_LABEL_W, Math.min(g.need, lo));
+  const slack = free - d3.sum(groups, g => g.labelW);
+  if (slack > 0) for (const g of groups) g.labelW += slack / groups.length;
+
+  let x = AXIS_W;
+  const items = [];
+  for (const g of groups) {
+    g.x = x;
+    g.width = g.marksW + g.labelW;
+    x += g.width;
+    for (const d of g.ws) {
+      d.cx = g.x + LANE_PAD + d.col * COL_W + COL_W / 2;
+      d.lx = g.x + g.marksW;
+      d.lane = g.key;
+      d.labelW = g.labelW - 6;
+      items.push(d);
+    }
+  }
+  const width = x;
+
+  // --- 3. labels. Obstacles: every mark, the reference-line captions, and a reserved
+  // one-line slot at each other lane's label anchors (so a neighbor's own labels win). ---
+  const obstacles = [];
+  for (const d of items) {
+    for (const p of d.g.parts) {
+      if (p.type === "dot") obstacles.push({ id: d.w.id, x0: d.cx - 8, x1: d.cx + 8, y0: p.cy - 8, y1: p.cy + 8 });
+      else obstacles.push({ id: d.w.id, x0: d.cx - BAR_W / 2 - 3, x1: d.cx + BAR_W / 2 + 3, y0: p.y0 - 2, y1: p.y1 + 2 });
+    }
+    for (const s of d.g.spans) obstacles.push({ id: d.w.id, x0: d.cx - 3, x1: d.cx + 3, y0: s.y0, y1: s.y1 });
+    for (const m of d.g.markers) {
+      const mx = d.cx - COL_W / 2 + 1;
+      obstacles.push({ id: d.w.id, x0: mx - 6, x1: mx + 6, y0: Math.min(m.cy, d.g.anchor) - 6, y1: Math.max(m.cy, d.g.anchor) + 6 });
+    }
+    obstacles.push({ id: d.w.id, lane: d.lane, reserve: true, x0: d.lx, x1: d.lx + Math.min(d.fullW, d.labelW),
+      y0: d.g.anchor - LINE_H / 2, y1: d.g.anchor + LINE_H / 2 });
+  }
+  for (const r of REFS[state.axis]) {
+    const ry = state.axis === "universe" ? y(r.at + 0.5) : y(r.at);
+    obstacles.push({ id: "ref", x0: width - textWidth(r.label, 11) - 10, x1: width, y0: ry - 16, y1: ry + 2 });
+  }
+  const hits = (b, d) => b.x1 > width || obstacles.some(o => o.id !== d.w.id && !(o.reserve && o.lane === d.lane) &&
+    o.x0 < b.x1 && o.x1 > b.x0 && o.y0 < b.y1 && o.y1 > b.y0);
+
+  for (const g of groups) {
+    let lastBottom = -Infinity;
+    for (const d of [...g.ws].sort((a, b) => a.g.anchor - b.g.anchor)) {
+      const top = Math.max(d.g.anchor - LINE_H / 2, lastBottom + 2);
+      let lines = null;
+      if (d.fullW <= d.labelW || !hits({ x0: d.lx, x1: d.lx + d.fullW + 4, y0: top, y1: top + LINE_H }, d)) {
+        lines = [d.w.label]; // fits, or overflows into free space
+      } else {
+        lines = wrapText(d.w.label, d.labelW);
+      }
+      const w = d3.max(lines, l => textWidth(l, LABEL_FONT));
+      const h = lines.length * LINE_H;
+      // never sit on top of a reference-line caption: move below it
+      let t0 = top;
+      for (const o of obstacles) {
+        if (o.id === "ref" && o.x0 < d.lx + w && o.x1 > d.lx && o.y0 < t0 + h && o.y1 > t0) t0 = o.y1 + 1;
+      }
+      d.lines = lines;
+      d.ly = t0 + LINE_H / 2;
+      d.lbox = { x0: d.lx, x1: d.lx + w, y0: t0, y1: t0 + h };
+      obstacles.push({ id: d.w.id, ...d.lbox });
+      lastBottom = d.lbox.y1;
+    }
+  }
+
+  const lanes = groups.map(g => ({ key: g.key, label: g.label, x: g.x, width: g.width,
+    headLines: wrapText(g.label.toUpperCase(), g.width - LANE_PAD - 4, 11, 1.08).slice(0, 2) }));
+  return { lanes, items, width, height: Math.max(y.range()[1], d3.max(items, d => d.lbox.y1)) + 30 };
+}
+
+function wrapText(s, maxW, size = LABEL_FONT, spacing = 1) {
+  const words = s.split(/\s+/), lines = [];
+  let cur = "";
+  for (const w of words) {
+    const next = cur ? cur + " " + w : w;
+    if (cur && textWidth(next, size) * spacing > maxW) { lines.push(cur); cur = w; } else cur = next;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+const measureCtx = document.createElement("canvas").getContext("2d");
+function textWidth(s, size) {
+  measureCtx.font = `${size}px ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`;
+  return measureCtx.measureText(s).width;
+}
+
+function render(animate = true) {
+  const y = makeScale();
+  const { lanes, items, width, height } = layout(y);
+  svg.attr("width", width).attr("height", height);
+  const t = svg.transition().duration(animate ? 750 : 0).ease(d3.easeCubicInOut);
+
+  if (svg.select("g.grid").empty()) {
+    svg.append("g").attr("class", "lanes-bg");
+    svg.append("g").attr("class", "grid");
+    svg.append("g").attr("class", "refs");
+    svg.append("g").attr("class", "breaks");
+    svg.append("g").attr("class", "lane-labels");
+    svg.append("g").attr("class", "items");
+  }
+
+  // Grid + year labels on the left
+  const ticks = y.ticks_.map(v => ({ v, key: +v }));
+  svg.select(".grid").selectAll("g.tick").data(ticks, d => state.axis + d.key)
+    .join(
+      enter => {
+        const g = enter.append("g").attr("class", "tick").attr("opacity", 0)
+          .attr("transform", d => `translate(0,${y(d.v)})`);
+        g.append("line").attr("x1", AXIS_W - 6);
+        g.append("text").attr("x", AXIS_W - 10).attr("text-anchor", "end").attr("dy", "0.32em");
+        return g;
+      },
+      update => update,
+      exit => exit.transition(t).attr("opacity", 0).remove()
+    )
+    .classed("major", d => y.major.has(d.key))
+    .call(g => g.select("line").attr("x2", width))
+    .call(g => g.select("text").text(d => y.fmt(d.v)))
+    .transition(t).attr("opacity", 1).attr("transform", d => `translate(0,${y(d.v)})`);
+
+  // Scale-break markers on the axis
+  // (the axis is interrupted before the far-past slot and before the TBA row)
+  svg.select(".breaks").selectAll("path").data(y.breakPx)
+    .join("path").attr("class", "scale-break")
+    .attr("d", by => `M${AXIS_W},${by} H${width}`);
+  svg.select(".breaks").selectAll("text").data(y.breakPx)
+    .join("text").attr("x", AXIS_W - 10).attr("y", by => by + 5).attr("text-anchor", "end")
+    .attr("fill", "var(--text-muted)").attr("font-size", 14).text("≈");
+
+  // Reference lines
+  svg.select(".refs").selectAll("g.ref").data(REFS[state.axis], d => d.label)
+    .join(
+      enter => {
+        const g = enter.append("g").attr("class", "ref").attr("opacity", 0);
+        g.append("line").attr("x1", AXIS_W);
+        g.append("text").attr("dy", "-0.4em").attr("text-anchor", "end");
+        return g;
+      },
+      update => update,
+      exit => exit.transition(t).attr("opacity", 0).remove()
+    )
+    .call(g => g.select("line").attr("x2", width))
+    .call(g => g.select("text").attr("x", width - 4).text(d => d.label))
+    .transition(t).attr("opacity", 1)
+    .attr("transform", d => `translate(0,${state.axis === "universe" ? y(d.at + 0.5) : y(d.at)})`);
+
+  // Lane backgrounds + headers
+  svg.select(".lanes-bg").selectAll("rect").data(lanes, d => d.key)
+    .join(enter => enter.append("rect").attr("class", "lane-bg").attr("rx", 6).attr("y", TOP - 34)
+      .attr("x", d => d.x + 4).attr("width", 0))
+    .attr("height", height - TOP + 34 - 10)
+    .transition(t).attr("x", (d, i) => d.x + 4).attr("width", (d, i) => i % 2 ? 0 : d.width - 8);
+  svg.select(".lane-labels").selectAll("text").data(lanes, d => d.key)
+    .join(enter => enter.append("text").attr("class", "lane-label").attr("x", d => d.x + LANE_PAD))
+    .attr("y", d => TOP - 16 - (d.headLines.length - 1) * 13)
+    .call(tx => tx.selectAll("tspan").data(d => d.headLines.map(l => ({ l, x: d.x + LANE_PAD })))
+      .join("tspan").attr("dy", (l, i) => i ? 13 : 0).text(l => l.l))
+    .transition(t).attr("x", d => d.x + LANE_PAD)
+    .selectAll("tspan").attr("x", l => l.x);
+
+  // Items
+  const item = svg.select(".items").selectAll("g.item").data(items, d => d.w.id)
+    .join(
+      enter => {
+        const g = enter.append("g").attr("class", "item").attr("opacity", 0);
+        g.append("path").attr("class", "leader");
+        g.append("rect").attr("class", "label-hit");
+        g.append("g").attr("class", "label-pos")
+          .append("text").attr("class", d => "item-label" + (d.w.canon === "legends" ? " legends" : "") + (isPlanned(d.w) ? " planned" : ""));
+        g.append("g").attr("class", "marks");
+        g.on("mousemove", showTip)
+          .on("mouseenter", function () { d3.select(this).classed("hover", true).raise(); })
+          .on("mouseleave", function () { d3.select(this).classed("hover", false); hideTip(); })
+          .on("click", (e, d) => window.open(d.w.url, "_blank", "noopener"));
+        // start at final position so entering items fade in place
+        g.each(function (d) { this._enter = true; });
+        return g;
+      },
+      update => update,
+      exit => exit.transition(t).attr("opacity", 0).remove()
+    );
+  item.transition(t).attr("opacity", 1);
+
+  item.each(function (d) {
+    const g = d3.select(this);
+    // Entering items are placed directly; a zero-length transition on the same node
+    // would interrupt the opacity fade-in above and leave them invisible.
+    const tt = this._enter ? g : g.transition(t);
+    this._enter = false;
+    const c = color(d.w);
+    const cx = d.cx;
+
+    g.select(".item-label").selectAll("tspan").data(d.lines)
+      .join("tspan").attr("x", 0).attr("dy", (l, i) => i ? LINE_H : "0.35em").text(l => l);
+    tt.select(".label-pos").attr("transform", `translate(${d.lx},${d.ly})`);
+    tt.select(".label-hit").attr("x", d.lbox.x0 - 4).attr("y", d.lbox.y0)
+      .attr("width", d.lbox.x1 - d.lbox.x0 + 8).attr("height", d.lbox.y1 - d.lbox.y0);
+    const x0 = cx + (d.g.parts[0].type === "dot" ? 8 : BAR_W / 2 + 2);
+    tt.select(".leader").attr("d", `M${x0},${d.g.anchor} C${x0 + 6},${d.g.anchor} ${d.lx - 10},${d.ly} ${d.lx - 3},${d.ly}`);
+
+    const bars = d.g.parts.filter(p => p.type === "bar");
+    const dots = d.g.parts.filter(p => p.type === "dot");
+
+    g.select(".marks").selectAll("line.span").data(d.g.spans, (m, i) => i)
+      .join(enter => enter.append("line").attr("class", "span").attr("opacity", 0)
+        .attr("x1", cx).attr("x2", cx).attr("y1", m => m.y0).attr("y2", m => m.y0))
+      .attr("stroke", c)
+      .transition(t).attr("opacity", 0.55).attr("x1", cx).attr("x2", cx).attr("y1", m => m.y0).attr("y2", m => m.y1);
+
+    // Prologue/epilogue: dotted connector in the gutter left of the column.
+    const mx = cx - COL_W / 2 + 1;
+    const conn = d.g.markers.map(m => ({ ...m, from: d.g.anchor }));
+    g.select(".marks").selectAll("path.connector").data(conn, (m, i) => i)
+      .join(enter => enter.append("path").attr("class", "connector").attr("opacity", 0))
+      .attr("stroke", c)
+      .transition(t).attr("opacity", 1)
+      .attr("d", m => `M${cx},${m.from} L${mx},${m.from} L${mx},${m.cy}`);
+
+    g.select(".marks").selectAll("rect.mark").data(bars, (m, i) => i)
+      .join(enter => enter.append("rect").attr("class", "mark").attr("rx", 4)
+        .attr("x", cx - BAR_W / 2).attr("width", BAR_W).attr("y", m => m.y0).attr("height", 0))
+      .classed("upcoming", m => m.upcoming)
+      .attr("fill", c).style("stroke", m => m.upcoming ? c : null)
+      .transition(t).attr("x", cx - BAR_W / 2).attr("y", m => m.y0).attr("height", m => m.y1 - m.y0);
+
+    g.select(".marks").selectAll("circle.mark").data(dots, (m, i) => i)
+      .join(enter => enter.append("circle").attr("class", "mark").attr("r", 0).attr("cx", cx).attr("cy", m => m.cy))
+      .classed("upcoming", m => m.upcoming)
+      .attr("fill", c).style("stroke", m => m.upcoming ? c : null)
+      .transition(t).attr("r", 6).attr("cx", cx).attr("cy", m => m.cy);
+
+    g.select(".marks").selectAll("circle.extra").data(d.g.markers, (m, i) => i)
+      .join(enter => enter.append("circle").attr("class", "extra").attr("r", 0).attr("cx", mx).attr("cy", m => m.cy))
+      .attr("stroke", c)
+      .transition(t).attr("r", 4).attr("cx", mx).attr("cy", m => m.cy);
+  });
+}
+
+function fmtRange(a, b, approx) {
+  const p = approx ? "c. " : "";
+  return a === b ? p + fmtYear(a) : `${p}${fmtYear(a)} – ${fmtYear(b)}`;
+}
+
+function showTip(event, d) {
+  const w = d.w;
+  const rows = [];
+  if (w.segments) {
+    for (const s of w.segments) rows.push([s.label, fmtRange(s.start, s.end, s.approx)]);
+  } else if (w.universe) {
+    // prefer Wookieepedia's wording when it qualifies the year ("After 35 ABY")
+    const txt = w.timeline_text;
+    rows.push(["Set in", txt && /[a-z]{3,}/i.test(txt.replace(/[AB]BY/g, "")) && !w.segments ? txt
+      : fmtRange(w.universe.start, w.universe.end, w.universe.approx)]);
+  } else {
+    rows.push(["Set in", w.timeline_text || "Not announced"]);
+  }
+  for (const m of w.markers || []) rows.push([m.label, fmtYear(m.year)]);
+  if (w.kind === "film") {
+    rows.push(["Released", !w.release.start ? "TBA (announced)"
+      : fmtDate(parseDate(w.release.start)) + (w.release.status === "upcoming" ? " (upcoming)" : "")]);
+  } else {
+    for (const s of w.seasons) {
+      const a = fmtDate(parseDate(s.start));
+      const b = s.status === "upcoming" ? " (announced)"
+        : s.end && s.end !== s.start ? ` – ${fmtDate(parseDate(s.end))}` : s.status === "airing" ? " (airing)" : "";
+      rows.push([w.seasons.length > 1 ? `Season ${s.n}` : "Aired", a + b]);
+    }
+  }
+  const meta = [w.format === "live" ? "Live action" : "Animated", w.kind === "film" ? "film" : "series",
+    w.episodes ? `${w.episodes} episodes` : null, w.canon === "legends" ? "Legends" : null].filter(Boolean).join(" · ");
+  // poster: fixed width, height from the image's own aspect so the box doesn't jump while loading
+  const poster = w.poster
+    ? `<img class="poster" src="${w.poster.url}" alt="" referrerpolicy="no-referrer" style="aspect-ratio:${w.poster.w}/${w.poster.h}">`
+    : "";
+  tip.html(`${poster}<div class="body"><h3>${w.title}</h3><div class="meta">${meta}</div><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table></div>`)
+    .style("opacity", 1);
+  const node = tip.node(), pad = 14;
+  let left = event.clientX + pad, top = event.clientY + pad;
+  if (left + node.offsetWidth > window.innerWidth - 8) left = event.clientX - node.offsetWidth - pad;
+  if (top + node.offsetHeight > window.innerHeight - 8) top = event.clientY - node.offsetHeight - pad;
+  tip.style("left", left + "px").style("top", top + "px");
+}
+function hideTip() { tip.style("opacity", 0); }
+
+d3.selectAll(".seg button").on("click", function () {
+  state.axis = this.dataset.axis;
+  d3.selectAll(".seg button").attr("aria-pressed", function () { return this.dataset.axis === state.axis; });
+  render();
+});
+d3.selectAll("[data-filter]").on("change", function () {
+  state[this.dataset.filter] = this.checked;
+  render();
+});
+// Re-layout whenever the container width changes (window resize, or a page
+// scrollbar appearing after the first render).
+let resizeTimer, lastW = 0;
+new ResizeObserver(([e]) => {
+  const w = Math.round(e.contentRect.width);
+  if (!data || w === lastW) return;
+  lastW = w;
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => render(false), 60);
+}).observe(document.querySelector(".chart-wrap"));
+
+fetch("data/works.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  data = d;
+  // warm the cache so posters show instantly on hover
+  const preload = () => d.works.forEach(w => {
+    if (!w.poster) return;
+    const img = new Image();
+    img.referrerPolicy = "no-referrer";
+    img.src = w.poster.url;
+  });
+  (window.requestIdleCallback || setTimeout)(preload);
+  d3.select("#generated").text(d.generated);
+  render(false);
+});
+</script>
+</body>
+</html>

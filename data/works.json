@@ -1,0 +1,1520 @@
+{
+ "generated": "2026-11-09",
+ "source": "Wookieepedia (starwars.fandom.com), CC BY-SA 3.0",
+ "works": [
+  {
+   "id": "ep4",
+   "title": "Star Wars: Episode IV A New Hope",
+   "label": "A New Hope",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "1977-05-25",
+    "end": "1977-05-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": 0,
+    "end": 0
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/44/1977-StarWars-theatricalposter.jpg/revision/latest/scale-to-width-down/240?cb=20260130123909",
+    "w": 240,
+    "h": 367
+   }
+  },
+  {
+   "id": "holiday-special",
+   "title": "The Star Wars Holiday Special",
+   "label": "Holiday Special",
+   "url": "https://starwars.fandom.com/wiki/The_Star_Wars_Holiday_Special",
+   "kind": "film",
+   "format": "live",
+   "canon": "legends",
+   "release": {
+    "start": "1978-11-17",
+    "end": "1978-11-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 1,
+    "end": 1,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/23/StarWarsHS.jpg/revision/latest/scale-to-width-down/240?cb=20060417210458",
+    "w": 240,
+    "h": 345
+   }
+  },
+  {
+   "id": "ep5",
+   "title": "Star Wars: Episode V The Empire Strikes Back",
+   "label": "The Empire Strikes Back",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "1980-05-21",
+    "end": "1980-05-21",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": 3,
+    "end": 3
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest/scale-to-width-down/240?cb=20260130125325",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "ep6",
+   "title": "Star Wars: Episode VI Return of the Jedi",
+   "label": "Return of the Jedi",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "1983-05-25",
+    "end": "1983-05-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": 4,
+    "end": 4
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/b2/ReturnOfTheJediPoster1983.jpg/revision/latest/scale-to-width-down/240?cb=20250617080341",
+    "w": 240,
+    "h": 364
+   }
+  },
+  {
+   "id": "caravan",
+   "title": "Caravan of Courage: An Ewok Adventure",
+   "label": "Caravan of Courage",
+   "url": "https://starwars.fandom.com/wiki/Caravan_of_Courage:_An_Ewok_Adventure",
+   "kind": "film",
+   "format": "live",
+   "canon": "legends",
+   "release": {
+    "start": "1984-11-25",
+    "end": "1984-11-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 3,
+    "end": 3,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/60/Caravan_bg.jpg/revision/latest/scale-to-width-down/240?cb=20140228114152",
+    "w": 240,
+    "h": 376
+   }
+  },
+  {
+   "id": "droids",
+   "title": "Star Wars: Droids: The Adventures of R2-D2 and C-3PO",
+   "label": "Droids",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Droids:_The_Adventures_of_R2-D2_and_C-3PO",
+   "kind": "series",
+   "format": "animated",
+   "canon": "legends",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "1985-09-07",
+     "end": "1986-06-07",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "1985-09-07",
+    "end": "1986-06-07",
+    "status": "ended"
+   },
+   "episodes": 13,
+   "universe": {
+    "start": -15,
+    "end": -15,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8a/SWDroids-TheAdventuresOfR2D2AndC3PO-OpeningLogo.jpg/revision/latest/scale-to-width-down/240?cb=20210618130135",
+    "w": 240,
+    "h": 183
+   }
+  },
+  {
+   "id": "ewoks",
+   "title": "Ewoks (television series)",
+   "label": "Ewoks",
+   "url": "https://starwars.fandom.com/wiki/Ewoks_(television_series)",
+   "kind": "series",
+   "format": "animated",
+   "canon": "legends",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "1985-09-07",
+     "end": "1985-11-30",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Ewoks:_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "1986-09-13",
+     "end": "1986-12-13",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Ewoks:_Season_Two"
+    }
+   ],
+   "release": {
+    "start": "1985-09-07",
+    "end": "1986-12-13",
+    "status": "ended"
+   },
+   "episodes": 35,
+   "universe": {
+    "start": 3,
+    "end": 4,
+    "approx": true
+   },
+   "timeline_text": "Between 3.5 ABY and 4 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/70/Ewoks_all.jpg/revision/latest/scale-to-width-down/240?cb=20210402201736",
+    "w": 240,
+    "h": 181
+   }
+  },
+  {
+   "id": "battle-endor",
+   "title": "Ewoks: The Battle for Endor",
+   "label": "The Battle for Endor",
+   "url": "https://starwars.fandom.com/wiki/Ewoks:_The_Battle_for_Endor",
+   "kind": "film",
+   "format": "live",
+   "canon": "legends",
+   "release": {
+    "start": "1985-11-24",
+    "end": "1985-11-24",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 3,
+    "end": 3,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/ad/Ilm-ewok2.jpg/revision/latest/scale-to-width-down/240?cb=20051107095944",
+    "w": 240,
+    "h": 345
+   }
+  },
+  {
+   "id": "ep1",
+   "title": "Star Wars: Episode I The Phantom Menace",
+   "label": "The Phantom Menace",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_The_Phantom_Menace",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "1999-05-19",
+    "end": "1999-05-19",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": -32,
+    "end": -32
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/75/EPI_TPM_poster.png/revision/latest/scale-to-width-down/240?cb=20250617214241",
+    "w": 240,
+    "h": 358
+   }
+  },
+  {
+   "id": "ep2",
+   "title": "Star Wars: Episode II Attack of the Clones",
+   "label": "Attack of the Clones",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_Attack_of_the_Clones",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "2002-05-16",
+    "end": "2002-05-16",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": -22,
+    "end": -22
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/dd/Attack-Clones-Poster.jpg/revision/latest/scale-to-width-down/240?cb=20250617225730",
+    "w": 240,
+    "h": 354
+   }
+  },
+  {
+   "id": "clone-wars-2003",
+   "title": "Star Wars: Clone Wars",
+   "label": "Clone Wars (2003)",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars",
+   "kind": "series",
+   "format": "animated",
+   "canon": "legends",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2003-11-07",
+     "end": "2005-03-25",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2003-11-07",
+    "end": "2005-03-25",
+    "status": "ended"
+   },
+   "episodes": 25,
+   "universe": {
+    "start": -22,
+    "end": -19,
+    "approx": false
+   },
+   "timeline_text": "22 BBY–19 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/9e/CloneWarsPoster.jpg/revision/latest/scale-to-width-down/240?cb=20100610100944",
+    "w": 240,
+    "h": 311
+   }
+  },
+  {
+   "id": "ep3",
+   "title": "Star Wars: Episode III Revenge of the Sith",
+   "label": "Revenge of the Sith",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "2005-05-19",
+    "end": "2005-05-19",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": -19,
+    "end": -19
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/e/e7/EPIII_RotS_poster.png/revision/latest/scale-to-width-down/240?cb=20250617231154",
+    "w": 240,
+    "h": 354
+   }
+  },
+  {
+   "id": "tcw-film",
+   "title": "Star Wars: The Clone Wars (film)",
+   "label": "The Clone Wars (film)",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars_(film)",
+   "kind": "film",
+   "format": "animated",
+   "canon": "canon",
+   "release": {
+    "start": "2008-08-14",
+    "end": "2008-08-14",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "approx": false,
+    "start": -22,
+    "end": -22
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest/scale-to-width-down/240?cb=20250618011933",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "tcw",
+   "title": "Star Wars: The Clone Wars",
+   "label": "The Clone Wars",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2008-10-03",
+     "end": "2009-03-20",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "2009-10-02",
+     "end": "2010-04-30",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Two"
+    },
+    {
+     "n": 3,
+     "start": "2010-09-17",
+     "end": "2011-04-01",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Three"
+    },
+    {
+     "n": 4,
+     "start": "2011-09-16",
+     "end": "2012-03-16",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Four"
+    },
+    {
+     "n": 5,
+     "start": "2012-09-29",
+     "end": "2013-03-02",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Five"
+    },
+    {
+     "n": 6,
+     "start": "2014-02-15",
+     "end": "2014-03-08",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Lost_Missions"
+    },
+    {
+     "n": 7,
+     "start": "2020-02-21",
+     "end": "2020-05-04",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Seven"
+    }
+   ],
+   "release": {
+    "start": "2008-10-03",
+    "end": "2020-05-04",
+    "status": "ended"
+   },
+   "episodes": 133,
+   "universe": {
+    "start": -22,
+    "end": -19,
+    "approx": false
+   },
+   "timeline_text": "22 BBY–19 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/dd/SWTCW-poster.jpg/revision/latest/scale-to-width-down/240?cb=20070518031445",
+    "w": 240,
+    "h": 372
+   }
+  },
+  {
+   "id": "rebels",
+   "title": "Star Wars Rebels",
+   "label": "Rebels",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Rebels",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2014-08-11",
+     "end": "2015-03-02",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Rebels_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "2015-06-20",
+     "end": "2016-03-30",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Rebels_Season_Two"
+    },
+    {
+     "n": 3,
+     "start": "2016-09-24",
+     "end": "2017-03-25",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Rebels_Season_Three"
+    },
+    {
+     "n": 4,
+     "start": "2017-10-16",
+     "end": "2018-03-05",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Rebels_Season_Four"
+    }
+   ],
+   "release": {
+    "start": "2014-08-11",
+    "end": "2018-03-05",
+    "status": "ended"
+   },
+   "episodes": 74,
+   "universe": {
+    "start": -5,
+    "end": -1,
+    "approx": true
+   },
+   "markers": [
+    {
+     "year": 9,
+     "label": "Epilogue"
+    }
+   ],
+   "timeline_text": "5 BBY - 1 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/a6/RebelsPoster.png/revision/latest/scale-to-width-down/240?cb=20140805200015",
+    "w": 240,
+    "h": 352
+   }
+  },
+  {
+   "id": "ep7",
+   "title": "Star Wars: Episode VII The Force Awakens",
+   "label": "The Force Awakens",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "2015-12-18",
+    "end": "2015-12-18",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/fd/Star_Wars_Episode_VII_The_Force_Awakens.jpg/revision/latest/scale-to-width-down/240?cb=20250618012820",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "rogue-one",
+   "title": "Rogue One: A Star Wars Story",
+   "label": "Rogue One",
+   "url": "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": "2016-12-15",
+    "end": "2016-12-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -1,
+    "end": -1,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": -13,
+     "label": "Prologue"
+    }
+   ],
+   "timeline_text": "1 BBY, days before A New Hope",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/59/RogueOne-AStarWarsStory-Theatricalposter.png/revision/latest/scale-to-width-down/240?cb=20161012214043",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "ep8",
+   "title": "Star Wars: Episode VIII The Last Jedi",
+   "label": "The Last Jedi",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "2017-12-15",
+    "end": "2017-12-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/23/TheLastJediPoster.jpg/revision/latest/scale-to-width-down/240?cb=20170123223201",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "solo",
+   "title": "Solo: A Star Wars Story",
+   "label": "Solo",
+   "url": "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": "2018-05-25",
+    "end": "2018-05-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -10,
+    "end": -10,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": -13,
+     "label": "Prologue"
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Solo_A_Star_Wars_Story_Theatrical_Poster.png/revision/latest/scale-to-width-down/240?cb=20180409011120",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "resistance",
+   "title": "Star Wars Resistance",
+   "label": "Resistance",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Resistance",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2018-10-07",
+     "end": "2019-03-17",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Resistance_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "2019-10-06",
+     "end": "2020-01-26",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Star_Wars_Resistance_Season_Two"
+    }
+   ],
+   "release": {
+    "start": "2018-10-07",
+    "end": "2020-01-26",
+    "status": "ended"
+   },
+   "episodes": 40,
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8d/StarWarsResistance-SeasonOne.jpg/revision/latest/scale-to-width-down/240?cb=20180918145021",
+    "w": 240,
+    "h": 352
+   }
+  },
+  {
+   "id": "mandalorian",
+   "title": "Star Wars: The Mandalorian",
+   "label": "The Mandalorian",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Mandalorian",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2019-11-12",
+     "end": "2019-12-27",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Mandalorian_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "2020-10-30",
+     "end": "2020-12-18",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Mandalorian_Season_Two"
+    },
+    {
+     "n": 3,
+     "start": "2023-03-01",
+     "end": "2023-04-19",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Mandalorian_Season_Three"
+    }
+   ],
+   "release": {
+    "start": "2019-11-12",
+    "end": "2023-04-19",
+    "status": "ended"
+   },
+   "episodes": 24,
+   "universe": {
+    "start": 9,
+    "end": 9,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/45/TheMandalorianS1Poster.png/revision/latest/scale-to-width-down/240?cb=20190823131948",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "ep9",
+   "title": "Star Wars: Episode IX The Rise of Skywalker",
+   "label": "The Rise of Skywalker",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker",
+   "kind": "film",
+   "format": "live",
+   "canon": "saga",
+   "release": {
+    "start": "2019-12-20",
+    "end": "2019-12-20",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 35,
+    "end": 35,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/4c/TROSOneSheet.jpg/revision/latest/scale-to-width-down/240?cb=20191022091806",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "bad-batch",
+   "title": "Star Wars: The Bad Batch",
+   "label": "The Bad Batch",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Bad_Batch",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2021-05-04",
+     "end": "2021-08-13",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Bad_Batch_Season_1"
+    },
+    {
+     "n": 2,
+     "start": "2023-01-04",
+     "end": "2023-03-29",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Bad_Batch_Season_2"
+    },
+    {
+     "n": 3,
+     "start": "2024-02-21",
+     "end": "2024-05-01",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/The_Bad_Batch_Season_3"
+    }
+   ],
+   "release": {
+    "start": "2021-05-04",
+    "end": "2024-05-01",
+    "status": "ended"
+   },
+   "episodes": 47,
+   "universe": {
+    "start": -19,
+    "end": -18,
+    "approx": true
+   },
+   "timeline_text": "19 BBY-During or after 18 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/d4/BadBatchPoster.jpg/revision/latest/scale-to-width-down/240?cb=20231125171320",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "boba-fett",
+   "title": "Star Wars: The Book of Boba Fett",
+   "label": "The Book of Boba Fett",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Book_of_Boba_Fett",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2021-12-29",
+     "end": "2022-02-09",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2021-12-29",
+    "end": "2022-02-09",
+    "status": "ended"
+   },
+   "episodes": 7,
+   "universe": {
+    "start": 9,
+    "end": 9,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/44/Bobofficialposter.jpg/revision/latest/scale-to-width-down/240?cb=20221221045405",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "kenobi",
+   "title": "Star Wars: Obi-Wan Kenobi",
+   "label": "Obi-Wan Kenobi",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Obi-Wan_Kenobi",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2022-05-26",
+     "end": "2022-06-22",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2022-05-26",
+    "end": "2022-06-22",
+    "status": "ended"
+   },
+   "episodes": 6,
+   "universe": {
+    "start": -9,
+    "end": -9,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f8/ObiWanKenobiOfficialPoster.png/revision/latest/scale-to-width-down/240?cb=20220713044431",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "andor",
+   "title": "Star Wars: Andor",
+   "label": "Andor",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Andor",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2022-09-21",
+     "end": "2022-11-23",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Andor_Season_1"
+    },
+    {
+     "n": 2,
+     "start": "2025-04-19",
+     "end": "2025-05-13",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Andor_Season_2"
+    }
+   ],
+   "release": {
+    "start": "2022-09-21",
+    "end": "2025-05-13",
+    "status": "ended"
+   },
+   "episodes": 24,
+   "universe": {
+    "start": -5,
+    "end": -1,
+    "approx": false
+   },
+   "timeline_text": "5 BBY–1 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/6e/AndorPosterFull.jpg/revision/latest/scale-to-width-down/240?cb=20220802224227",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "tales-jedi",
+   "title": "Star Wars: Tales of the Jedi (television series)",
+   "label": "Tales of the Jedi",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Tales_of_the_Jedi_(television_series)",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2022-10-26",
+     "end": "2022-10-26",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2022-10-26",
+    "end": "2022-10-26",
+    "status": "ended"
+   },
+   "episodes": 6,
+   "universe": {
+    "start": -68,
+    "end": -5,
+    "approx": true
+   },
+   "segments": [
+    {
+     "start": -35,
+     "end": -35,
+     "approx": false,
+     "label": "Life and Death"
+    },
+    {
+     "start": -68,
+     "end": -58,
+     "approx": true,
+     "label": "Justice"
+    },
+    {
+     "start": -50,
+     "end": -48,
+     "approx": true,
+     "label": "Choices"
+    },
+    {
+     "start": -32,
+     "end": -32,
+     "approx": false,
+     "label": "The Sith Lord"
+    },
+    {
+     "start": -21,
+     "end": -19,
+     "approx": true,
+     "label": "Practice Makes Perfect"
+    },
+    {
+     "start": -17,
+     "end": -5,
+     "approx": true,
+     "label": "Resolve"
+    }
+   ],
+   "markers": [
+    {
+     "year": -36,
+     "label": "Life and Death (opening)"
+    },
+    {
+     "year": -19,
+     "label": "Resolve (opening)"
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/bc/StarWarsTalesOfTheJedi-Poster-Getty.jpg/revision/latest/scale-to-width-down/240?cb=20221006070025",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "yja",
+   "title": "Star Wars: Young Jedi Adventures",
+   "label": "Young Jedi Adventures",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Young_Jedi_Adventures",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2023-03-27",
+     "end": "2024-03-15",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Young_Jedi_Adventures_Season_One"
+    },
+    {
+     "n": 2,
+     "start": "2024-08-02",
+     "end": "2025-05-23",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Young_Jedi_Adventures_Season_Two"
+    },
+    {
+     "n": 3,
+     "start": "2025-12-08",
+     "end": "2025-12-08",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Young_Jedi_Adventures_Season_Three"
+    }
+   ],
+   "release": {
+    "start": "2023-03-27",
+    "end": "2025-12-08",
+    "status": "ended"
+   },
+   "episodes": 55,
+   "universe": {
+    "start": -233,
+    "end": -232,
+    "approx": true
+   },
+   "timeline_text": "c. 233 BBY–232 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/1a/YJA_Official_Poster.jpg/revision/latest/scale-to-width-down/240?cb=20230327233300",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "ahsoka",
+   "title": "Star Wars: Ahsoka",
+   "label": "Ahsoka",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Ahsoka",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2023-08-22",
+     "end": "2023-10-03",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Ahsoka_Season_1"
+    },
+    {
+     "n": 2,
+     "start": "2027-01-20",
+     "end": null,
+     "precision": "day",
+     "status": "upcoming",
+     "url": "https://starwars.fandom.com/wiki/Ahsoka_Season_2"
+    }
+   ],
+   "release": {
+    "start": "2023-08-22",
+    "end": "2023-10-03",
+    "status": "ongoing"
+   },
+   "episodes": 8,
+   "universe": {
+    "start": 9,
+    "end": 9,
+    "approx": true
+   },
+   "timeline_text": "During or after 9 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c2/Ahsoka-Poster-2.jpg/revision/latest/scale-to-width-down/240?cb=20230711172210",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "tales-empire",
+   "title": "Star Wars: Tales of the Empire",
+   "label": "Tales of the Empire",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Tales_of_the_Empire",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2024-05-04",
+     "end": "2024-05-04",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2024-05-04",
+    "end": "2024-05-04",
+    "status": "ended"
+   },
+   "episodes": 6,
+   "universe": {
+    "start": -20,
+    "end": 9,
+    "approx": true
+   },
+   "segments": [
+    {
+     "start": -20,
+     "end": -20,
+     "approx": false,
+     "label": "The Path of Fear"
+    },
+    {
+     "start": -9,
+     "end": -2,
+     "approx": true,
+     "label": "The Path of Anger"
+    },
+    {
+     "start": 7,
+     "end": 9,
+     "approx": true,
+     "label": "The Path of Hate"
+    },
+    {
+     "start": -19,
+     "end": -19,
+     "approx": false,
+     "label": "Devoted"
+    },
+    {
+     "start": -19,
+     "end": -19,
+     "approx": true,
+     "label": "Realization"
+    },
+    {
+     "start": -9,
+     "end": 0,
+     "approx": true,
+     "label": "The Way Out"
+    }
+   ],
+   "markers": [],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/77/StarWarsTalesOfTheEmpire-Poster-Getty.png/revision/latest/scale-to-width-down/240?cb=20240404190930",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "acolyte",
+   "title": "Star Wars: The Acolyte",
+   "label": "The Acolyte",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Acolyte",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2024-06-03",
+     "end": "2024-07-16",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2024-06-03",
+    "end": "2024-07-16",
+    "status": "ended"
+   },
+   "episodes": 8,
+   "universe": {
+    "start": -132,
+    "end": -132,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/a1/AcolytePost-Poster.jpg/revision/latest/scale-to-width-down/240?cb=20240615030332",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "skeleton-crew",
+   "title": "Star Wars: Skeleton Crew",
+   "label": "Skeleton Crew",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Skeleton_Crew",
+   "kind": "series",
+   "format": "live",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2024-12-02",
+     "end": "2025-01-14",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2024-12-02",
+    "end": "2025-01-14",
+    "status": "ended"
+   },
+   "episodes": 8,
+   "universe": {
+    "start": 9,
+    "end": 9,
+    "approx": true
+   },
+   "timeline_text": "c. 9 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/29/SkeletonCrew-OfficialPoster.jpg/revision/latest/scale-to-width-down/240?cb=20241101174923",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "tales-underworld",
+   "title": "Star Wars: Tales of the Underworld",
+   "label": "Tales of the Underworld",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Tales_of_the_Underworld",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2025-04-18",
+     "end": "2025-05-04",
+     "precision": "day",
+     "status": "ended"
+    }
+   ],
+   "release": {
+    "start": "2025-04-18",
+    "end": "2025-05-04",
+    "status": "ended"
+   },
+   "episodes": 6,
+   "universe": {
+    "start": -62,
+    "end": -18,
+    "approx": true
+   },
+   "segments": [
+    {
+     "start": -18,
+     "end": -18,
+     "approx": true,
+     "label": "A Way Forward"
+    },
+    {
+     "start": -18,
+     "end": -18,
+     "approx": true,
+     "label": "Friends"
+    },
+    {
+     "start": -18,
+     "end": -18,
+     "approx": true,
+     "label": "One Warrior to Another"
+    },
+    {
+     "start": -62,
+     "end": -33,
+     "approx": true,
+     "label": "The Good Life"
+    },
+    {
+     "start": -62,
+     "end": -33,
+     "approx": true,
+     "label": "A Good Turn"
+    },
+    {
+     "start": -62,
+     "end": -33,
+     "approx": true,
+     "label": "One Good Deed"
+    }
+   ],
+   "markers": [
+    {
+     "year": -19,
+     "label": "A Way Forward (prologue)"
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/b7/TotU-Poster.png/revision/latest/scale-to-width-down/240?cb=20250402174337",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "maul",
+   "title": "Star Wars: Maul - Shadow Lord",
+   "label": "Maul – Shadow Lord",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Maul_-_Shadow_Lord",
+   "kind": "series",
+   "format": "animated",
+   "canon": "canon",
+   "seasons": [
+    {
+     "n": 1,
+     "start": "2026-04-06",
+     "end": "2026-05-04",
+     "precision": "day",
+     "status": "ended",
+     "url": "https://starwars.fandom.com/wiki/Maul_-_Shadow_Lord_Season_1"
+    },
+    {
+     "n": 2,
+     "start": "2027-01-01",
+     "end": null,
+     "precision": "year",
+     "status": "upcoming",
+     "url": "https://starwars.fandom.com/wiki/Maul_-_Shadow_Lord_Season_2"
+    }
+   ],
+   "release": {
+    "start": "2026-04-06",
+    "end": "2026-05-04",
+    "status": "ongoing"
+   },
+   "episodes": 10,
+   "universe": {
+    "start": -17,
+    "end": -13,
+    "approx": true
+   },
+   "timeline_text": "Between 17 BBY and c. 13 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/a2/MaulShadowLordKeyArt.jpg/revision/latest/scale-to-width-down/240?cb=20260317110047",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "mando-grogu",
+   "title": "Star Wars: The Mandalorian and Grogu",
+   "label": "The Mandalorian & Grogu",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Mandalorian_and_Grogu",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": "2026-05-22",
+    "end": "2026-05-22",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 14,
+    "end": 14,
+    "approx": true
+   },
+   "timeline_text": "c. 14 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f2/TheMandalorianAndGrogu-TheatricalPoster.jpg/revision/latest/scale-to-width-down/240?cb=20260528061949",
+    "w": 240,
+    "h": 356
+   }
+  },
+  {
+   "id": "starfighter",
+   "title": "Star Wars: Starfighter",
+   "label": "Starfighter",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Starfighter",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": "2027-05-28",
+    "end": "2027-05-28",
+    "precision": "day",
+    "status": "upcoming"
+   },
+   "universe": {
+    "start": 40,
+    "end": 40,
+    "approx": true
+   },
+   "timeline_text": "c. 40 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/97/StarWarsStarfighter.jpg/revision/latest/scale-to-width-down/240?cb=20260815092654",
+    "w": 240,
+    "h": 135
+   }
+  },
+  {
+   "id": "filoni-film",
+   "title": "Untitled Star Wars film (Dave Filoni)",
+   "label": "Untitled Filoni film",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Star_Wars_film_(Dave_Filoni)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "timeline_text": "New Republic Era"
+  },
+  {
+   "id": "kinberg",
+   "title": "Untitled Star Wars trilogy (Simon Kinberg)",
+   "label": "Untitled Kinberg trilogy",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Star_Wars_trilogy_(Simon_Kinberg)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "universe": {
+    "start": 36,
+    "end": 36,
+    "approx": true
+   },
+   "timeline_text": "After 35 ABY"
+  },
+  {
+   "id": "lando",
+   "title": "Lando (film)",
+   "label": "Lando",
+   "url": "https://starwars.fandom.com/wiki/Lando_(film)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Lando_series_logo.png/revision/latest/scale-to-width-down/240?cb=20220430213711",
+    "w": 240,
+    "h": 83
+   }
+  },
+  {
+   "id": "mangold",
+   "title": "Untitled Star Wars film (James Mangold)",
+   "label": "Dawn of the Jedi film (Mangold)",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Star_Wars_film_(James_Mangold)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "universe": {
+    "start": -25000,
+    "end": -25000,
+    "approx": false
+   }
+  },
+  {
+   "id": "rey-film",
+   "title": "Untitled Star Wars film (Sharmeen Obaid-Chinoy)",
+   "label": "Untitled Rey film",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Star_Wars_film_(Sharmeen_Obaid-Chinoy)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "universe": {
+    "start": 50,
+    "end": 50,
+    "approx": false
+   }
+  },
+  {
+   "id": "rogue-squadron",
+   "title": "Rogue Squadron (film)",
+   "label": "Rogue Squadron",
+   "url": "https://starwars.fandom.com/wiki/Rogue_Squadron_(film)",
+   "kind": "film",
+   "format": "live",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/fa/Rogue-Squadron-movie-logo.png/revision/latest/scale-to-width-down/240?cb=20210419033109",
+    "w": 240,
+    "h": 135
+   }
+  }
+ ]
+}
