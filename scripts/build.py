@@ -125,7 +125,7 @@ def build_work(raw, overrides):
     work = {
         "id": raw["id"],
         "title": raw["title"],
-        "label": o.get("label", raw["title"]),
+        "label": o.get("label", short_label(raw)),
         "url": "https://starwars.fandom.com/wiki/" + raw["title"].replace(" ", "_"),
         "kind": raw["kind"],
         "format": raw["format"],
@@ -133,7 +133,7 @@ def build_work(raw, overrides):
     }
 
     # --- real-world release ---
-    if raw["kind"] == "film":
+    if raw["kind"] in ("film", "book", "game"):  # one release date
         dates = parse_dates(field(info, "release date"))
         if dates:
             d, prec = min(dates)  # earliest = original/premiere release
@@ -194,6 +194,24 @@ def build_work(raw, overrides):
         # "After 35 ABY" → place it in the following year, not on top of 35 ABY
         if rng and re.match(r"After\b", text):
             work["universe"] = {**rng, "start": rng["start"] + 1, "end": rng["end"] + 1, "approx": True}
+        # Books and games that list separate periods ("19 BBY {{C|Past}}", "2 BBY {{C|Present}}",
+        # flashbacks, chapters) become segments, like anthology episodes.
+        if raw["kind"] in ("book", "game"):
+            segs = period_segments(tl)
+            if len(segs) > 1:
+                work["segments"] = segs
+    if raw["kind"] in ("book", "game"):
+        series = series_name(field(info, "series"))
+        if series:
+            work["series"] = series
+    if "segments" in o:  # hand-curated periods (e.g. a game's campaign vs. multiplayer eras)
+        work["segments"] = [{"approx": False, **s} for s in o["segments"]]
+    if work.get("segments") and raw["kind"] in ("book", "game"):
+        segs = work["segments"]
+        main = next((s for s in segs if s.get("main")), None) \
+            or next((s for s in segs if re.fullmatch(r"(main.*|present|)", s["label"], re.I)), segs[0])
+        work["universe"] = {"start": min(s["start"] for s in segs), "end": max(s["end"] for s in segs),
+                            "approx": True, "main": main["start"]}
     if "universe" in o:
         work["universe"] = {**work.get("universe", {"approx": False}), **o["universe"]}
     if "universe" not in work:
@@ -208,6 +226,39 @@ def build_work(raw, overrides):
                 break
     work["poster_file"] = poster or infobox_image(w)
     return work
+
+
+def series_name(value):
+    """'[[Star Wars: The High Republic|...]]' → 'The High Republic'; first entry only."""
+    v = re.sub(r"\{\{[^{}]*\}\}", "", delink(value)).replace("''", "").strip()
+    v = v.split("\n")[0].lstrip("*").strip()
+    v = re.sub(r"^Star Wars:? ", "", v)
+    v = re.sub(r"Star Wars: ", "", v)  # "Journey to Star Wars: The Last Jedi"
+    v = re.sub(r" (series|media project|publishing program)$", "", v)
+    return v or None
+
+
+def period_segments(value):
+    """One segment per dated line of a timeline field, labelled with its note ("Past",
+    "flashbacks", "Chapter 7"). Prologue/epilogue lines are left to the markers."""
+    segs = []
+    for text, note in lines(value):
+        ys = years(text)
+        if not ys or re.search(r"Prologue|Epilogue|Opening", note, re.I):
+            continue
+        label = note[:1].upper() + note[1:] if note else "Main story"
+        segs.append({"start": min(ys), "end": max(ys), "label": label,
+                     "approx": bool(re.search(r"\bc\.|Between|During|after", text, re.I))})
+    return segs
+
+
+def short_label(raw):
+    """Books and games: drop disambiguation suffixes and the 'Star Wars' prefix."""
+    t = raw["title"]
+    if raw["kind"] in ("book", "game"):
+        t = re.sub(r" \((?:[\w-]+ )?novel\)$", "", t)
+        t = re.sub(r"^Star Wars:? ", "", t)
+    return t
 
 
 def infobox_image(w):
@@ -371,7 +422,7 @@ def place_entries(entries, work_by_id, episodes, seasons):
                     continue
         if e["year"] is None and u:
             e["year"] = (u["start"] + u["end"] + 1) / 2 if w["kind"] == "series" and not w.get("segments") \
-                else u["start"] + 0.5
+                else u.get("main", u["start"]) + 0.5  # books/games: their main period, not a flashback
     # spread runs of episodes that only know their season range
     i = 0
     while i < len(pending):

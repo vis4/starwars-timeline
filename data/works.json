@@ -516,6 +516,275 @@
    }
   },
   {
+   "id": "book-a-new-dawn-novel",
+   "title": "A New Dawn (novel)",
+   "label": "A New Dawn",
+   "url": "https://starwars.fandom.com/wiki/A_New_Dawn_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2014-09-02",
+    "end": "2014-09-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -11,
+    "end": -11,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/62/ANewDawn.png/revision/latest/scale-to-width-down/240?cb=20141001002939",
+    "w": 240,
+    "h": 361
+   }
+  },
+  {
+   "id": "book-tarkin-novel",
+   "title": "Tarkin (novel)",
+   "label": "Tarkin",
+   "url": "https://starwars.fandom.com/wiki/Tarkin_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2014-11-04",
+    "end": "2014-11-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -14,
+    "end": -14,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/df/TarkinCover.jpg/revision/latest/scale-to-width-down/240?cb=20140425191637",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-heir-to-the-jedi",
+   "title": "Heir to the Jedi",
+   "label": "Heir to the Jedi",
+   "url": "https://starwars.fandom.com/wiki/Heir_to_the_Jedi",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-03-03",
+    "end": "2015-03-03",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 0,
+    "end": 0,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c2/Heir_to_the_Jedi.jpg/revision/latest/scale-to-width-down/240?cb=20140425200555",
+    "w": 240,
+    "h": 366
+   }
+  },
+  {
+   "id": "book-lords-of-the-sith",
+   "title": "Lords of the Sith",
+   "label": "Lords of the Sith",
+   "url": "https://starwars.fandom.com/wiki/Lords_of_the_Sith",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-04-28",
+    "end": "2015-04-28",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -14,
+    "end": -14,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Lords_of_the_Sith.jpg/revision/latest/scale-to-width-down/240?cb=20210718053306",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-dark-disciple",
+   "title": "Dark Disciple",
+   "label": "Dark Disciple",
+   "url": "https://starwars.fandom.com/wiki/Dark_Disciple",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-07-07",
+    "end": "2015-07-07",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -19,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/90/Dark_Disciple_Cover.png/revision/latest/scale-to-width-down/240?cb=20141209194455",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-aftermath-novel",
+   "title": "Aftermath (novel)",
+   "label": "Aftermath",
+   "url": "https://starwars.fandom.com/wiki/Aftermath_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-09-04",
+    "end": "2015-09-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 4,
+    "end": 4,
+    "approx": false
+   },
+   "series": "Journey to The Force Awakens",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/88/Aftermath.jpg/revision/latest/scale-to-width-down/240?cb=20170509004040",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-lost-stars",
+   "title": "Lost Stars",
+   "label": "Lost Stars",
+   "url": "https://starwars.fandom.com/wiki/Lost_Stars",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-09-04",
+    "end": "2015-09-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -6,
+    "end": 5,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": -11,
+     "label": "Prologue"
+    }
+   ],
+   "timeline_text": "6 BBY–5 ABY",
+   "series": "Journey to The Force Awakens",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/a2/LostStars.png/revision/latest/scale-to-width-down/240?cb=20150709005414",
+    "w": 240,
+    "h": 362
+   }
+  },
+  {
+   "id": "book-battlefront-twilight-company",
+   "title": "Battlefront: Twilight Company",
+   "label": "Battlefront: Twilight Company",
+   "url": "https://starwars.fandom.com/wiki/Battlefront:_Twilight_Company",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2015-11-03",
+    "end": "2015-11-03",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -6,
+    "end": 3,
+    "approx": true,
+    "main": 3
+   },
+   "segments": [
+    {
+     "start": -6,
+     "end": -6,
+     "label": "Chapter 1",
+     "approx": false
+    },
+    {
+     "start": -4,
+     "end": -4,
+     "label": "Chapter 7",
+     "approx": false
+    },
+    {
+     "start": -1,
+     "end": -1,
+     "label": "Chapter 21; first part of chapter 32",
+     "approx": true
+    },
+    {
+     "start": 0,
+     "end": 0,
+     "label": "Second part of chapter 32",
+     "approx": false
+    },
+    {
+     "start": 3,
+     "end": 3,
+     "label": "Main events",
+     "approx": false
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/91/Battlefront_Twilight_Company_cover.jpg/revision/latest/scale-to-width-down/240?cb=20150828172004",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-battlefront",
+   "title": "Star Wars Battlefront",
+   "label": "Battlefront",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Battlefront",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2015-11-17",
+    "end": "2015-11-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -1,
+    "end": 5,
+    "approx": false
+   },
+   "timeline_text": "1 BBY–5 ABY",
+   "series": "Battlefront",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Battlefront_2015_Cover.jpg/revision/latest/scale-to-width-down/240?cb=20211024212736",
+    "w": 240,
+    "h": 338
+   }
+  },
+  {
    "id": "ep7",
    "title": "Star Wars: Episode VII The Force Awakens",
    "label": "The Force Awakens",
@@ -538,6 +807,108 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/f/fd/Star_Wars_Episode_VII_The_Force_Awakens.jpg/revision/latest/scale-to-width-down/240?cb=20250618012820",
     "w": 240,
     "h": 356
+   }
+  },
+  {
+   "id": "book-bloodline-novel",
+   "title": "Bloodline (novel)",
+   "label": "Bloodline",
+   "url": "https://starwars.fandom.com/wiki/Bloodline_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2016-05-03",
+    "end": "2016-05-03",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 28,
+    "end": 28,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/0b/SW_Bloodline_cover.jpg/revision/latest/scale-to-width-down/240?cb=20160206211144",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-aftermath-life-debt",
+   "title": "Aftermath: Life Debt",
+   "label": "Aftermath: Life Debt",
+   "url": "https://starwars.fandom.com/wiki/Aftermath:_Life_Debt",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2016-07-12",
+    "end": "2016-07-12",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 5,
+    "end": 5,
+    "approx": false
+   },
+   "series": "The Aftermath Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/80/AftermathLifeDebt-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20170509144831",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-ahsoka-novel",
+   "title": "Ahsoka (novel)",
+   "label": "Ahsoka",
+   "url": "https://starwars.fandom.com/wiki/Ahsoka_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2016-10-11",
+    "end": "2016-10-11",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -18,
+    "end": -18,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/d3/Ahsoka_novel_cover.png/revision/latest/scale-to-width-down/240?cb=20160715164545",
+    "w": 240,
+    "h": 362
+   }
+  },
+  {
+   "id": "book-catalyst-a-rogue-one-novel",
+   "title": "Catalyst: A Rogue One Novel",
+   "label": "Catalyst: A Rogue One Novel",
+   "url": "https://starwars.fandom.com/wiki/Catalyst:_A_Rogue_One_Novel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2016-11-15",
+    "end": "2016-11-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -21,
+    "end": -17,
+    "approx": false
+   },
+   "timeline_text": "21–17 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/92/Catalyst_A_Rogue_One_Novel.png/revision/latest/scale-to-width-down/240?cb=20180211055827",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -573,6 +944,227 @@
    }
   },
   {
+   "id": "book-aftermath-empire-s-end",
+   "title": "Aftermath: Empire's End",
+   "label": "Aftermath: Empire's End",
+   "url": "https://starwars.fandom.com/wiki/Aftermath:_Empire's_End",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-02-21",
+    "end": "2017-02-21",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 5,
+    "end": 5,
+    "approx": false
+   },
+   "series": "The Aftermath Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/9c/Aftermath-EmpiresEnd-Hardcover.png/revision/latest/scale-to-width-down/240?cb=20170225022028",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-thrawn-novel",
+   "title": "Thrawn (novel)",
+   "label": "Thrawn",
+   "url": "https://starwars.fandom.com/wiki/Thrawn_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-04-11",
+    "end": "2017-04-11",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -15,
+    "end": -2,
+    "approx": true
+   },
+   "timeline_text": "c. 15 BBY–c. 2 BBY",
+   "series": "The Imperial Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/14/SoCalledThrawnNovel.png/revision/latest/scale-to-width-down/240?cb=20160805194404",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-rebel-rising",
+   "title": "Rebel Rising",
+   "label": "Rebel Rising",
+   "url": "https://starwars.fandom.com/wiki/Rebel_Rising",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-05-02",
+    "end": "2017-05-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -13,
+    "end": -1,
+    "approx": false
+   },
+   "timeline_text": "13 BBY to 1 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/41/RebelRising-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20180121202424",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-battlefront-ii-inferno-squad",
+   "title": "Battlefront II: Inferno Squad",
+   "label": "Battlefront II: Inferno Squad",
+   "url": "https://starwars.fandom.com/wiki/Battlefront_II:_Inferno_Squad",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-07-25",
+    "end": "2017-07-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 0,
+    "end": 0,
+    "approx": false
+   },
+   "timeline_text": "Duirng the Battle of Yavin–0 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/b6/Star_Wars_Battlefront_II_Inferno_Squad.jpg/revision/latest/scale-to-width-down/240?cb=20170727214334",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-leia-princess-of-alderaan",
+   "title": "Leia, Princess of Alderaan",
+   "label": "Leia, Princess of Alderaan",
+   "url": "https://starwars.fandom.com/wiki/Leia,_Princess_of_Alderaan",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-09-01",
+    "end": "2017-09-01",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -3,
+    "end": -3,
+    "approx": false
+   },
+   "series": "Journey to The Last Jedi",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/11/LeiaPrincessofAlderaan-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20170708131542",
+    "w": 240,
+    "h": 362
+   }
+  },
+  {
+   "id": "book-phasma-novel",
+   "title": "Phasma (novel)",
+   "label": "Phasma",
+   "url": "https://starwars.fandom.com/wiki/Phasma_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2017-09-01",
+    "end": "2017-09-01",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "series": "Journey to The Last Jedi",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f2/Phasma-Hardcover.png/revision/latest/scale-to-width-down/240?cb=20170630180824",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-battlefront-ii",
+   "title": "Star Wars Battlefront II",
+   "label": "Battlefront II",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Battlefront_II",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2017-11-09",
+    "end": "2017-11-09",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -32,
+    "end": 35,
+    "approx": true,
+    "main": 4
+   },
+   "timeline_text": "32 BBY–35 ABY",
+   "series": "Battlefront",
+   "segments": [
+    {
+     "approx": false,
+     "start": 4,
+     "end": 5,
+     "label": "Campaign: Battle of Endor to Battle of Jakku",
+     "main": true
+    },
+    {
+     "approx": true,
+     "start": 34,
+     "end": 34,
+     "label": "Campaign epilogue & Resurrection"
+    },
+    {
+     "approx": false,
+     "start": -32,
+     "end": -19,
+     "label": "Multiplayer: prequel era",
+     "faint": true
+    },
+    {
+     "approx": false,
+     "start": 0,
+     "end": 4,
+     "label": "Multiplayer: original trilogy era",
+     "faint": true
+    },
+    {
+     "approx": false,
+     "start": 34,
+     "end": 35,
+     "label": "Multiplayer: sequel era",
+     "faint": true
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/da/Battlefront_2.jpg/revision/latest/scale-to-width-down/240?cb=20170415201655",
+    "w": 240,
+    "h": 328
+   }
+  },
+  {
    "id": "ep8",
    "title": "Star Wars: Episode VIII The Last Jedi",
    "label": "The Last Jedi",
@@ -595,6 +1187,82 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/2/23/TheLastJediPoster.jpg/revision/latest/scale-to-width-down/240?cb=20170123223201",
     "w": 240,
     "h": 356
+   }
+  },
+  {
+   "id": "book-star-wars-the-last-jedi-expanded-edition",
+   "title": "Star Wars: The Last Jedi: Expanded Edition",
+   "label": "The Last Jedi: Expanded Edition",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Last_Jedi:_Expanded_Edition",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2018-03-06",
+    "end": "2018-03-06",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/53/SWTLJExpandedEdition.jpg/revision/latest/scale-to-width-down/240?cb=20180212223228",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-last-shot",
+   "title": "Last Shot",
+   "label": "Last Shot",
+   "url": "https://starwars.fandom.com/wiki/Last_Shot",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2018-04-17",
+    "end": "2018-04-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 7,
+    "end": 7,
+    "approx": false
+   },
+   "timeline_text": "Before Solo: A Star Wars Story",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/49/Last_Shot_Han_cover.jpg/revision/latest/scale-to-width-down/240?cb=20180416204915",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-most-wanted",
+   "title": "Most Wanted",
+   "label": "Most Wanted",
+   "url": "https://starwars.fandom.com/wiki/Most_Wanted",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2018-05-25",
+    "end": "2018-05-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -13,
+    "end": -13,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/60/Most_Wanted_book_cover.jpg/revision/latest/scale-to-width-down/240?cb=20180217015536",
+    "w": 240,
+    "h": 360
    }
   },
   {
@@ -626,6 +1294,73 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Solo_A_Star_Wars_Story_Theatrical_Poster.png/revision/latest/scale-to-width-down/240?cb=20180409011120",
     "w": 240,
     "h": 355
+   }
+  },
+  {
+   "id": "book-thrawn-alliances",
+   "title": "Thrawn: Alliances",
+   "label": "Thrawn: Alliances",
+   "url": "https://starwars.fandom.com/wiki/Thrawn:_Alliances",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2018-07-24",
+    "end": "2018-07-24",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -2,
+    "approx": true,
+    "main": -2
+   },
+   "segments": [
+    {
+     "start": -19,
+     "end": -19,
+     "label": "Past",
+     "approx": false
+    },
+    {
+     "start": -2,
+     "end": -2,
+     "label": "Present",
+     "approx": false
+    }
+   ],
+   "series": "The Imperial Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c8/Thrawn_Alliances_cover.png/revision/latest/scale-to-width-down/240?cb=20200826220634",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-solo-a-star-wars-story-expanded-edition",
+   "title": "Solo: A Star Wars Story: Expanded Edition",
+   "label": "Solo: A Star Wars Story: Expanded Edition",
+   "url": "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story:_Expanded_Edition",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2018-09-04",
+    "end": "2018-09-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -13,
+    "end": -10,
+    "approx": false
+   },
+   "timeline_text": "13 BBY–10 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/08/Solo-ExpandedEdition-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20180921181254",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -669,6 +1404,244 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/8/8d/StarWarsResistance-SeasonOne.jpg/revision/latest/scale-to-width-down/240?cb=20180918145021",
     "w": 240,
     "h": 352
+   }
+  },
+  {
+   "id": "book-queen-s-shadow",
+   "title": "Queen's Shadow",
+   "label": "Queen's Shadow",
+   "url": "https://starwars.fandom.com/wiki/Queen's_Shadow",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-03-05",
+    "end": "2019-03-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -28,
+    "end": -28,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": -32,
+     "label": "Prologue"
+    },
+    {
+     "year": -19,
+     "label": "Epilogue"
+    }
+   ],
+   "series": "Queen's Series",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/0e/QueensShadow.png/revision/latest/scale-to-width-down/240?cb=20190305210550",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-master-apprentice",
+   "title": "Master & Apprentice",
+   "label": "Master & Apprentice",
+   "url": "https://starwars.fandom.com/wiki/Master_&_Apprentice",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-04-16",
+    "end": "2019-04-16",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -68,
+    "end": -40,
+    "approx": true,
+    "main": -40
+   },
+   "markers": [
+    {
+     "year": -32,
+     "label": "Epilogue"
+    }
+   ],
+   "segments": [
+    {
+     "start": -40,
+     "end": -40,
+     "label": "Main story",
+     "approx": false
+    },
+    {
+     "start": -68,
+     "end": -68,
+     "label": "Flashback",
+     "approx": false
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c5/MasterApprentice-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20181007232310",
+    "w": 240,
+    "h": 363
+   }
+  },
+  {
+   "id": "book-alphabet-squadron-novel",
+   "title": "Alphabet Squadron (novel)",
+   "label": "Alphabet Squadron",
+   "url": "https://starwars.fandom.com/wiki/Alphabet_Squadron_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-06-11",
+    "end": "2019-06-11",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 4,
+    "end": 4,
+    "approx": false
+   },
+   "series": "Alphabet Squadron",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/66/AlphabetSquadron-CrossoverCover.png/revision/latest/scale-to-width-down/240?cb=20190224104809",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-thrawn-treason",
+   "title": "Thrawn: Treason",
+   "label": "Thrawn: Treason",
+   "url": "https://starwars.fandom.com/wiki/Thrawn:_Treason",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-07-23",
+    "end": "2019-07-23",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -1,
+    "end": -1,
+    "approx": false
+   },
+   "series": "The Imperial Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/3/3f/ThrawnTreason.jpg/revision/latest/scale-to-width-down/240?cb=20190204205531",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-galaxy-s-edge-a-crash-of-fate",
+   "title": "Galaxy's Edge: A Crash of Fate",
+   "label": "Galaxy's Edge: A Crash of Fate",
+   "url": "https://starwars.fandom.com/wiki/Galaxy's_Edge:_A_Crash_of_Fate",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-08-06",
+    "end": "2019-08-06",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "series": "Galaxy's Edge",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8a/ACrashofFate.png/revision/latest/scale-to-width-down/240?cb=20190808231603",
+    "w": 240,
+    "h": 335
+   }
+  },
+  {
+   "id": "book-galaxy-s-edge-black-spire",
+   "title": "Galaxy's Edge: Black Spire",
+   "label": "Galaxy's Edge: Black Spire",
+   "url": "https://starwars.fandom.com/wiki/Galaxy's_Edge:_Black_Spire",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-08-27",
+    "end": "2019-08-27",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "series": "Galaxy's Edge",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/b6/GalaxysEdgeBlackSpire.png/revision/latest/scale-to-width-down/240?cb=20190325201402",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-force-collector",
+   "title": "Force Collector",
+   "label": "Force Collector",
+   "url": "https://starwars.fandom.com/wiki/Force_Collector",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-10-04",
+    "end": "2019-10-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 32,
+    "end": 32,
+    "approx": false
+   },
+   "series": "Journey to The Rise of Skywalker",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8c/ForceCollector-Egmont.jpg/revision/latest/scale-to-width-down/240?cb=20191025191801",
+    "w": 240,
+    "h": 341
+   }
+  },
+  {
+   "id": "book-resistance-reborn",
+   "title": "Resistance Reborn",
+   "label": "Resistance Reborn",
+   "url": "https://starwars.fandom.com/wiki/Resistance_Reborn",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2019-11-05",
+    "end": "2019-11-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "series": "Journey to The Rise of Skywalker",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/4b/Resistance-reborn-final-cover.jpg/revision/latest/scale-to-width-down/240?cb=20191101221804",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -723,6 +1696,32 @@
    }
   },
   {
+   "id": "game-star-wars-jedi-fallen-order",
+   "title": "Star Wars Jedi: Fallen Order",
+   "label": "Jedi: Fallen Order",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Jedi:_Fallen_Order",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2019-11-15",
+    "end": "2019-11-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -14,
+    "end": -14,
+    "approx": false
+   },
+   "series": "Jedi",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/57/Fallen-Order-Box-Art.jpg/revision/latest/scale-to-width-down/240?cb=20190607015712",
+    "w": 240,
+    "h": 300
+   }
+  },
+  {
    "id": "ep9",
    "title": "Star Wars: Episode IX The Rise of Skywalker",
    "label": "The Rise of Skywalker",
@@ -745,6 +1744,331 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/4/4c/TROSOneSheet.jpg/revision/latest/scale-to-width-down/240?cb=20191022091806",
     "w": 240,
     "h": 355
+   }
+  },
+  {
+   "id": "book-star-wars-the-rise-of-skywalker-expanded-edition",
+   "title": "Star Wars: The Rise of Skywalker: Expanded Edition",
+   "label": "The Rise of Skywalker: Expanded Edition",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Rise_of_Skywalker:_Expanded_Edition",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-03-17",
+    "end": "2020-03-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 35,
+    "end": 35,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/cf/TROS-ExpandedEdition-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20200413192610",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-queen-s-peril",
+   "title": "Queen's Peril",
+   "label": "Queen's Peril",
+   "url": "https://starwars.fandom.com/wiki/Queen's_Peril",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-06-02",
+    "end": "2020-06-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -32,
+    "end": -32,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": 0,
+     "label": "Epilogue"
+    }
+   ],
+   "series": "Queen's Series",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/1c/QueensPeril.png/revision/latest/scale-to-width-down/240?cb=20200618062128",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-shadow-fall-an-alphabet-squadron-novel",
+   "title": "Shadow Fall: An Alphabet Squadron Novel",
+   "label": "Shadow Fall: An Alphabet Squadron Novel",
+   "url": "https://starwars.fandom.com/wiki/Shadow_Fall:_An_Alphabet_Squadron_Novel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-06-23",
+    "end": "2020-06-23",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 5,
+    "end": 5,
+    "approx": false
+   },
+   "series": "Alphabet Squadron",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/af/ShadowFall.png/revision/latest/scale-to-width-down/240?cb=20200617182813",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-poe-dameron-free-fall",
+   "title": "Poe Dameron: Free Fall",
+   "label": "Poe Dameron: Free Fall",
+   "url": "https://starwars.fandom.com/wiki/Poe_Dameron:_Free_Fall",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-08-04",
+    "end": "2020-08-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 18,
+    "end": 19,
+    "approx": false
+   },
+   "timeline_text": "18 ABY–19 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c2/PoeDameronFreeFall.jpg/revision/latest/scale-to-width-down/240?cb=20200514183531",
+    "w": 240,
+    "h": 371
+   }
+  },
+  {
+   "id": "book-thrawn-ascendancy-chaos-rising",
+   "title": "Thrawn Ascendancy: Chaos Rising",
+   "label": "Thrawn Ascendancy: Chaos Rising",
+   "url": "https://starwars.fandom.com/wiki/Thrawn_Ascendancy:_Chaos_Rising",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-09-01",
+    "end": "2020-09-01",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -39,
+    "end": -19,
+    "approx": true,
+    "main": -19
+   },
+   "segments": [
+    {
+     "start": -19,
+     "end": -19,
+     "label": "Present",
+     "approx": false
+    },
+    {
+     "start": -39,
+     "end": -39,
+     "label": "Flashbacks",
+     "approx": true
+    }
+   ],
+   "series": "The Ascendancy Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/4a/ChaosRising_cover.jpg/revision/latest/scale-to-width-down/240?cb=20200902230326",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-squadrons",
+   "title": "Star Wars: Squadrons",
+   "label": "Squadrons",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Squadrons",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2020-10-02",
+    "end": "2020-10-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 4,
+    "end": 4,
+    "approx": false
+   },
+   "markers": [
+    {
+     "year": 0,
+     "label": "prologue"
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/d9/Star-Wars-Squadrons.jpg/revision/latest/scale-to-width-down/240?cb=20200612184722",
+    "w": 240,
+    "h": 240
+   }
+  },
+  {
+   "id": "book-the-vow-of-silver-dawn",
+   "title": "The Vow of Silver Dawn",
+   "label": "The Vow of Silver Dawn",
+   "url": "https://starwars.fandom.com/wiki/The_Vow_of_Silver_Dawn",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2020-12-17",
+    "end": "2020-12-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -200,
+    "end": -200,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8a/TheVowOfSilverDawnCover.jpg/revision/latest/scale-to-width-down/240?cb=20260711154602",
+    "w": 240,
+    "h": 317
+   }
+  },
+  {
+   "id": "book-the-high-republic-light-of-the-jedi",
+   "title": "The High Republic: Light of the Jedi",
+   "label": "The High Republic: Light of the Jedi",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Light_of_the_Jedi",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-01-05",
+    "end": "2021-01-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -232,
+    "end": -232,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/e/e2/Light_of_the_Jedi_cover.jpg/revision/latest/scale-to-width-down/240?cb=20200225020702",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-into-the-dark",
+   "title": "The High Republic: Into the Dark",
+   "label": "The High Republic: Into the Dark",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Into_the_Dark",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-02-02",
+    "end": "2021-02-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -232,
+    "end": -232,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/81/Into_the_Dark_cover.jpg/revision/latest/scale-to-width-down/240?cb=20200225074008",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-victory-s-price-an-alphabet-squadron-novel",
+   "title": "Victory's Price: An Alphabet Squadron Novel",
+   "label": "Victory's Price: An Alphabet Squadron Novel",
+   "url": "https://starwars.fandom.com/wiki/Victory's_Price:_An_Alphabet_Squadron_Novel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-03-02",
+    "end": "2021-03-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 5,
+    "end": 11,
+    "approx": true,
+    "main": 5
+   },
+   "segments": [
+    {
+     "start": 5,
+     "end": 5,
+     "label": "Main story",
+     "approx": false
+    },
+    {
+     "start": 11,
+     "end": 11,
+     "label": "Main story",
+     "approx": false
+    }
+   ],
+   "series": "Alphabet Squadron",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/89/VictorysPrice.jpg/revision/latest/scale-to-width-down/240?cb=20210131075536",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-thrawn-ascendancy-greater-good",
+   "title": "Thrawn Ascendancy: Greater Good",
+   "label": "Thrawn Ascendancy: Greater Good",
+   "url": "https://starwars.fandom.com/wiki/Thrawn_Ascendancy:_Greater_Good",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-04-27",
+    "end": "2021-04-27",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -18,
+    "end": -18,
+    "approx": false
+   },
+   "series": "The Ascendancy Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/d1/GreaterGood.jpg/revision/latest/scale-to-width-down/240?cb=20201029174446",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -800,6 +2124,125 @@
    }
   },
   {
+   "id": "book-the-high-republic-the-rising-storm",
+   "title": "The High Republic: The Rising Storm",
+   "label": "The High Republic: The Rising Storm",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_The_Rising_Storm",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-06-29",
+    "end": "2021-06-29",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -231,
+    "end": -231,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/c8/TheHighRepublic-TheRisingStorm.jpg/revision/latest/scale-to-width-down/240?cb=20210120060833",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-out-of-the-shadows",
+   "title": "The High Republic: Out of the Shadows",
+   "label": "The High Republic: Out of the Shadows",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Out_of_the_Shadows",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-07-27",
+    "end": "2021-07-27",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -231,
+    "end": -231,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/51/Star_Wars_The_High_Republic_Out_of_the_Shadows_final_cover.jpg/revision/latest/scale-to-width-down/240?cb=20210217035059",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-the-odyssey-of-star-wars-an-epic-poem",
+   "title": "The Odyssey of Star Wars: An Epic Poem",
+   "label": "The Odyssey of Star Wars: An Epic Poem",
+   "url": "https://starwars.fandom.com/wiki/The_Odyssey_of_Star_Wars:_An_Epic_Poem",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-09-28",
+    "end": "2021-09-28",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -1,
+    "end": 4,
+    "approx": false
+   },
+   "timeline_text": "1 BBY–4 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/bd/The_Odyssey_of_Star_Wars_An_Epic_Poem_cover.jpg/revision/latest/scale-to-width-down/240?cb=20210403031824",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-thrawn-ascendancy-lesser-evil",
+   "title": "Thrawn Ascendancy: Lesser Evil",
+   "label": "Thrawn Ascendancy: Lesser Evil",
+   "url": "https://starwars.fandom.com/wiki/Thrawn_Ascendancy:_Lesser_Evil",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2021-11-16",
+    "end": "2021-11-16",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -39,
+    "end": -18,
+    "approx": true,
+    "main": -18
+   },
+   "segments": [
+    {
+     "start": -18,
+     "end": -18,
+     "label": "Present",
+     "approx": false
+    },
+    {
+     "start": -39,
+     "end": -19,
+     "label": "Flashbacks",
+     "approx": true
+    }
+   ],
+   "series": "The Ascendancy Trilogy",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/3/3f/LesserEvil.jpg/revision/latest/scale-to-width-down/240?cb=20210402211907",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "boba-fett",
    "title": "Star Wars: The Book of Boba Fett",
    "label": "The Book of Boba Fett",
@@ -834,6 +2277,109 @@
    }
   },
   {
+   "id": "book-the-high-republic-the-fallen-star",
+   "title": "The High Republic: The Fallen Star",
+   "label": "The High Republic: The Fallen Star",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_The_Fallen_Star",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-01-04",
+    "end": "2022-01-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -230,
+    "end": -230,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/79/HighRepublicTheFallenStar-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20210915222426",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-midnight-horizon",
+   "title": "The High Republic: Midnight Horizon",
+   "label": "The High Republic: Midnight Horizon",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Midnight_Horizon",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-02-01",
+    "end": "2022-02-01",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -230,
+    "end": -230,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/dc/HighRepublicMidnightHorizon.jpg/revision/latest/scale-to-width-down/240?cb=20210916182836",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-queen-s-hope",
+   "title": "Queen's Hope",
+   "label": "Queen's Hope",
+   "url": "https://starwars.fandom.com/wiki/Queen's_Hope",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-04-05",
+    "end": "2022-04-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -22,
+    "end": -22,
+    "approx": false
+   },
+   "series": "Queen's Series",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/47/Queens_Hope_final_cover.jpg/revision/latest/scale-to-width-down/240?cb=20210618225638",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "book-brotherhood-novel",
+   "title": "Brotherhood (novel)",
+   "label": "Brotherhood",
+   "url": "https://starwars.fandom.com/wiki/Brotherhood_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-05-10",
+    "end": "2022-05-10",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -22,
+    "end": -22,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/3/3d/Brotherhood_Final_Cover.png/revision/latest/scale-to-width-down/240?cb=20220510224638",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "kenobi",
    "title": "Star Wars: Obi-Wan Kenobi",
    "label": "Obi-Wan Kenobi",
@@ -865,6 +2411,81 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/f/f8/ObiWanKenobiOfficialPoster.png/revision/latest/scale-to-width-down/240?cb=20220713044431",
     "w": 240,
     "h": 355
+   }
+  },
+  {
+   "id": "book-shadow-of-the-sith",
+   "title": "Shadow of the Sith",
+   "label": "Shadow of the Sith",
+   "url": "https://starwars.fandom.com/wiki/Shadow_of_the_Sith",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-06-28",
+    "end": "2022-06-28",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 21,
+    "end": 21,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/e/e5/Shadow-of-the-Sith-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20220324191944",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-padawan-novel",
+   "title": "Padawan (novel)",
+   "label": "Padawan",
+   "url": "https://starwars.fandom.com/wiki/Padawan_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-07-26",
+    "end": "2022-07-26",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -41,
+    "end": -41,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/74/Padawan_cover.jpg/revision/latest/scale-to-width-down/240?cb=20220225073815",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-princess-and-the-scoundrel",
+   "title": "The Princess and the Scoundrel",
+   "label": "The Princess and the Scoundrel",
+   "url": "https://starwars.fandom.com/wiki/The_Princess_and_the_Scoundrel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-08-16",
+    "end": "2022-08-16",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 4,
+    "end": 4,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/8b/PrincessandtheScoundrel-cover.jpg/revision/latest/scale-to-width-down/240?cb=20220514221806",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -909,6 +2530,32 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/6/6e/AndorPosterFull.jpg/revision/latest/scale-to-width-down/240?cb=20220802224227",
     "w": 240,
     "h": 355
+   }
+  },
+  {
+   "id": "book-the-high-republic-path-of-deceit",
+   "title": "The High Republic: Path of Deceit",
+   "label": "The High Republic: Path of Deceit",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Path_of_Deceit",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-10-04",
+    "end": "2022-10-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -382,
+    "end": -382,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/3/38/TheHighRepublic-PathOfDeceit.jpg/revision/latest/scale-to-width-down/240?cb=20220526233239",
+    "w": 240,
+    "h": 363
    }
   },
   {
@@ -994,6 +2641,59 @@
    }
   },
   {
+   "id": "book-the-high-republic-convergence",
+   "title": "The High Republic: Convergence",
+   "label": "The High Republic: Convergence",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Convergence",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2022-11-22",
+    "end": "2022-11-22",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -382,
+    "end": -382,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f4/HighRepublicConvergence-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20220620193112",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-star-wars-jedi-battle-scars",
+   "title": "Star Wars Jedi: Battle Scars",
+   "label": "Jedi: Battle Scars",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Jedi:_Battle_Scars",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-03-07",
+    "end": "2023-03-07",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -12,
+    "end": -11,
+    "approx": true
+   },
+   "timeline_text": "Between 12 BBY and 11 BBY",
+   "series": "Jedi",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/04/Jedi_Battle_Scars_cover.jpg/revision/latest/scale-to-width-down/240?cb=20221203085940",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "yja",
    "title": "Star Wars: Young Jedi Adventures",
    "label": "Young Jedi Adventures",
@@ -1046,6 +2746,110 @@
    }
   },
   {
+   "id": "book-the-high-republic-cataclysm",
+   "title": "The High Republic: Cataclysm",
+   "label": "The High Republic: Cataclysm",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Cataclysm",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-04-04",
+    "end": "2023-04-04",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -382,
+    "end": -382,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/2b/TheHighRepublic-Cataclysm-cover.jpg/revision/latest/scale-to-width-down/240?cb=20221018054601",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-jedi-survivor",
+   "title": "Star Wars Jedi: Survivor",
+   "label": "Jedi: Survivor",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Jedi:_Survivor",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2023-04-28",
+    "end": "2023-04-28",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -9,
+    "end": -9,
+    "approx": false
+   },
+   "series": "Jedi",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/8/82/Star_Wars_Jedi_Survivor_cover_art.jpg/revision/latest/scale-to-width-down/240?cb=20221212004209",
+    "w": 240,
+    "h": 300
+   }
+  },
+  {
+   "id": "book-the-high-republic-path-of-vengeance",
+   "title": "The High Republic: Path of Vengeance",
+   "label": "The High Republic: Path of Vengeance",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Path_of_Vengeance",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-05-02",
+    "end": "2023-05-02",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -382,
+    "end": -382,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/2a/TheHighRepublic-PathofVengeance-cover.jpg/revision/latest/scale-to-width-down/240?cb=20221010031440",
+    "w": 240,
+    "h": 364
+   }
+  },
+  {
+   "id": "book-inquisitor-rise-of-the-red-blade",
+   "title": "Inquisitor: Rise of the Red Blade",
+   "label": "Inquisitor: Rise of the Red Blade",
+   "url": "https://starwars.fandom.com/wiki/Inquisitor:_Rise_of_the_Red_Blade",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-07-18",
+    "end": "2023-07-18",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -22,
+    "end": -14,
+    "approx": false
+   },
+   "timeline_text": "22 BBY–14 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f0/InquisitorRiseoftheRedBlade-cover.jpg/revision/latest/scale-to-width-down/240?cb=20221011193317",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "ahsoka",
    "title": "Star Wars: Ahsoka",
    "label": "Ahsoka",
@@ -1087,6 +2891,110 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/c/c2/Ahsoka-Poster-2.jpg/revision/latest/scale-to-width-down/240?cb=20230711172210",
     "w": 240,
     "h": 355
+   }
+  },
+  {
+   "id": "book-crimson-climb",
+   "title": "Crimson Climb",
+   "label": "Crimson Climb",
+   "url": "https://starwars.fandom.com/wiki/Crimson_Climb",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-10-10",
+    "end": "2023-10-10",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -13,
+    "end": -12,
+    "approx": true
+   },
+   "timeline_text": "13 BBY to c. 12 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f5/CrimsonClimb-revealcover.jpg/revision/latest/scale-to-width-down/240?cb=20230208001041",
+    "w": 240,
+    "h": 363
+   }
+  },
+  {
+   "id": "book-the-high-republic-the-eye-of-darkness",
+   "title": "The High Republic: The Eye of Darkness",
+   "label": "The High Republic: The Eye of Darkness",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_The_Eye_of_Darkness",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2023-11-14",
+    "end": "2023-11-14",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -229,
+    "end": -228,
+    "approx": false
+   },
+   "timeline_text": "229 BBY&mdash;228 BBY",
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/b0/TheHighRepublic-TheEyeofDarkness-cover.jpg/revision/latest/scale-to-width-down/240?cb=20230705195428",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-defy-the-storm",
+   "title": "The High Republic: Defy the Storm",
+   "label": "The High Republic: Defy the Storm",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Defy_the_Storm",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2024-03-05",
+    "end": "2024-03-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -228,
+    "end": -228,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/79/TheHighRepublic-DefytheStorm-cover.jpg/revision/latest/scale-to-width-down/240?cb=20230721222810",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "book-the-living-force",
+   "title": "The Living Force",
+   "label": "The Living Force",
+   "url": "https://starwars.fandom.com/wiki/The_Living_Force",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2024-04-09",
+    "end": "2024-04-09",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -33,
+    "end": -33,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/91/TheLivingForce.png/revision/latest/scale-to-width-down/240?cb=20230907175537",
+    "w": 240,
+    "h": 365
    }
   },
   {
@@ -1197,6 +3105,109 @@
    }
   },
   {
+   "id": "book-the-high-republic-temptation-of-the-force",
+   "title": "The High Republic: Temptation of the Force",
+   "label": "The High Republic: Temptation of the Force",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Temptation_of_the_Force",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2024-06-11",
+    "end": "2024-06-11",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -228,
+    "end": -228,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/2e/TheHighRepublic-TemptationoftheForce-cover.jpg/revision/latest/scale-to-width-down/240?cb=20240520141843",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-outlaws",
+   "title": "Star Wars Outlaws",
+   "label": "Outlaws",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Outlaws",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2024-08-27",
+    "end": "2024-08-27",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 3,
+    "end": 3,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/63/Star-Wars-Outlaws.png/revision/latest/scale-to-width-down/240?cb=20230611182953",
+    "w": 240,
+    "h": 298
+   }
+  },
+  {
+   "id": "book-the-high-republic-tears-of-the-nameless",
+   "title": "The High Republic: Tears of the Nameless",
+   "label": "The High Republic: Tears of the Nameless",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Tears_of_the_Nameless",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2024-09-24",
+    "end": "2024-09-24",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -228,
+    "end": -228,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/3/3b/TearsOfTheNameless-Cover.png/revision/latest/scale-to-width-down/240?cb=20240929070043",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-mace-windu-the-glass-abyss",
+   "title": "Mace Windu: The Glass Abyss",
+   "label": "Mace Windu: The Glass Abyss",
+   "url": "https://starwars.fandom.com/wiki/Mace_Windu:_The_Glass_Abyss",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2024-10-15",
+    "end": "2024-10-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -32,
+    "end": -32,
+    "approx": true
+   },
+   "timeline_text": "c. 32 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/9/9a/MaceWinduTheGlassAbyss-revealcover.jpg/revision/latest/scale-to-width-down/240?cb=20231208144754",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "skeleton-crew",
    "title": "Star Wars: Skeleton Crew",
    "label": "Skeleton Crew",
@@ -1227,6 +3238,58 @@
    "timeline_text": "c. 9 ABY",
    "poster": {
     "url": "https://static.wikia.nocookie.net/starwars/images/2/29/SkeletonCrew-OfficialPoster.jpg/revision/latest/scale-to-width-down/240?cb=20241101174923",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "book-reign-of-the-empire-the-mask-of-fear",
+   "title": "Reign of the Empire: The Mask of Fear",
+   "label": "Reign of the Empire: The Mask of Fear",
+   "url": "https://starwars.fandom.com/wiki/Reign_of_the_Empire:_The_Mask_of_Fear",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-02-25",
+    "end": "2025-02-25",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -19,
+    "approx": false
+   },
+   "series": "Reign of the Empire",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/08/ROTE-TheMaskOfFear.jpg/revision/latest/scale-to-width-down/240?cb=20240729163725",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-into-the-light",
+   "title": "The High Republic: Into the Light",
+   "label": "The High Republic: Into the Light",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Into_the_Light",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-04-01",
+    "end": "2025-04-01",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -228,
+    "end": -228,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/4/45/TheHighRepublic-IntotheLight-cover.jpg/revision/latest/scale-to-width-down/240?cb=20241018205643",
     "w": 240,
     "h": 355
    }
@@ -1310,6 +3373,225 @@
    }
   },
   {
+   "id": "book-the-acolyte-wayseeker",
+   "title": "The Acolyte: Wayseeker",
+   "label": "The Acolyte: Wayseeker",
+   "url": "https://starwars.fandom.com/wiki/The_Acolyte:_Wayseeker",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-05-06",
+    "end": "2025-05-06",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -160,
+    "end": -160,
+    "approx": true
+   },
+   "timeline_text": "c. 160 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/2/28/TheAcolyte-Wayseeker-cover3.jpg/revision/latest/scale-to-width-down/240?cb=20241114210410",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-high-republic-trials-of-the-jedi",
+   "title": "The High Republic: Trials of the Jedi",
+   "label": "The High Republic: Trials of the Jedi",
+   "url": "https://starwars.fandom.com/wiki/The_High_Republic:_Trials_of_the_Jedi",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-06-17",
+    "end": "2025-06-17",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -228,
+    "end": -228,
+    "approx": false
+   },
+   "series": "The High Republic",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/60/TheHighRepublic-TrialsoftheJedi-Cover.png/revision/latest/scale-to-width-down/240?cb=20250128161108",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-acolyte-the-crystal-crown",
+   "title": "The Acolyte: The Crystal Crown",
+   "label": "The Acolyte: The Crystal Crown",
+   "url": "https://starwars.fandom.com/wiki/The_Acolyte:_The_Crystal_Crown",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-07-29",
+    "end": "2025-07-29",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -134,
+    "end": -134,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/18/TheAcolyte-TheCrystalCrown-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20250524051956",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-sanctuary-a-bad-batch-novel",
+   "title": "Sanctuary: A Bad Batch Novel",
+   "label": "Sanctuary: A Bad Batch Novel",
+   "url": "https://starwars.fandom.com/wiki/Sanctuary:_A_Bad_Batch_Novel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-08-05",
+    "end": "2025-08-05",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -18,
+    "end": -18,
+    "approx": true
+   },
+   "timeline_text": "During or after 18 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/16/Sanctuary-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20250207000237",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-last-order",
+   "title": "The Last Order",
+   "label": "The Last Order",
+   "url": "https://starwars.fandom.com/wiki/The_Last_Order",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-10-21",
+    "end": "2025-10-21",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 27,
+    "end": 35,
+    "approx": true,
+    "main": 35
+   },
+   "timeline_text": "Between 27 ABY and 28 ABY",
+   "segments": [
+    {
+     "start": 27,
+     "end": 28,
+     "label": "Flashbacks",
+     "approx": true
+    },
+    {
+     "start": 35,
+     "end": 35,
+     "label": "Main story",
+     "approx": true
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/e/e7/TheLastOrder-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20260129044145",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-master-of-evil",
+   "title": "Master of Evil",
+   "label": "Master of Evil",
+   "url": "https://starwars.fandom.com/wiki/Master_of_Evil",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2025-11-11",
+    "end": "2025-11-11",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -19,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/b/be/MasterOfEvil-Cover.png/revision/latest/scale-to-width-down/240?cb=20250410155352",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-star-wars-outlaws-low-red-moon",
+   "title": "Star Wars Outlaws: Low Red Moon",
+   "label": "Outlaws: Low Red Moon",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Outlaws:_Low_Red_Moon",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2026-02-03",
+    "end": "2026-02-03",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -10,
+    "approx": true,
+    "main": -19
+   },
+   "markers": [
+    {
+     "year": -33,
+     "label": "Prologue"
+    },
+    {
+     "year": 3,
+     "label": "Epilogue"
+    }
+   ],
+   "segments": [
+    {
+     "start": -19,
+     "end": -19,
+     "label": "Part 1",
+     "approx": false
+    },
+    {
+     "start": -10,
+     "end": -10,
+     "label": "Part 2-3",
+     "approx": false
+    }
+   ],
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/7/76/OutlawsLowRedMoon-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20250922235839",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "maul",
    "title": "Star Wars: Maul - Shadow Lord",
    "label": "Maul – Shadow Lord",
@@ -1380,6 +3662,200 @@
    }
   },
   {
+   "id": "book-eyes-like-stars",
+   "title": "Eyes Like Stars",
+   "label": "Eyes Like Stars",
+   "url": "https://starwars.fandom.com/wiki/Eyes_Like_Stars",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2026-07-21",
+    "end": "2026-07-21",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 33,
+    "end": 33,
+    "approx": true
+   },
+   "timeline_text": "c. 33 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/c/cd/EyesLikeStars-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20260126030454",
+    "w": 240,
+    "h": 355
+   }
+  },
+  {
+   "id": "book-legacy-novel",
+   "title": "Legacy (novel)",
+   "label": "Legacy",
+   "url": "https://starwars.fandom.com/wiki/Legacy_(novel)",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2026-07-28",
+    "end": "2026-07-28",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 34,
+    "end": 34,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/1/17/Legacy-Cover.png/revision/latest/scale-to-width-down/240?cb=20251022013452",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-zero-company",
+   "title": "Star Wars Zero Company",
+   "label": "Zero Company",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars_Zero_Company",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2026-08-27",
+    "end": "2026-08-27",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -19,
+    "end": -18,
+    "approx": false
+   },
+   "timeline_text": "19 BBY–18 BBY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/59/StarWarsZeroCompanyArt2.png/revision/latest/scale-to-width-down/240?cb=20260606010950",
+    "w": 240,
+    "h": 326
+   }
+  },
+  {
+   "id": "book-reign-of-the-empire-edge-of-the-abyss",
+   "title": "Reign of the Empire: Edge of the Abyss",
+   "label": "Reign of the Empire: Edge of the Abyss",
+   "url": "https://starwars.fandom.com/wiki/Reign_of_the_Empire:_Edge_of_the_Abyss",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2026-09-15",
+    "end": "2026-09-15",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": -6,
+    "end": -6,
+    "approx": false
+   },
+   "series": "Reign of the Empire",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/0/00/ROTE-EdgeOfTheAbyss-Cover.png/revision/latest/scale-to-width-down/240?cb=20260924232806",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "game-star-wars-galactic-racer",
+   "title": "Star Wars: Galactic Racer",
+   "label": "Galactic Racer",
+   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Galactic_Racer",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": "2026-10-06",
+    "end": "2026-10-06",
+    "precision": "day",
+    "status": "released"
+   },
+   "universe": {
+    "start": 6,
+    "end": 34,
+    "approx": true
+   },
+   "timeline_text": "Between 6 ABY and 34 ABY",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/5/56/GalacticRacerPoster.jpg/revision/latest/scale-to-width-down/240?cb=20260430231040",
+    "w": 240,
+    "h": 360
+   }
+  },
+  {
+   "id": "book-twin-crossroads",
+   "title": "Twin Crossroads",
+   "label": "Twin Crossroads",
+   "url": "https://starwars.fandom.com/wiki/Twin_Crossroads",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2027-04-06",
+    "end": "2027-04-06",
+    "precision": "day",
+    "status": "upcoming"
+   },
+   "universe": {
+    "start": 4,
+    "end": 4,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/f/f7/TwinCrossroads-Final-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20260913200441",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-witch-of-wakenfell",
+   "title": "The Witch of Wakenfell",
+   "label": "The Witch of Wakenfell",
+   "url": "https://starwars.fandom.com/wiki/The_Witch_of_Wakenfell",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2027-04-20",
+    "end": "2027-04-20",
+    "precision": "day",
+    "status": "upcoming"
+   }
+  },
+  {
+   "id": "book-princess-of-the-rebellion",
+   "title": "Princess of the Rebellion",
+   "label": "Princess of the Rebellion",
+   "url": "https://starwars.fandom.com/wiki/Princess_of_the_Rebellion",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2027-05-04",
+    "end": "2027-05-04",
+    "precision": "day",
+    "status": "upcoming"
+   },
+   "universe": {
+    "start": 0,
+    "end": 0,
+    "approx": false
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/a/ae/PrincessOfTheRebellion-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20261009162532",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "starfighter",
    "title": "Star Wars: Starfighter",
    "label": "Starfighter",
@@ -1406,6 +3882,53 @@
    }
   },
   {
+   "id": "book-reign-of-the-empire-from-the-ashes",
+   "title": "Reign of the Empire: From the Ashes",
+   "label": "Reign of the Empire: From the Ashes",
+   "url": "https://starwars.fandom.com/wiki/Reign_of_the_Empire:_From_the_Ashes",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": "2027-08-10",
+    "end": "2027-08-10",
+    "precision": "day",
+    "status": "upcoming"
+   },
+   "universe": {
+    "start": -2,
+    "end": 0,
+    "approx": false
+   },
+   "timeline_text": "2 BBY&mdash;0 ABY",
+   "series": "Reign of the Empire",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/6b/ReignOfTheEmpire-FromTheAshes-Cover.jpg/revision/latest/scale-to-width-down/240?cb=20261009164212",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
+   "id": "book-the-mandalorian-an-original-novel",
+   "title": "The Mandalorian: An Original Novel",
+   "label": "The Mandalorian: An Original Novel",
+   "url": "https://starwars.fandom.com/wiki/The_Mandalorian:_An_Original_Novel",
+   "kind": "book",
+   "format": "book",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "series": "The Mandalorian",
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/6/62/MandalorianOriginalNovel-CNF.png/revision/latest/scale-to-width-down/240?cb=20201229233228",
+    "w": 240,
+    "h": 365
+   }
+  },
+  {
    "id": "filoni-film",
    "title": "Untitled Star Wars film (Dave Filoni)",
    "label": "Untitled Filoni film",
@@ -1419,6 +3942,40 @@
     "status": "tba"
    },
    "timeline_text": "New Republic Era"
+  },
+  {
+   "id": "game-untitled-paramount-video-game",
+   "title": "Untitled Paramount video game",
+   "label": "Untitled Paramount video game",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Paramount_video_game",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "poster": {
+    "url": "https://static.wikia.nocookie.net/starwars/images/d/d5/StarWarsSkydance.jpg/revision/latest/scale-to-width-down/240?cb=20220419193106",
+    "w": 240,
+    "h": 135
+   }
+  },
+  {
+   "id": "game-untitled-star-wars-jedi-video-game",
+   "title": "Untitled Star Wars Jedi video game",
+   "label": "Untitled Star Wars Jedi video game",
+   "url": "https://starwars.fandom.com/wiki/Untitled_Star_Wars_Jedi_video_game",
+   "kind": "game",
+   "format": "game",
+   "canon": "canon",
+   "release": {
+    "start": null,
+    "end": null,
+    "status": "tba"
+   },
+   "series": "Jedi"
   },
   {
    "id": "kinberg",

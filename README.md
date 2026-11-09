@@ -29,6 +29,15 @@ python3 -I scripts/build.py   # raw wikitext → data/works.json
 
 Text from Wookieepedia is CC BY-SA 3.0, so the page must keep its attribution.
 
+## Books and games
+
+Canon novels (adult and young-adult, incl. The High Republic; novelizations left out) and
+console/PC games come from Wookieepedia categories (`BOOK_CATEGORIES`, `GAME_CATEGORIES`
+in `fetch.py`), so new releases are picked up by `npm run data`. Only their infobox is
+cached. They're off by default; in their lanes, labels that would land far from their
+mark are dropped (the tooltip still names them). Character arcs pass through them when
+they're switched on.
+
 ## Font
 
 The title uses Star Jedi by Boba Fonts (freeware, `fonts/info.txt`). The original

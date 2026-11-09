@@ -163,5 +163,40 @@
   },
   "rogue-squadron": {
     "label": "Rogue Squadron"
+  },
+  "game-star-wars-battlefront-ii": {
+    "_comment": "Wookieepedia only gives 32 BBY–35 ABY: the span of the multiplayer content. The story campaign runs from the Battle of Endor to the Battle of Jakku, with an epilogue in the sequel era.",
+    "segments": [
+      {
+        "start": 4,
+        "end": 5,
+        "label": "Campaign: Battle of Endor to Battle of Jakku",
+        "main": true
+      },
+      {
+        "start": 34,
+        "end": 34,
+        "label": "Campaign epilogue & Resurrection",
+        "approx": true
+      },
+      {
+        "start": -32,
+        "end": -19,
+        "label": "Multiplayer: prequel era",
+        "faint": true
+      },
+      {
+        "start": 0,
+        "end": 4,
+        "label": "Multiplayer: original trilogy era",
+        "faint": true
+      },
+      {
+        "start": 34,
+        "end": 35,
+        "label": "Multiplayer: sequel era",
+        "faint": true
+      }
+    ]
   }
 }

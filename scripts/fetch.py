@@ -95,8 +95,70 @@ def main():
         time.sleep(0.5)
     fetch_seasons()
     fetch_anthology_episodes()
+    fetch_books_and_games()
     fetch_characters()
     fetch_episodes()
+
+
+# Books and games come from Wookieepedia categories (incl. subcategories) instead of a
+# hand-kept list. Novelizations retell the films, so they're left out.
+BOOK_CATEGORIES = ["Category:Canon adult novels", "Category:Canon young-adult novels"]
+GAME_CATEGORIES = ["Category:Canon console and computer games"]
+SKIP_TITLES = {"Untitled collectible card game"}  # filed under games, but not a video game
+
+
+def category_pages(cat):
+    pages, subcats, cont = [], [], {}
+    while True:
+        d = api(action="query", list="categorymembers", cmtitle=cat, cmlimit=500,
+                cmtype="page|subcat", **cont)
+        for m in d["query"]["categorymembers"]:
+            (subcats if m["ns"] == 14 else pages).append(m["title"])
+        if "continue" not in d:
+            break
+        cont = d["continue"]
+    for sub in subcats:
+        pages += category_pages(sub)
+    return pages
+
+
+def slug(title):
+    import re
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+
+
+def fetch_books_and_games():
+    """Lead section (infobox) of every canon novel and console/PC game, 50 pages per request."""
+    import re
+    todo = []
+    for kind, cats in (("book", BOOK_CATEGORIES), ("game", GAME_CATEGORIES)):
+        titles = sorted({t for c in cats for t in category_pages(c)})
+        for t in titles:
+            if "novelization" in t.lower() or t in SKIP_TITLES:
+                continue
+            wid = f"{kind}-{slug(t)}"
+            if not (RAW / f"{wid}.json").exists():
+                todo.append((wid, t, kind))
+    for i in range(0, len(todo), 50):
+        batch = todo[i:i + 50]
+        d = api(action="query", prop="revisions", rvprop="content", rvslots="main",
+                titles="|".join(t for _, t, _ in batch))
+        q = d["query"]
+        norm = {n["to"]: n["from"] for n in q.get("normalized", [])}
+        pages = {norm.get(p["title"], p["title"]): p for p in q["pages"].values()}
+        for wid, t, kind in batch:
+            p = pages.get(t)
+            if not p or "revisions" not in p:
+                print("!!", kind, t)
+                continue
+            w = p["revisions"][0]["slots"]["main"]["*"]
+            first_heading = re.search(r"^==[^=]", w, re.M)
+            (RAW / f"{wid}.json").write_text(json.dumps({
+                "id": wid, "title": p["title"], "kind": kind, "format": kind, "canon": "canon",
+                "wikitext": w[:first_heading.start()] if first_heading else w,
+            }, ensure_ascii=False))
+        print(f"books/games {i + len(batch)}/{len(todo)}")
+        time.sleep(0.5)
 
 
 CONFIG = ROOT / "data" / "characters-config.json"
