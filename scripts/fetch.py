@@ -95,6 +95,93 @@ def main():
         time.sleep(0.5)
     fetch_seasons()
     fetch_anthology_episodes()
+    fetch_characters()
+    fetch_episodes()
+
+
+CONFIG = ROOT / "data" / "characters-config.json"
+CHAR_RAW = RAW / "characters"
+EPISODES_RAW = RAW / "episodes" / "episodes.json"
+
+
+def appearances_section(w):
+    """The level-2 '==Appearances==' list (character pages also have an '===Appearances==='
+    sub-heading under 'Behind the scenes', which is prose, not the list)."""
+    import re
+    m = re.search(r"^==\s*Appearances\s*==\s*$", w, re.M)
+    if not m:
+        return ""
+    nxt = re.search(r"^==[^=]", w[m.end():], re.M)
+    return w[m.end():m.end() + nxt.start()] if nxt else w[m.end():]
+
+
+def fetch_characters():
+    """Keep only the infobox (lead section) and the Appearances list of each character."""
+    import re
+    cfg = json.loads(CONFIG.read_text())
+    CHAR_RAW.mkdir(parents=True, exist_ok=True)
+    for cid, title in cfg["characters"].items():
+        out = CHAR_RAW / f"{cid}.json"
+        if out.exists():
+            continue
+        d = api(action="parse", page=title, prop="wikitext", redirects=1)
+        if "error" in d:
+            print("!! character", cid, title, d["error"]["info"])
+            continue
+        w = d["parse"]["wikitext"]["*"]
+        first_heading = re.search(r"^==[^=]", w, re.M)
+        out.write_text(json.dumps({
+            "id": cid, "title": d["parse"]["title"],
+            "lead": w[:first_heading.start()] if first_heading else w,
+            "appearances": appearances_section(w),
+        }, ensure_ascii=False))
+        print("character", cid, d["parse"]["title"])
+        time.sleep(0.4)
+
+
+def fetch_episodes():
+    """Air date, in-universe year and season of every episode a character appears in,
+    fetched 50 pages per request. Cached in data/raw/episodes/episodes.json."""
+    import re
+    cfg = json.loads(CONFIG.read_text())
+    templates = cfg["templates"]
+    cache = json.loads(EPISODES_RAW.read_text()) if EPISODES_RAW.exists() else {}
+    wanted = set()
+    for f in CHAR_RAW.glob("*.json"):
+        for m in re.finditer(r"\{\{(\w+)\|([^|}]+)", json.loads(f.read_text())["appearances"]):
+            if m[1] in templates:
+                wanted.add(m[2].strip())
+    missing = sorted(wanted - cache.keys())
+
+    def field(w, name):
+        m = re.search(r"^\|\s*" + name + r"\s*=(.*?)(?=^\||^\}\})", w, re.M | re.S)
+        return m.group(1).strip() if m else ""
+
+    for i in range(0, len(missing), 50):
+        batch = missing[i:i + 50]
+        d = api(action="query", prop="revisions", rvprop="content", rvslots="main",
+                redirects=1, titles="|".join(batch))
+        q = d["query"]
+        back = {}  # resolved title → requested title
+        for n in q.get("normalized", []) + q.get("redirects", []):
+            back[n["to"]] = back.get(n["from"], n["from"])
+        for page in q["pages"].values():
+            req = back.get(page["title"], page["title"])
+            if "revisions" not in page:
+                cache[req] = None
+                continue
+            w = page["revisions"][0]["slots"]["main"]["*"]
+            # self-closing refs first, or `<ref name="x" />` would be read as an opening tag
+            # and everything up to the next </ref> (e.g. the timeline field) deleted
+            w = re.sub(r"<ref[^>]*>.*?</ref>", "", re.sub(r"<ref[^>]*/>", "", w), flags=re.S)
+            cache[req] = {"title": page["title"], "airdate": field(w, "airdate"),
+                          "timeline": field(w, "timeline"), "season": field(w, "season")}
+        for t in batch:
+            cache.setdefault(t, None)
+        print(f"episodes {i + len(batch)}/{len(missing)}")
+        time.sleep(0.5)
+    EPISODES_RAW.parent.mkdir(parents=True, exist_ok=True)
+    EPISODES_RAW.write_text(json.dumps(cache, indent=1, ensure_ascii=False))
 
 
 NUM_WORDS = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"]

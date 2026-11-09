@@ -24,6 +24,7 @@
   --animated: #d95926;
   --legends: #8a8983;
   --ref: rgb(255 232 31 / 0.45);
+  --arc: #7fe3ff;                /* character arc: a blue-white glow */
 }
 * { box-sizing: border-box; }
 html { background: var(--space); }
@@ -43,12 +44,19 @@ header { text-align: center; padding: 12px 0 8px; }
 .kicker {
   margin: 8px 0 14px; color: #4fb3ff; font-size: 15px; letter-spacing: 0.02em;
 }
+/* Title tilted back into the distance, like an opening crawl: the stage sets the
+   perspective, the heading rotates around its bottom edge so the top line recedes. */
+.title-stage { perspective: 360px; perspective-origin: 50% 100%; margin: 0 0 18px; }
 h1 {
-  margin: 0 auto 14px; color: var(--accent); font-family: "Star Jedi", ui-sans-serif, system-ui, sans-serif;
-  font-weight: normal; font-size: clamp(30px, 5.6vw, 64px); line-height: 1.05; letter-spacing: 0.04em;
+  margin: 0 auto; color: var(--accent); font-family: "Star Jedi", ui-sans-serif, system-ui, sans-serif;
+  font-weight: normal; line-height: 1; letter-spacing: 0.04em;
   text-shadow: 0 0 28px rgb(255 232 31 / 0.3);
-  text-wrap: balance;
+  transform: rotateX(28deg); transform-origin: 50% 100%;
 }
+h1 span { display: block; white-space: nowrap; }
+h1 .l1 { font-size: clamp(40px, 8.4vw, 100px); }
+h1 .l2 { font-size: clamp(22px, 4.6vw, 54px); margin-top: 0.12em; }
+@media (prefers-reduced-motion: reduce) { h1 { transform: none; } }
 .sub { color: var(--text-secondary); margin: 0 auto 24px; max-width: 62ch; }
 .controls {
   display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center;
@@ -65,6 +73,41 @@ h1 {
 .checks input { accent-color: var(--accent); }
 .checks { display: flex; gap: 14px; flex-wrap: wrap; color: var(--text-secondary); }
 .checks label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+/* character picker */
+.chars { flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; padding: 2px 0 4px; }
+.chip {
+  flex: none; display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px 2px 2px;
+  border: 1px solid var(--axis); border-radius: 999px; background: rgb(255 255 255 / 0.04);
+  color: var(--text-secondary); font: inherit; font-size: 12.5px; cursor: pointer; white-space: nowrap;
+}
+.chip:hover { color: var(--text-primary); border-color: rgb(255 255 255 / 0.4); }
+.chip img, .char-card img {
+  width: 22px; height: 22px; border-radius: 50%; object-fit: cover; object-position: 50% 20%;
+  background: var(--surface-2);
+}
+.chip[aria-pressed="true"] {
+  color: var(--text-primary); border-color: var(--arc); box-shadow: 0 0 10px rgb(127 227 255 / 0.45);
+}
+.char-card {
+  flex-basis: 100%; display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 13px;
+}
+.char-card[hidden] { display: none; }
+.char-card img { width: 34px; height: 34px; box-shadow: 0 0 0 2px var(--arc); }
+.char-card b { color: var(--text-primary); font-weight: 600; }
+.char-card a { color: var(--arc); }
+.char-card button {
+  margin-left: auto; font: inherit; font-size: 12px; color: var(--text-secondary); background: none;
+  border: 1px solid var(--axis); border-radius: 6px; padding: 3px 9px; cursor: pointer;
+}
+
+/* arc view: dim works the character isn't in */
+.item .marks, .item .item-label, .item .leader { transition: opacity 0.3s; }
+.item.dim .marks, .item.dim .item-label, .item.dim .leader { opacity: 0.14; }
+.item.faint .marks { opacity: 0.45; }
+.arc-glow { fill: none; stroke: var(--arc); stroke-width: 7px; opacity: 0.35; filter: url(#arc-blur); }
+.arc-line { fill: none; stroke: var(--arc); stroke-width: 2px; stroke-linejoin: round; stroke-linecap: round; }
+.arc-dot { fill: #e9fbff; }
 .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
 .swatch-dashed { border: 1.5px dashed var(--text-secondary); border-radius: 50%; }
 .chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -117,7 +160,10 @@ footer a { color: inherit; }
 <main>
   <header>
     <p class="kicker">A long time ago in a galaxy far, far away….</p>
-    <h1>Star Wars Screen Timeline</h1>
+    <div class="title-stage">
+      <!-- mixed case on purpose: Star Jedi draws lowercase as its capital forms, and its uppercase I is a different glyph -->
+      <h1 aria-label="Star Wars Screen Timeline"><span class="l1">Star Wars</span><span class="l2">Screen Timeline</span></h1>
+    </div>
     <p class="sub">Every film and TV series, placed by when it happens in the galaxy far, far away, or by when it came out. Hover for details, click to open it on Wookieepedia.</p>
   </header>
 
@@ -132,6 +178,8 @@ footer a { color: inherit; }
       <label><input type="checkbox" data-filter="upcoming" checked><span class="swatch swatch-dashed"></span>Upcoming</label>
       <label><input type="checkbox" data-filter="legends"><span class="swatch" style="background:var(--legends)"></span>Legends (non-canon)</label>
     </div>
+    <div class="chars" role="group" aria-label="Follow a character"></div>
+    <div class="char-card" hidden></div>
   </div>
 
   <div class="chart-wrap"><svg id="chart"></svg></div>
@@ -259,10 +307,10 @@ const parseDate = d3.utcParse("%Y-%m-%d");
 const fmtDate = d3.utcFormat("%b %-d, %Y");
 const today = new Date();
 
-const state = { axis: "universe", live: true, animated: true, legends: false, upcoming: true };
+const state = { axis: "universe", live: true, animated: true, legends: false, upcoming: true, character: null };
 const svg = d3.select("#chart");
 const tip = d3.select("#tip");
-let data;
+let data, characters = null;
 
 const fmtNum = d3.format(",");
 const fmtYear = y => y < 0 ? `${fmtNum(-y)} BBY` : y === 0 ? "0 BBY" : `${fmtNum(y)} ABY`;
@@ -523,6 +571,10 @@ function render(animate = true) {
     svg.append("g").attr("class", "refs");
     svg.append("g").attr("class", "breaks");
     svg.append("g").attr("class", "lane-labels");
+    svg.append("defs").append("filter").attr("id", "arc-blur")
+      .attr("x", "-50%").attr("y", "-50%").attr("width", "200%").attr("height", "200%")
+      .append("feGaussianBlur").attr("stdDeviation", 3);
+    svg.append("g").attr("class", "arc");
     svg.append("g").attr("class", "items");
   }
 
@@ -661,6 +713,69 @@ function render(animate = true) {
       .attr("stroke", c)
       .transition(t).attr("r", 4).attr("cx", mx).attr("cy", m => m.cy);
   });
+
+  // --- character arc ---
+  const ch = currentCharacter();
+  const kinds = ch ? d3.group(ch.appearances, e => e.work) : null;
+  item.classed("dim", d => !!ch && !kinds.has(d.w.id))
+    .classed("faint", d => !!ch && kinds.has(d.w.id) && !kinds.get(d.w.id).some(e => e.kind === "onscreen"));
+  drawArc(ch, items, y, animate ? t : null);
+}
+
+function currentCharacter() {
+  return state.character && characters ? characters.find(c => c.id === state.character) : null;
+}
+
+// Points of the arc: every on-screen appearance in Wookieepedia's (chronological) order.
+// Films sit on their dot; episodes on their own year (in-universe) or air date (release),
+// clamped to the work's mark. Consecutive points at the same spot are merged.
+function arcPoints(ch, items, y) {
+  const byId = new Map(items.map(d => [d.w.id, d]));
+  const pts = [];
+  for (const e of ch.appearances) {
+    if (e.kind !== "onscreen") continue;
+    const d = byId.get(e.work);
+    if (!d) continue; // filtered out
+    let py;
+    if (d.w.kind === "film" || !d.w.universe && state.axis === "universe") py = d.g.anchor;
+    else if (state.axis === "universe") py = e.year == null ? d.g.anchor : y(e.year);
+    else py = e.air ? y(parseDate(e.air)) : d.g.anchor;
+    py = Math.max(d.g.top + 2, Math.min(d.g.bottom - 2, py));
+    const last = pts[pts.length - 1];
+    if (last && last.id === e.work && Math.abs(last.y - py) < 1.5) continue;
+    pts.push({ x: d.cx, y: py, id: e.work });
+  }
+  return pts;
+}
+
+let lastArcId = null;
+function drawArc(ch, items, y, t) {
+  const g = svg.select("g.arc");
+  const pts = ch ? arcPoints(ch, items, y) : [];
+  const line = d3.line().x(p => p.x).y(p => p.y).curve(d3.curveCatmullRom.alpha(0.5));
+  const d = pts.length > 1 ? line(pts) : null;
+  const isNew = ch && ch.id !== lastArcId;
+  lastArcId = ch ? ch.id : null;
+
+  const paths = g.selectAll("path").data(d ? ["arc-glow", "arc-line"] : [])
+    .join("path").attr("class", c => c).attr("d", d);
+  g.selectAll("circle").data(pts).join("circle").attr("class", "arc-dot").attr("r", 2.2)
+    .attr("cx", p => p.x).attr("cy", p => p.y);
+
+  if (!d) return;
+  // a new character: draw the line in, like a lightsaber igniting; otherwise fade in place
+  if (isNew && !reduceMotion.matches) {
+    paths.each(function () {
+      const len = this.getTotalLength();
+      d3.select(this).attr("stroke-dasharray", `${len} ${len}`).attr("stroke-dashoffset", len)
+        .transition().duration(Math.min(2400, 600 + len / 3)).ease(d3.easeCubicInOut)
+        .attr("stroke-dashoffset", 0)
+        .on("end", function () { d3.select(this).attr("stroke-dasharray", null); });
+    });
+    g.selectAll("circle").attr("opacity", 0).transition().delay(400).duration(600).attr("opacity", 1);
+  } else if (t) {
+    g.attr("opacity", 0).transition(t).attr("opacity", 1);
+  }
 }
 
 function fmtRange(a, b, approx) {
@@ -693,6 +808,8 @@ function showTip(event, d) {
       rows.push([w.seasons.length > 1 ? `Season ${s.n}` : "Aired", a + b]);
     }
   }
+  const ch = currentCharacter();
+  if (ch) rows.unshift([ch.label, characterInWork(ch, w)]);
   const meta = [w.format === "live" ? "Live action" : "Animated", w.kind === "film" ? "film" : "series",
     w.episodes ? `${w.episodes} episodes` : null, w.canon === "legends" ? "Legends" : null].filter(Boolean).join(" · ");
   // poster: fixed width, height from the image's own aspect so the box doesn't jump while loading
@@ -708,6 +825,58 @@ function showTip(event, d) {
   tip.style("left", left + "px").style("top", top + "px");
 }
 function hideTip() { tip.style("opacity", 0); }
+
+// ---------------------------------------------------------------- characters
+const KIND_TEXT = {
+  onscreen: "on screen", flashback: "in a flashback", hologram: "as a hologram", voice: "voice only",
+  ghost: "as a Force ghost", vision: "in a vision", mention: "mentioned",
+};
+
+// "70 episodes on screen · 9 more (mentioned, flashback)" / "on screen" / "not in this one"
+function characterInWork(ch, w) {
+  const es = ch.appearances.filter(e => e.work === w.id);
+  if (!es.length) return "not in this one";
+  const on = es.filter(e => e.kind === "onscreen");
+  const other = [...new Set(es.filter(e => e.kind !== "onscreen").map(e => KIND_TEXT[e.kind]))];
+  if (w.kind === "film") return on.length ? "on screen" : other.join(", ");
+  const n = k => `${k} episode${k === 1 ? "" : "s"}`;
+  const parts = [];
+  if (on.length) parts.push(`${n(on.length)} on screen`);
+  if (es.length > on.length) parts.push(`${on.length ? "+ " : ""}${n(es.length - on.length)} ${other.join(", ")}`);
+  return parts.join(" ");
+}
+
+function setupCharacters() {
+  const sorted = [...characters].sort((a, b) => a.label.localeCompare(b.label, "en", { sensitivity: "base" }));
+  d3.select(".chars").selectAll("button").data(sorted).join("button")
+    .attr("class", "chip").attr("type", "button")
+    .attr("aria-pressed", false)
+    .html(c => `${c.poster ? `<img src="${c.poster.url}" alt="" referrerpolicy="no-referrer" loading="lazy">` : ""}${c.label}`)
+    .on("click", (e, c) => selectCharacter(state.character === c.id ? null : c.id));
+  const fromHash = decodeURIComponent(location.hash.slice(1));
+  if (characters.some(c => c.id === fromHash)) selectCharacter(fromHash, { render: false });
+}
+
+function selectCharacter(id, { render: rerender = true } = {}) {
+  state.character = id;
+  d3.selectAll(".chars .chip").attr("aria-pressed", c => c.id === id);
+  history.replaceState(null, "", id ? `#${id}` : location.pathname + location.search);
+  const ch = currentCharacter();
+  const card = d3.select(".char-card").property("hidden", !ch);
+  if (ch) {
+    const on = ch.appearances.filter(e => e.kind === "onscreen");
+    const works = new Set(on.map(e => e.work));
+    const eps = on.filter(e => e.ep).length;
+    card.html(`${ch.poster ? `<img src="${ch.poster.url}" alt="" referrerpolicy="no-referrer">` : ""}
+      <span><b>${ch.name}</b>${ch.birth != null ? ` · born ${fmtYear(ch.birth)}` : ""} ·
+      on screen in ${works.size} ${works.size === 1 ? "work" : "works"}${eps ? ` (${eps} episodes)` : ""} ·
+      <a href="${ch.url}" target="_blank" rel="noopener">Wookieepedia</a></span>
+      <button type="button">Clear</button>`);
+    card.select("button").on("click", () => selectCharacter(null));
+    document.querySelector(`.chars .chip[aria-pressed="true"]`)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }
+  if (rerender && data) render();
+}
 
 d3.selectAll(".seg button").on("click", function () {
   state.axis = this.dataset.axis;
@@ -729,8 +898,13 @@ new ResizeObserver(([e]) => {
   resizeTimer = setTimeout(() => render(false), 60);
 }).observe(document.querySelector(".chart-wrap"));
 
-fetch("data/works.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+Promise.all([
+  fetch("data/works.json", { cache: "no-cache" }).then(r => r.json()),
+  fetch("data/characters.json", { cache: "no-cache" }).then(r => r.json()),
+]).then(([d, c]) => {
   data = d;
+  characters = c.characters;
+  setupCharacters();
   // warm the cache so posters show instantly on hover
   const preload = () => d.works.forEach(w => {
     if (!w.poster) return;

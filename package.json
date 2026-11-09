@@ -1,0 +1,10 @@
+{
+  "name": "starwars-timeline",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8765",
+    "data": "python3 -I scripts/fetch.py && python3 -I scripts/build.py",
+    "deploy": "ssh vis4.net 'mkdir -p vis4/starwars/data vis4/starwars/fonts' && scp index.html vis4.net:vis4/starwars/ && scp data/works.json data/characters.json vis4.net:vis4/starwars/data/ && scp fonts/StarJedi-web.ttf vis4.net:vis4/starwars/fonts/"
+  }
+}

@@ -38,10 +38,21 @@ The title uses Star Jedi by Boba Fonts (freeware, `fonts/info.txt`). The origina
 
 ## Run
 
-Serve the folder (it fetches `data/works.json`), e.g. `python3 -m http.server 8765`.
+- `npm run dev`: serve the folder at http://localhost:8765 (the page fetches `data/works.json`)
+- `npm run data`: refetch from Wookieepedia (only pages not yet in `data/raw/`) and rebuild `data/works.json`
+- `npm run deploy`: copy the files the page needs (`index.html`, `data/works.json`, `data/characters.json`,
+  `fonts/StarJedi-web.ttf`) to `vis4.net:vis4/starwars/` for https://vis4.net/starwars/
 
-## Next: characters
+## Characters
 
-Character pages (e.g. `Ahsoka_Tano`) list `==Appearances==` in in-universe order.
-Filtering those links against the work titles in `WORKS` gives each character's arc
-across the timeline.
+`data/characters-config.json` lists the characters in the picker (id → Wookieepedia page,
+plus short labels) and maps Wookieepedia's episode citation templates (`{{TCW|…}}`,
+`{{Rebels|…}}`, …) to work ids. `fetch.py` keeps each character's infobox and
+`==Appearances==` list (in-universe order) and every referenced episode's air date,
+year and season. `build.py` writes `data/characters.json`: one entry per appearance
+with its work, kind (on screen, flashback, hologram, voice, Force ghost, vision,
+mention), in-universe year and air date. Episodes without their own year are spread
+through their season's range in list order.
+
+In the page, picking a character dims the works they're not in and draws a line
+through their on-screen appearances in story order (`#ahsoka` in the URL selects one).

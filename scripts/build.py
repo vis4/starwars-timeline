@@ -248,11 +248,152 @@ def resolve_posters(works, width=240):
             print("!! poster not found:", w["id"], f)
 
 
+# ---------------------------------------------------------------- characters
+
+ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8, "IX": 9}
+NUMBER_WORDS = {w: i + 1 for i, w in enumerate(
+    ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"])}
+# appearance flags on Wookieepedia → our kinds ("onscreen" when none of these is present)
+KIND_FLAGS = [("Mo", "mention"), ("1stm", "mention"), ("Imo", "mention"), ("Flash", "flashback"),
+              ("Hologram", "hologram"), ("Voice", "voice"), ("Ghost", "ghost"),
+              ("Vision", "vision"), ("Dream", "vision"), ("Corpse", "mention")]
+
+
+def episode_index(raws):
+    """Episode page title → work id, from the episode tables of series and season pages."""
+    idx = {}
+    for raw in raws:
+        if raw["kind"] != "series":
+            continue
+        for w in [raw["wikitext"]] + [s["wikitext"] for s in raw.get("seasons", [])]:
+            for t in re.findall(r'"\[\[([^\]|]+)(?:\|[^\]]*)?\]\]"', w):
+                idx.setdefault(t.strip(), raw["id"])
+    return idx
+
+
+def season_ranges(raws):
+    """(work id, season number) → in-universe range of that season."""
+    out = {}
+    for raw in raws:
+        for s in raw.get("seasons", []):
+            rng, _ = parse_timeline(field(strip_refs(s["wikitext"]), "timeline"))
+            if rng:
+                out[(raw["id"], s["n"])] = rng
+    return out
+
+
+def build_characters(raws, works):
+    cfg = json.loads((ROOT / "data" / "characters-config.json").read_text())
+    templates = cfg["templates"]
+    by_title = {w["title"]: w["id"] for w in works}
+    work_by_id = {w["id"]: w for w in works}
+    ep_work = episode_index(raws)
+    seasons = season_ranges(raws)
+    episodes = json.loads((RAW / "episodes" / "episodes.json").read_text())
+
+    chars = []
+    for cid in cfg["characters"]:
+        f = RAW / "characters" / f"{cid}.json"
+        if not f.exists():
+            print("!! character not fetched:", cid)
+            continue
+        raw = json.loads(f.read_text())
+        lead = strip_refs(raw["lead"])
+        name = field(lead, "name").split("<br")[0]  # alternate names follow after <br />
+        name = delink(re.sub(r"\{\{[^{}]*\}\}", "", name)).strip() or raw["title"]
+        birth = years(field(lead, "birth"))
+
+        entries = []
+        for line in raw["appearances"].split("\n"):
+            if not line.startswith("*"):
+                continue
+            wid, ep = None, None
+            m = re.match(r"\*\s*\{\{(\w+)\|([^|}]+)", line)
+            if m and m[1] == "Film":
+                n = ROMAN.get(m[2].strip())
+                wid = f"ep{n}" if n else None
+            elif m and m[1] in templates:
+                wid, ep = templates[m[1]], m[2].strip()
+            else:
+                link = re.match(r"\*\s*(?:'')?\[\[([^\]|]+)", line)
+                if link:
+                    t = link[1].strip()
+                    wid = by_title.get(t) or ep_work.get(t)
+                    ep = t if ep_work.get(t) else None
+            if wid not in work_by_id:
+                continue
+            flags = re.findall(r"\{\{(\w+)\}\}", line)
+            kind = next((k for flag, k in KIND_FLAGS if flag in flags), "onscreen")
+            entries.append({"work": wid, "ep": ep, "kind": kind})
+
+        place_entries(entries, work_by_id, episodes, seasons)
+        chars.append({
+            "id": cid, "name": name, "label": cfg.get("labels", {}).get(cid, name.split()[0]), "title": raw["title"],
+            "url": "https://starwars.fandom.com/wiki/" + raw["title"].replace(" ", "_"),
+            # death years aren't drawn: Wookieepedia lists temporary deaths too (Ahsoka, 20 BBY)
+            "birth": birth[0] if birth else None,
+            "poster_file": infobox_image(lead), "appearances": entries,
+        })
+    resolve_posters(chars)
+    for c in chars:
+        works_in = {e["work"] for e in c["appearances"]}
+        on = {e["work"] for e in c["appearances"] if e["kind"] == "onscreen"}
+        print(f"{c['id']:12} {len(c['appearances']):4} entries · {len(works_in):2} works · {len(on):2} on screen")
+    return chars
+
+
+def place_entries(entries, work_by_id, episodes, seasons):
+    """Give every appearance an in-universe year (float) and an air date.
+    Episode year comes from the episode infobox, else from its season's range: episodes that
+    share a season range are spread through it in list order (the list is chronological)."""
+    pending = []  # (entry, range) waiting to be spread within a season range
+    for e in entries:
+        w = work_by_id[e["work"]]
+        u = w.get("universe")
+        info = episodes.get(e["ep"]) if e["ep"] else None
+        e["air"] = None
+        if info:
+            ds = parse_dates(info["airdate"])
+            e["air"] = min(ds)[0].isoformat() if ds else None
+        if not e["air"]:
+            e["air"] = w["release"]["start"]
+        e["year"] = None
+        if info:
+            rng, _ = parse_timeline(info["timeline"])
+            if rng:
+                e["year"] = (rng["start"] + rng["end"] + 1) / 2
+            else:
+                sm = re.search(r"\|\s*([\w]+)\s*\]\]", info["season"]) or re.search(r"\[\[[^\]]*?(\d+)\]\]", info["season"])
+                n = sm and (NUMBER_WORDS.get(sm[1]) or (int(sm[1]) if sm[1].isdigit() else None))
+                srng = seasons.get((e["work"], n))
+                if srng:
+                    pending.append((e, (srng["start"], srng["end"] + 1)))
+                    continue
+        if e["year"] is None and u:
+            e["year"] = (u["start"] + u["end"] + 1) / 2 if w["kind"] == "series" and not w.get("segments") \
+                else u["start"] + 0.5
+    # spread runs of episodes that only know their season range
+    i = 0
+    while i < len(pending):
+        j = i
+        while j + 1 < len(pending) and pending[j + 1][1] == pending[i][1]:
+            j += 1
+        a, b = pending[i][1]
+        run = pending[i:j + 1]
+        for k, (e, _) in enumerate(run):
+            e["year"] = round(a + (b - a) * (k + 0.5) / len(run), 3)
+        i = j + 1
+
+
 def main():
     overrides = json.loads((ROOT / "data" / "overrides.json").read_text())
-    works = [build_work(json.loads(f.read_text()), overrides) for f in sorted(RAW.glob("*.json"))]
+    raws = [json.loads(f.read_text()) for f in sorted(RAW.glob("*.json"))]
+    works = [build_work(raw, overrides) for raw in raws]
     works.sort(key=lambda x: x["release"]["start"] or "9999")
     resolve_posters(works)
+    chars = build_characters(raws, works)
+    (ROOT / "data" / "characters.json").write_text(json.dumps(
+        {"generated": TODAY.isoformat(), "characters": chars}, ensure_ascii=False, separators=(",", ":")))
     out = {
         "generated": TODAY.isoformat(),
         "source": "Wookieepedia (starwars.fandom.com), CC BY-SA 3.0",
