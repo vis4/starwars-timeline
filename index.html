@@ -184,8 +184,10 @@ svg { display: block; overflow: visible; }
 .tooltip td { padding: 1px 10px 1px 0; vertical-align: top; }
 .tooltip td:first-child { color: var(--text-secondary); }
 .tooltip td:last-child { white-space: nowrap; } /* dates stay on one line; long labels wrap */
-footer { margin-top: 24px; color: var(--text-muted); font-size: 12px; }
+footer { margin: 24px auto 0; max-width: 90ch; text-align: center; text-wrap: balance; color: var(--text-muted); font-size: 12px; }
 footer a { color: inherit; }
+/* separate short paragraphs, so text-wrap: balance applies (browsers skip blocks of more than ~6 lines) */
+footer p { margin: 0 0 6px; }
 </style>
 </head>
 <body>
@@ -224,9 +226,10 @@ footer a { color: inherit; }
   <div class="tooltip" id="tip"></div>
 
   <footer>
-    Data: <a href="https://starwars.fandom.com/wiki/Main_Page">Wookieepedia</a> (CC BY-SA 3.0), fetched <span id="generated"></span>. Posters © Lucasfilm, loaded from Wookieepedia.
-    In-universe years marked “c.” are approximate; the in-universe scale is linear between 20 BBY and 40 ABY and logarithmic before that.
-    Hollow dots are prologues/epilogues. Dashed outlines are announced, not yet aired.
+    <p>Data: <a href="https://starwars.fandom.com/wiki/Main_Page">Wookieepedia</a> (CC BY-SA 3.0), fetched <span id="generated"></span>. Posters © Lucasfilm, loaded from Wookieepedia.</p>
+    <p>In-universe years marked “c.” are approximate; the in-universe scale is linear between 20 BBY and 40 ABY and logarithmic before that.
+    Hollow dots are prologues/epilogues. Dashed outlines are announced, not yet aired.</p>
+    <p>Idea, design, and prompting: <a href="https://driven-by-data.net">Gregor Aisch</a>. Coding: Opus 5.5</p>
   </footer>
 </main>
 

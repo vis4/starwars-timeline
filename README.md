@@ -1,7 +1,9 @@
-# Star Wars timeline
+# Yet Another Star Wars Timeline
 
-Interactive timeline of Star Wars films and TV series, toggleable between
-real-world release dates and in-universe years (BBY/ABY).
+Interactive timeline of Star Wars films and TV series, plus (optionally) video games, comics,
+novels and the non-canon Legends works, toggleable between real-world release dates and
+in-universe years (BBY/ABY). Pick a character to follow their arc across the franchise.
+Live at https://vis4.net/starwars/
 
 ## Data pipeline
 
@@ -91,3 +93,7 @@ The URL hash holds the view, leaving out whatever is at its default:
 filters that are on, or `none`; `c`: a character id). Older `#ahsoka` links still work. The
 controls are set from the hash on load, so checkboxes a browser restores after a reload can't
 disagree with the chart.
+
+## Credits
+
+Idea, design, and prompting: [Gregor Aisch](https://driven-by-data.net). Coding: Opus 5.5
