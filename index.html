@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Star Wars Timeline</title>
+<title>Yet Another Star Wars Timeline</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style>
 :root {
@@ -63,7 +63,9 @@ header { text-align: center; padding: 12px 0 8px; overflow-x: clip; }
 }
 /* Title tilted back into the distance, like an opening crawl: the stage sets the
    perspective, the heading rotates around its bottom edge so the top line recedes. */
-.title-stage { perspective: 360px; perspective-origin: 50% 100%; margin: 0 0 18px; }
+/* The tilt leaves empty space above the receding top line (about 1.4× the line's font size);
+   the negative margin takes back half of it. */
+.title-stage { perspective: 360px; perspective-origin: 50% 100%; margin: calc(-0.7 * clamp(35px, 7.36vw, 86px)) 0 18px; }
 h1 {
   margin: 0 auto; color: var(--accent); font-family: "Star Jedi", ui-sans-serif, system-ui, sans-serif;
   font-weight: normal; line-height: 1; letter-spacing: 0.04em;
@@ -72,7 +74,9 @@ h1 {
 }
 h1 span { display: block; white-space: nowrap; }
 h1 .l1 { font-size: clamp(40px, 8.4vw, 100px); }
-h1 .l2 { font-size: clamp(35px, 7.36vw, 86px); margin-top: 0.12em; }
+h1 .l0, h1 .l2 { font-size: clamp(35px, 7.36vw, 86px); }
+h1 .l0 { margin-bottom: 0.12em; }
+h1 .l2 { margin-top: 0.12em; }
 @media (prefers-reduced-motion: reduce) { h1 { transform: none; } }
 .sub { color: var(--text-secondary); margin: 0 auto 24px; max-width: 62ch; }
 .controls {
@@ -191,7 +195,7 @@ footer a { color: inherit; }
     <p class="kicker">A long time ago in a galaxy far, far away….</p>
     <div class="title-stage">
       <!-- mixed case on purpose: Star Jedi draws lowercase as its capital forms, and its uppercase I is a different glyph -->
-      <h1 aria-label="Star Wars Timeline"><span class="l1">Star Wars</span><span class="l2">Timeline</span></h1>
+      <h1 aria-label="Yet Another Star Wars Timeline"><span class="l0">yet another</span><span class="l1">Star Wars</span><span class="l2">Timeline</span></h1>
     </div>
     <p class="sub">Every film and TV series (plus novels, comics and games, if you like), placed by when it happens in the galaxy far, far away, or by when it came out. Hover for details, click to open it on Wookieepedia.</p>
   </header>
