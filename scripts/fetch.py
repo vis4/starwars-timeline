@@ -114,6 +114,8 @@ NOT_A_NOVEL_CATEGORIES = ["Category:Legends novel series", "Category:Legends you
 SKIP_TITLES = {
     "Untitled collectible card game",  # filed under games, but not a video game
     "Star Wars: Black, White & Red",  # an umbrella for three miniseries that are listed themselves
+    "The Essential Legends Collection",  # a reprint line
+    "Dark Empire trilogy",  # the collected edition of Dark Empire I–III, which are listed themselves
     # comics that retell a show or novel already on the timeline
     "Star Wars: Ahsoka (comic series)", "Star Wars: Obi-Wan Kenobi (comic series)",
     "Star Wars: The Book of Boba Fett (comic series)", "Star Wars: The Mandalorian (comic series)",
@@ -132,9 +134,12 @@ SKIP_TITLES = {
 
 
 def is_adaptation(title):
-    """Novelizations and film adaptations retell a film, so they'd only duplicate it."""
+    """Pages that would only duplicate a work already on the timeline: novelizations and film
+    adaptations ("Expanded Edition"s are novelizations too), audiobook editions of novels (dated
+    by the audiobook's release, decades after the novel), and reprints/box sets."""
     t = title.lower()
-    return "novelization" in t or t.endswith(" adaptation")
+    return ("novelization" in t or t.endswith(" adaptation") or "audiobook" in t
+            or "expanded edition" in t or "anniversary edition" in t or "boxed set" in t)
 
 
 def category_pages(cat):

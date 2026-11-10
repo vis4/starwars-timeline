@@ -562,33 +562,6 @@
    }
   },
   {
-   "id": "legends-comic-dark-empire-trilogy",
-   "title": "Dark Empire trilogy",
-   "label": "Dark Empire trilogy",
-   "url": "https://starwars.fandom.com/wiki/Dark_Empire_trilogy",
-   "kind": "comic",
-   "format": "comic",
-   "canon": "legends",
-   "release": {
-    "start": "1991-12-12",
-    "end": null,
-    "precision": "day",
-    "status": "ongoing"
-   },
-   "issues": 14,
-   "universe": {
-    "start": 10,
-    "end": 11,
-    "approx": false
-   },
-   "timeline_text": "10 ABY-11 ABY",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/3/31/Darkempiretpb.jpg/revision/latest/scale-to-width-down/240?cb=20200704202041",
-    "w": 240,
-    "h": 368
-   }
-  },
-  {
    "id": "legends-comic-star-wars-dark-empire",
    "title": "Star Wars: Dark Empire",
    "label": "Dark Empire",
@@ -9527,58 +9500,6 @@
    "series": "Knight Errant"
   },
   {
-   "id": "legends-book-heir-to-the-empire-the-20th-anniversary-edition",
-   "title": "Heir to the Empire: The 20th Anniversary Edition",
-   "label": "Heir to the Empire: The 20th Anniversary Edition",
-   "url": "https://starwars.fandom.com/wiki/Heir_to_the_Empire:_The_20th_Anniversary_Edition",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2011-09-06",
-    "end": "2011-09-06",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 9,
-    "end": 9,
-    "approx": false
-   },
-   "series": "The Thrawn Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/6/6d/HTTE_20th_Anniversary_Edition.jpg/revision/latest/scale-to-width-down/240?cb=20120103053735",
-    "w": 240,
-    "h": 366
-   }
-  },
-  {
-   "id": "legends-book-heir-to-the-empire-unabridged-audiobook",
-   "title": "Heir to the Empire (unabridged audiobook)",
-   "label": "Heir to the Empire (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Heir_to_the_Empire_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2011-09-06",
-    "end": "2011-09-06",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 9,
-    "end": 9,
-    "approx": false
-   },
-   "series": "The Thrawn Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/0/08/Heir_to_the_Empire_Essential_Legends_Collection_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20211104044151",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "legends-book-riptide-novel",
    "title": "Riptide (novel)",
    "label": "Riptide",
@@ -9770,32 +9691,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/f/f7/WrathofDarthMaul.jpg/revision/latest/scale-to-width-down/240?cb=20250228081143",
     "w": 240,
     "h": 360
-   }
-  },
-  {
-   "id": "legends-book-darth-plagueis-audiobook",
-   "title": "Darth Plagueis (audiobook)",
-   "label": "Darth Plagueis (audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Darth_Plagueis_(audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2012-01-10",
-    "end": "2012-01-10",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -67,
-    "end": -32,
-    "approx": false
-   },
-   "timeline_text": "67-65 BBY <br />54-52 BBY <br />34-32 BBY",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/40/Darth_Plagueis_audiobook_cover.jpg/revision/latest/scale-to-width-down/240?cb=20200808193833",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -10035,58 +9930,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/f/f6/SWKnight_Errant_Escape_TPB.jpg/revision/latest/scale-to-width-down/240?cb=20121206071205",
     "w": 240,
     "h": 370
-   }
-  },
-  {
-   "id": "legends-book-dark-force-rising-unabridged-audiobook",
-   "title": "Dark Force Rising (unabridged audiobook)",
-   "label": "Dark Force Rising (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Dark_Force_Rising_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2012-06-26",
-    "end": "2012-06-26",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 9,
-    "end": 9,
-    "approx": false
-   },
-   "series": "The Thrawn Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/cf/Dark_Force_Rising_Essential_Legends_Collection_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20211104042027",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-the-last-command-unabridged-audiobook",
-   "title": "The Last Command (unabridged audiobook)",
-   "label": "The Last Command (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/The_Last_Command_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2012-06-26",
-    "end": "2012-06-26",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 9,
-    "end": 9,
-    "approx": false
-   },
-   "series": "The Thrawn Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/4f/LastCommand-Audiobook-Unabridged.jpg/revision/latest/scale-to-width-down/240?cb=20201116154926",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -10473,31 +10316,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/9/9a/Crucible.jpg/revision/latest/scale-to-width-down/240?cb=20121013000924",
     "w": 240,
     "h": 365
-   }
-  },
-  {
-   "id": "legends-book-kenobi-audiobook",
-   "title": "Kenobi (audiobook)",
-   "label": "Kenobi (audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Kenobi_(audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2013-08-27",
-    "end": "2013-08-27",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -19,
-    "end": -19,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/c0/Kenobi-Audiobook.jpg/revision/latest/scale-to-width-down/240?cb=20150705232756",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -11920,31 +11738,6 @@
    }
   },
   {
-   "id": "book-star-wars-the-last-jedi-expanded-edition",
-   "title": "Star Wars: The Last Jedi: Expanded Edition",
-   "label": "The Last Jedi: Expanded Edition",
-   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Last_Jedi:_Expanded_Edition",
-   "kind": "book",
-   "format": "book",
-   "canon": "canon",
-   "release": {
-    "start": "2018-03-06",
-    "end": "2018-03-06",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 34,
-    "end": 34,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/5/53/SWTLJExpandedEdition.jpg/revision/latest/scale-to-width-down/240?cb=20180212223228",
-    "w": 240,
-    "h": 365
-   }
-  },
-  {
    "id": "book-last-shot",
    "title": "Last Shot",
    "label": "Last Shot",
@@ -12090,32 +11883,6 @@
    "series": "The Imperial Trilogy",
    "poster": {
     "url": "https://static.wikia.nocookie.net/starwars/images/c/c8/Thrawn_Alliances_cover.png/revision/latest/scale-to-width-down/240?cb=20200826220634",
-    "w": 240,
-    "h": 365
-   }
-  },
-  {
-   "id": "book-solo-a-star-wars-story-expanded-edition",
-   "title": "Solo: A Star Wars Story: Expanded Edition",
-   "label": "Solo: A Star Wars Story: Expanded Edition",
-   "url": "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story:_Expanded_Edition",
-   "kind": "book",
-   "format": "book",
-   "canon": "canon",
-   "release": {
-    "start": "2018-09-04",
-    "end": "2018-09-04",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -13,
-    "end": -10,
-    "approx": false
-   },
-   "timeline_text": "13 BBY–10 BBY",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/0/08/Solo-ExpandedEdition-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20180921181254",
     "w": 240,
     "h": 365
    }
@@ -12952,31 +12719,6 @@
    }
   },
   {
-   "id": "book-star-wars-the-rise-of-skywalker-expanded-edition",
-   "title": "Star Wars: The Rise of Skywalker: Expanded Edition",
-   "label": "The Rise of Skywalker: Expanded Edition",
-   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Rise_of_Skywalker:_Expanded_Edition",
-   "kind": "book",
-   "format": "book",
-   "canon": "canon",
-   "release": {
-    "start": "2020-03-17",
-    "end": "2020-03-17",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 35,
-    "end": 35,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/cf/TROS-ExpandedEdition-Hardcover.jpg/revision/latest/scale-to-width-down/240?cb=20200413192610",
-    "w": 240,
-    "h": 365
-   }
-  },
-  {
    "id": "comic-star-wars-doctor-aphra-2020",
    "title": "Star Wars: Doctor Aphra (2020)",
    "label": "Doctor Aphra (2020)",
@@ -13488,32 +13230,6 @@
    }
   },
   {
-   "id": "legends-book-shatterpoint-unabridged-audiobook",
-   "title": "Shatterpoint (unabridged audiobook)",
-   "label": "Shatterpoint (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Shatterpoint_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2021-06-15",
-    "end": "2021-06-15",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -22,
-    "end": -22,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/2/23/Shatterpoint-Unabridged.jpg/revision/latest/scale-to-width-down/240?cb=20210615204853",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "book-the-high-republic-the-rising-storm",
    "title": "The High Republic: The Rising Storm",
    "label": "The High Republic: The Rising Storm",
@@ -13590,32 +13306,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/c/c2/The_Monster_of_Temple_Peak_logo.png/revision/latest/scale-to-width-down/240?cb=20210417010401",
     "w": 240,
     "h": 144
-   }
-  },
-  {
-   "id": "legends-book-x-wing-rogue-squadron-unabridged-audiobook",
-   "title": "X-Wing: Rogue Squadron (unabridged audiobook)",
-   "label": "X-Wing: Rogue Squadron (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_Rogue_Squadron_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2021-09-07",
-    "end": "2021-09-07",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 6,
-    "end": 6,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/cf/X-wing_Rogue_Squadron_unabridged_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20210630153632",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -13960,32 +13650,6 @@
    }
   },
   {
-   "id": "legends-book-x-wing-wedge-s-gamble-unabridged-audiobook",
-   "title": "X-Wing: Wedge's Gamble (unabridged audiobook)",
-   "label": "X-Wing: Wedge's Gamble (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_Wedge's_Gamble_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2022-04-05",
-    "end": "2022-04-05",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/5/56/X-Wing_Wedges_Gamble_Essential_Legends_Collection_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20211104041051",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "comic-star-wars-obi-wan-comic-series",
    "title": "Star Wars: Obi-Wan (comic series)",
    "label": "Obi-Wan",
@@ -14071,27 +13735,6 @@
    }
   },
   {
-   "id": "legends-book-the-thrawn-trilogy-boxed-set",
-   "title": "The Thrawn Trilogy Boxed Set",
-   "label": "The Thrawn Trilogy Boxed Set",
-   "url": "https://starwars.fandom.com/wiki/The_Thrawn_Trilogy_Boxed_Set",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2022-05-31",
-    "end": "2022-05-31",
-    "precision": "day",
-    "status": "released"
-   },
-   "series": "The Thrawn Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/6/63/The_Thrawn_Trilogy_Boxed_Set_cover.jpg/revision/latest/scale-to-width-down/240?cb=20220306091625",
-    "w": 240,
-    "h": 362
-   }
-  },
-  {
    "id": "book-shadow-of-the-sith",
    "title": "Shadow of the Sith",
    "label": "Shadow of the Sith",
@@ -14139,58 +13782,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/7/74/Padawan_cover.jpg/revision/latest/scale-to-width-down/240?cb=20220225073815",
     "w": 240,
     "h": 365
-   }
-  },
-  {
-   "id": "legends-book-darth-maul-shadow-hunter-unabridged-audiobook",
-   "title": "Darth Maul: Shadow Hunter (unabridged audiobook)",
-   "label": "Darth Maul: Shadow Hunter (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Darth_Maul:_Shadow_Hunter_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2022-08-02",
-    "end": "2022-08-02",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -32,
-    "end": -32,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/46/Darth_Maul_Shadow_Hunter_unabridged_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20220524045955",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-x-wing-the-krytos-trap-unabridged-audiobook",
-   "title": "X-Wing: The Krytos Trap (unabridged audiobook)",
-   "label": "X-Wing: The Krytos Trap (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_The_Krytos_Trap_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2022-08-02",
-    "end": "2022-08-02",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/f/f9/X-Wing_The_Krytos_Trap_Essential_Legends_Collection_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20220524040124",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -14417,32 +14008,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/b/bc/StarWarsTalesOfTheJedi-Poster-Getty.jpg/revision/latest/scale-to-width-down/240?cb=20221006070025",
     "w": 240,
     "h": 355
-   }
-  },
-  {
-   "id": "legends-book-x-wing-the-bacta-war-unabridged-audiobook",
-   "title": "X-Wing: The Bacta War (unabridged audiobook)",
-   "label": "X-Wing: The Bacta War (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_The_Bacta_War_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2022-11-01",
-    "end": "2022-11-01",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/3/3e/X-Wing_The_Bacta_War_Essential_Legends_Collection_audiobook_cover.png/revision/latest/scale-to-width-down/240?cb=20220620194659",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -15122,136 +14687,6 @@
    }
   },
   {
-   "id": "legends-book-outbound-flight-unabridged-audiobook",
-   "title": "Outbound Flight (unabridged audiobook)",
-   "label": "Outbound Flight (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Outbound_Flight_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2023-12-19",
-    "end": "2023-12-19",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -27,
-    "end": -27,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Outbound_Flight_unabrigded_audiobook_cover.jpg/revision/latest/scale-to-width-down/240?cb=20231020013534",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-survivor-s-quest-unabridged-audiobook",
-   "title": "Survivor's Quest (unabridged audiobook)",
-   "label": "Survivor's Quest (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Survivor's_Quest_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2023-12-19",
-    "end": "2023-12-19",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 22,
-    "end": 22,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/3/30/SurvivorsQuest-UnabridgedAudiobook.jpg/revision/latest/scale-to-width-down/240?cb=20231020013523",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-the-courtship-of-princess-leia-unabridged-audiobook",
-   "title": "The Courtship of Princess Leia (unabridged audiobook)",
-   "label": "The Courtship of Princess Leia (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/The_Courtship_of_Princess_Leia_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-01-23",
-    "end": "2024-01-23",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 8,
-    "end": 8,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/8/83/The_Courtship_of_Princess_Leia_unabridged_audiobook_cover.jpg/revision/latest/scale-to-width-down/240?cb=20231020013545",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-yoda-dark-rendezvous-unabridged-audiobook",
-   "title": "Yoda: Dark Rendezvous (unabridged audiobook)",
-   "label": "Yoda: Dark Rendezvous (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Yoda:_Dark_Rendezvous_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-01-23",
-    "end": "2024-01-23",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -19,
-    "end": -19,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/45/YodaDarkRendezvous-UnabridgedCover.jpg/revision/latest/scale-to-width-down/240?cb=20231029115248",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-x-wing-wraith-squadron-unabridged-audiobook",
-   "title": "X-Wing: Wraith Squadron (unabridged audiobook)",
-   "label": "X-Wing: Wraith Squadron (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_Wraith_Squadron_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-02-06",
-    "end": "2024-02-06",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/45/X-Wing_Wraith_Squadron_Essential_Legends_Collection_audiobook_cover.jpg/revision/latest/scale-to-width-down/240?cb=20240207183122",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "comic-star-wars-mace-windu",
    "title": "Star Wars: Mace Windu",
    "label": "Mace Windu",
@@ -15302,32 +14737,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/7/79/TheHighRepublic-DefytheStorm-cover.jpg/revision/latest/scale-to-width-down/240?cb=20230721222810",
     "w": 240,
     "h": 355
-   }
-  },
-  {
-   "id": "legends-book-i-jedi-unabridged-audiobook",
-   "title": "I, Jedi (unabridged audiobook)",
-   "label": "I, Jedi (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/I,_Jedi_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-03-12",
-    "end": "2024-03-12",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 11,
-    "end": 11,
-    "approx": false
-   },
-   "series": "The Essential Legends Collection",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/0/0b/IJedi-UnabridgedAudiobook.jpg/revision/latest/scale-to-width-down/240?cb=20240207183352",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -15543,32 +14952,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/a/a1/AcolytePost-Poster.jpg/revision/latest/scale-to-width-down/240?cb=20240615030332",
     "w": 240,
     "h": 355
-   }
-  },
-  {
-   "id": "legends-book-x-wing-iron-fist-unabridged-audiobook",
-   "title": "X-Wing: Iron Fist (unabridged audiobook)",
-   "label": "X-Wing: Iron Fist (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_Iron_Fist_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-06-04",
-    "end": "2024-06-04",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/cf/Iron_Fist_Essential_Legends_Audiobook_Cover.jpg/revision/latest/scale-to-width-down/240?cb=20240625164602",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -15811,59 +15194,6 @@
    }
   },
   {
-   "id": "legends-book-star-wars-the-force-unleashed-unabridged-audiobook",
-   "title": "Star Wars: The Force Unleashed (unabridged audiobook)",
-   "label": "The Force Unleashed (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-11-05",
-    "end": "2024-11-05",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -3,
-    "end": -1,
-    "approx": false
-   },
-   "timeline_text": "3 BBY–1 BBY",
-   "series": "The Force Unleashed",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/1/11/ForceUnleashed-Audiobook-Unabridged.jpg/revision/latest/scale-to-width-down/240?cb=20240918004203",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-x-wing-solo-command-unabridged-audiobook",
-   "title": "X-Wing: Solo Command (unabridged audiobook)",
-   "label": "X-Wing: Solo Command (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/X-Wing:_Solo_Command_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2024-11-05",
-    "end": "2024-11-05",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 7,
-    "end": 7,
-    "approx": false
-   },
-   "series": "X-Wing novel",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/4/4a/SoloCommand-Audiobook-Unabridged.jpg/revision/latest/scale-to-width-down/240?cb=20240918003357",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "comic-star-wars-battle-of-jakku-republic-under-siege",
    "title": "Star Wars: Battle of Jakku — Republic Under Siege",
    "label": "Battle of Jakku — Republic Under Siege",
@@ -15950,32 +15280,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/7/7b/BattleofJakku-LastStand1-solicit-cover.jpg/revision/latest/scale-to-width-down/240?cb=20240919200039",
     "w": 240,
     "h": 360
-   }
-  },
-  {
-   "id": "legends-book-dark-lord-the-rise-of-darth-vader-unabridged-audiobook",
-   "title": "Dark Lord: The Rise of Darth Vader (unabridged audiobook)",
-   "label": "Dark Lord: The Rise of Darth Vader (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Dark_Lord:_The_Rise_of_Darth_Vader_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2025-02-04",
-    "end": "2025-02-04",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -19,
-    "end": -19,
-    "approx": false
-   },
-   "series": "The Dark Lord Trilogy",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/d/df/DarkLord-UnabridgedAudiobook.jpg/revision/latest/scale-to-width-down/240?cb=20241118174607",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -16295,58 +15599,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Star_Wars_2025_cover.jpg/revision/latest/scale-to-width-down/240?cb=20250121154538",
     "w": 240,
     "h": 364
-   }
-  },
-  {
-   "id": "legends-book-rogue-planet-unabridged-audiobook",
-   "title": "Rogue Planet (unabridged audiobook)",
-   "label": "Rogue Planet (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Rogue_Planet_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2025-06-03",
-    "end": "2025-06-03",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -29,
-    "end": -29,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/a/aa/RoguePlanet-ESL-AudioCover.png/revision/latest/scale-to-width-down/240?cb=20250414163943",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-star-wars-shadows-of-the-empire-unabridged-audiobook",
-   "title": "Star Wars: Shadows of the Empire (unabridged audiobook)",
-   "label": "Shadows of the Empire (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2025-06-03",
-    "end": "2025-06-03",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": 3,
-    "end": 4,
-    "approx": false
-   },
-   "timeline_text": "3–4 ABY",
-   "series": "Shadows of the Empire",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/3/3f/ShadowsOfTheEmpire-ESL-AudioCover.png/revision/latest/scale-to-width-down/240?cb=20250414164110",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -16952,57 +16204,6 @@
    }
   },
   {
-   "id": "legends-book-cloak-of-deception-unabridged-audiobook",
-   "title": "Cloak of Deception (unabridged audiobook)",
-   "label": "Cloak of Deception (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Cloak_of_Deception_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2026-08-11",
-    "end": "2026-08-11",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -33,
-    "end": -33,
-    "approx": false
-   },
-   "timeline_text": "32.5 BBY",
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/a/a5/CloakOfDeception-audiobook.png/revision/latest/scale-to-width-down/240?cb=20260503034059",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
-   "id": "legends-book-labyrinth-of-evil-unabridged-audiobook",
-   "title": "Labyrinth of Evil (unabridged audiobook)",
-   "label": "Labyrinth of Evil (unabridged audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Labyrinth_of_Evil_(unabridged_audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2026-08-11",
-    "end": "2026-08-11",
-    "precision": "day",
-    "status": "released"
-   },
-   "universe": {
-    "start": -19,
-    "end": -19,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/9/9a/LabyrinthOfEvil-audiobook.png/revision/latest/scale-to-width-down/240?cb=20260503033518",
-    "w": 240,
-    "h": 240
-   }
-  },
-  {
    "id": "comic-star-wars-the-fall-of-kylo-ren",
    "title": "Star Wars: The Fall of Kylo Ren",
    "label": "The Fall of Kylo Ren",
@@ -17105,31 +16306,6 @@
     "url": "https://static.wikia.nocookie.net/starwars/images/5/56/GalacticRacerPoster.jpg/revision/latest/scale-to-width-down/240?cb=20260430231040",
     "w": 240,
     "h": 360
-   }
-  },
-  {
-   "id": "legends-book-choices-of-one-audiobook",
-   "title": "Choices of One (audiobook)",
-   "label": "Choices of One (audiobook)",
-   "url": "https://starwars.fandom.com/wiki/Choices_of_One_(audiobook)",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": "2026-11-24",
-    "end": "2026-11-24",
-    "precision": "day",
-    "status": "upcoming"
-   },
-   "universe": {
-    "start": 0,
-    "end": 0,
-    "approx": false
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/b/bc/ChoicesOfOne-Audiobook.jpg/revision/latest/scale-to-width-down/240?cb=20261017030431",
-    "w": 240,
-    "h": 240
    }
   },
   {
@@ -17638,25 +16814,6 @@
     "start": null,
     "end": null,
     "status": "tba"
-   }
-  },
-  {
-   "id": "legends-book-the-essential-legends-collection",
-   "title": "The Essential Legends Collection",
-   "label": "The Essential Legends Collection",
-   "url": "https://starwars.fandom.com/wiki/The_Essential_Legends_Collection",
-   "kind": "book",
-   "format": "book",
-   "canon": "legends",
-   "release": {
-    "start": null,
-    "end": null,
-    "status": "tba"
-   },
-   "poster": {
-    "url": "https://static.wikia.nocookie.net/starwars/images/c/ca/The_Essential_Legends_Collection_banner.png/revision/latest/scale-to-width-down/240?cb=20220621001931",
-    "w": 240,
-    "h": 44
    }
   },
   {

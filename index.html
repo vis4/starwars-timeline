@@ -54,7 +54,10 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 16px 48px; }
   src: url("fonts/StarJedi-web.ttf") format("truetype");
   font-display: swap;
 }
-header { text-align: center; padding: 12px 0 8px; }
+/* overflow-x: clip — the perspective-tilted title counts as a few px wider than it looks, which
+   gave the page a horizontal scrollbar (Firefox, and Chrome at some zoom levels). clip, not hidden:
+   no scroll container, so nothing else changes. */
+header { text-align: center; padding: 12px 0 8px; overflow-x: clip; }
 .kicker {
   margin: 8px 0 14px; color: #4fb3ff; font-size: 15px; letter-spacing: 0.02em;
 }
@@ -201,9 +204,9 @@ footer a { color: inherit; }
     <div class="checks">
       <label><input type="checkbox" data-filter="live" checked><span class="swatch" style="background:var(--live)"></span>Live action</label>
       <label><input type="checkbox" data-filter="animated" checked><span class="swatch" style="background:var(--animated)"></span>Animated</label>
+      <label><input type="checkbox" data-filter="games"><span class="swatch" style="background:var(--game)"></span>Games</label>
       <label><input type="checkbox" data-filter="comics"><span class="swatch" style="background:var(--comic)"></span>Comics</label>
       <label><input type="checkbox" data-filter="books"><span class="swatch" style="background:var(--book)"></span>Books</label>
-      <label><input type="checkbox" data-filter="games"><span class="swatch" style="background:var(--game)"></span>Games</label>
       <label><input type="checkbox" data-filter="upcoming" checked><span class="swatch swatch-dashed"></span>Upcoming</label>
       <label><input type="checkbox" data-filter="legends"><span class="swatch" style="background:var(--legends)"></span>Legends (non-canon)</label>
     </div>
@@ -313,11 +316,11 @@ const LANES = [
   { key: "saga", label: "Skywalker Saga", ids: ["ep1", "ep2", "ep3", "ep4", "ep5", "ep6", "ep7", "ep8", "ep9", "rey-film", "kinberg"] },
   { key: "spinoffs", label: "Live-action spin-offs", ids: ["mangold", "acolyte", "kenobi", "solo", "andor", "rogue-one", "starfighter", "lando", "rogue-squadron",
     "mandalorian", "boba-fett", "skeleton-crew", "ahsoka", "mando-grogu", "filoni-film"] },
-  { key: "clonewars", label: "Clone Wars & Rebels", ids: ["tcw-film", "tcw", "bad-batch", "maul", "rebels"] },
-  { key: "other", label: "Tales and other animation", ids: ["tales-jedi", "tales-empire", "tales-underworld", "yja", "resistance"] },
+  { key: "animated", label: "Animated", ids: ["tcw-film", "tcw", "bad-batch", "maul", "rebels",
+    "tales-jedi", "tales-empire", "tales-underworld", "yja", "resistance"] },
+  { key: "games", label: "Video games", ids: [] }, // filled with every game
   { key: "comics", label: "Comics", ids: [] },     // filled with every comic series
   { key: "books", label: "Novels", ids: [] },     // filled with every book
-  { key: "games", label: "Video games", ids: [] }, // filled with every game
 ];
 const REFS = {
   universe: [
@@ -497,6 +500,16 @@ function visible(w) {
   return true;
 }
 
+// Width the chart may use. Not clientWidth: that's rounded to whole pixels, and with page zoom
+// (125%: fractional CSS pixels) it can round up, so a chart that fills it exactly overflows by a
+// fraction of a pixel and the frame shows a scrollbar. Measure exactly and round down instead.
+function chartRoom() {
+  const el = document.querySelector(".chart-wrap");
+  const cs = getComputedStyle(el);
+  return Math.floor(el.getBoundingClientRect().width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)
+    - parseFloat(cs.borderLeftWidth) - parseFloat(cs.borderRightWidth)) - 1;
+}
+
 function layout(y) {
   const laneOf = {};
   for (const l of LANES) for (const id of l.ids) laneOf[id] = l.key;
@@ -504,10 +517,10 @@ function layout(y) {
     // Legends works share the lanes of their canon counterparts (drawn in gray):
     // novels with novels, comics with comics, live action with the spin-offs, animation with animation
     laneOf[w.id] = { book: "books", game: "games", comic: "comics" }[w.kind]
-      || (w.format === "live" ? "spinoffs" : "other");
+      || (w.format === "live" ? "spinoffs" : "animated");
   }
 
-  const avail = Math.max(document.querySelector(".chart-wrap").clientWidth, 320);
+  const avail = Math.max(chartRoom(), 320);
   const narrow = avail < 1000;
   COL_W = narrow ? 13 : 18; BAR_W = narrow ? 8 : 10; LANE_PAD = narrow ? 8 : 12;
 
@@ -680,7 +693,12 @@ function textWidth(s, size) {
 function render(animate = true) {
   const y = makeScale();
   const { lanes, items, width, height } = layout(y);
-  svg.attr("width", width).attr("height", height);
+  // With many lanes on a narrow screen the minimum layout (marks + a minimum label column per
+  // lane) can be wider than the window: scale the whole chart down to fit, but not below 60%
+  // (smaller text gets unreadable); past that the chart scrolls sideways.
+  const room = chartRoom();
+  const k = width > room ? Math.max(0.6, room / width) : 1;
+  svg.attr("viewBox", `0 0 ${width} ${height}`).attr("width", Math.floor(width * k)).attr("height", Math.ceil(height * k));
   const t = svg.transition().duration(animate ? 750 : 0).ease(d3.easeCubicInOut);
 
   if (svg.select("g.grid").empty()) {
@@ -1046,7 +1064,7 @@ function selectCharacter(id, { render: rerender = true } = {}) {
 // The view lives in the hash, e.g. #axis=release&show=live,animated,comics&c=ahsoka; anything at
 // its default is left out. The controls are set from the state on load, so a browser that
 // restores checkbox states across reloads can't get out of step with the chart.
-const FILTERS = ["live", "animated", "comics", "books", "games", "upcoming", "legends"];
+const FILTERS = ["live", "animated", "games", "comics", "books", "upcoming", "legends"];
 const DEFAULTS = { axis: state.axis, ...Object.fromEntries(FILTERS.map(f => [f, state[f]])) };
 
 function writeHash() {

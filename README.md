@@ -31,7 +31,8 @@ Text from Wookieepedia is CC BY-SA 3.0, so the page must keep its attribution.
 
 ## Books, games and comics
 
-Canon novels (adult and young-adult, incl. The High Republic; novelizations left out),
+Canon novels (adult and young-adult, incl. The High Republic; novelizations, "Expanded Editions",
+audiobook editions and reprints or box sets are left out, see `is_adaptation()` in `fetch.py`),
 console/PC games and comic series come from Wookieepedia categories (`BOOK_CATEGORIES`,
 `GAME_CATEGORIES`, `COMIC_CATEGORIES` in `fetch.py`), so new releases are picked up by
 `npm run data`. Only their infobox is cached. They're off by default; in their lanes, labels
@@ -42,7 +43,7 @@ Legends novels (`LEGENDS_BOOK_CATEGORIES`, incl. the young-reader series; pages 
 series are skipped) and Legends comic series (`LEGENDS_COMIC_CATEGORIES`) are fetched too, with
 ids prefixed `legends-`. They share the lanes of their canon counterparts but are drawn gray, and
 show only when both "Legends" and their own filter ("Books", "Comics") are on. Likewise the Legends
-films and shows sit in the live-action and animation lanes. With Legends the in-universe axis
+films and shows sit in the live-action spin-offs and Animated lanes. With Legends the in-universe axis
 reaches back to ~5,000 BBY (Old Republic) and forward to ~140 ABY (Legacy); only years before
 10,000 BBY collapse into the far-past slot. The dense print lanes get a column budget from the
 width that's left; past it, marks overlap instead of widening the chart.
