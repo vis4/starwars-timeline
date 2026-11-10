@@ -198,5 +198,13 @@
         "faint": true
       }
     ]
+  },
+  "comic-star-wars-bounty-hunters": {
+    "_comment": "Infobox: 'between the events of The Empire Strikes Back and Return of the Jedi'",
+    "universe": {
+      "start": 3,
+      "end": 4,
+      "approx": true
+    }
   }
 }

@@ -25,6 +25,7 @@
   --legends: #8a8983;
   --book: #199e70;
   --game: #9085e9;
+  --comic: #cf5aa0;
   --ref: rgb(255 232 31 / 0.45);
   --arc: #7fe3ff;                /* character arc: a blue-white glow */
 }
@@ -158,7 +159,8 @@ svg { display: block; overflow: visible; }
 .connector { stroke-width: 1.5px; stroke-dasharray: 1 3; fill: none; }
 .extra { fill: var(--surface); stroke-width: 2px; }
 .tooltip {
-  position: fixed; pointer-events: none; z-index: 10; max-width: 420px;
+  position: fixed; pointer-events: none; z-index: 10; box-sizing: border-box;
+  max-width: min(420px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow: hidden;
   display: flex; gap: 12px; align-items: flex-start;
   background: var(--panel); color: var(--text-primary); border: 1px solid var(--axis);
   border-radius: 8px; padding: 10px 12px; font-size: 13px;
@@ -188,7 +190,7 @@ footer a { color: inherit; }
       <!-- mixed case on purpose: Star Jedi draws lowercase as its capital forms, and its uppercase I is a different glyph -->
       <h1 aria-label="Star Wars Timeline"><span class="l1">Star Wars</span><span class="l2">Timeline</span></h1>
     </div>
-    <p class="sub">Every film and TV series (plus novels and games, if you like), placed by when it happens in the galaxy far, far away, or by when it came out. Hover for details, click to open it on Wookieepedia.</p>
+    <p class="sub">Every film and TV series (plus novels, comics and games, if you like), placed by when it happens in the galaxy far, far away, or by when it came out. Hover for details, click to open it on Wookieepedia.</p>
   </header>
 
   <div class="controls">
@@ -199,9 +201,10 @@ footer a { color: inherit; }
     <div class="checks">
       <label><input type="checkbox" data-filter="live" checked><span class="swatch" style="background:var(--live)"></span>Live action</label>
       <label><input type="checkbox" data-filter="animated" checked><span class="swatch" style="background:var(--animated)"></span>Animated</label>
-      <label><input type="checkbox" data-filter="upcoming" checked><span class="swatch swatch-dashed"></span>Upcoming</label>
+      <label><input type="checkbox" data-filter="comics"><span class="swatch" style="background:var(--comic)"></span>Comics</label>
       <label><input type="checkbox" data-filter="books"><span class="swatch" style="background:var(--book)"></span>Books</label>
       <label><input type="checkbox" data-filter="games"><span class="swatch" style="background:var(--game)"></span>Games</label>
+      <label><input type="checkbox" data-filter="upcoming" checked><span class="swatch swatch-dashed"></span>Upcoming</label>
       <label><input type="checkbox" data-filter="legends"><span class="swatch" style="background:var(--legends)"></span>Legends (non-canon)</label>
     </div>
     <div class="chars collapsed" id="chars" role="group" aria-label="Follow a character">
@@ -312,9 +315,9 @@ const LANES = [
     "mandalorian", "boba-fett", "skeleton-crew", "ahsoka", "mando-grogu", "filoni-film"] },
   { key: "clonewars", label: "Clone Wars & Rebels", ids: ["tcw-film", "tcw", "bad-batch", "maul", "rebels"] },
   { key: "other", label: "Tales and other animation", ids: ["tales-jedi", "tales-empire", "tales-underworld", "yja", "resistance"] },
+  { key: "comics", label: "Comics", ids: [] },     // filled with every comic series
   { key: "books", label: "Novels", ids: [] },     // filled with every book
   { key: "games", label: "Video games", ids: [] }, // filled with every game
-  { key: "legends", label: "Legends", ids: [] },   // filled with every Legends work
 ];
 const REFS = {
   universe: [
@@ -327,17 +330,19 @@ const REFS = {
   release: [{ at: new Date(), label: "Today" }],
 };
 
-const AXIS_W = 74, TOP = 72, GAP = 4;
+const AXIS_W = 86, TOP = 72, GAP = 4;
 let COL_W = 18, BAR_W = 10, LANE_PAD = 12; // tightened on narrow screens, see layout()
 const LABEL_FONT = 12.5, LINE_H = 15, MIN_LABEL_W = 64;
-const SPARSE_LANES = new Set(["books", "games"]); // label only what fits near its mark
+const SPARSE_LANES = new Set(["books", "games", "comics"]); // label only what fits near its mark
 const SERIES_GAP = 160; // px: books of one series further apart than this get separate labels
 
 // In dense lanes, books of the same series that sit close together share one label
 // ("The High Republic (10)") on the earliest of them; the rest stay unlabelled.
 function groupSeries(ws) {
   for (const d of ws) { d.suppress = false; d.groupLabel = null; }
-  for (const [name, members] of d3.group(ws.filter(d => d.w.series), d => d.w.series)) {
+  // canon and Legends series of the same name ("Star Wars", "Darth Vader") stay apart
+  for (const [, members] of d3.group(ws.filter(d => d.w.series), d => `${d.w.canon}|${d.w.series}`)) {
+    const name = members[0].w.series;
     members.sort((a, b) => a.g.anchor - b.g.anchor);
     let cluster = [];
     const flush = () => {
@@ -358,23 +363,23 @@ const parseDate = d3.utcParse("%Y-%m-%d");
 const fmtDate = d3.utcFormat("%b %-d, %Y");
 const today = new Date();
 
-const state = { axis: "universe", live: true, animated: true, books: false, games: false, legends: false, upcoming: true, character: null };
+const state = { axis: "universe", live: true, animated: true, books: false, games: false, comics: false, legends: false, upcoming: true, character: null };
 const svg = d3.select("#chart");
 const tip = d3.select("#tip");
 let data, characters = null;
 
 const fmtNum = d3.format(",");
 const fmtYear = y => y < 0 ? `${fmtNum(-y)} BBY` : y === 0 ? "0 BBY" : `${fmtNum(y)} ABY`;
-const color = w => w.canon === "legends" ? "var(--legends)" : `var(--${{ live: "live", animated: "animated", book: "book", game: "game" }[w.format]})`;
+const color = w => w.canon === "legends" ? "var(--legends)" : `var(--${{ live: "live", animated: "animated", book: "book", game: "game", comic: "comic" }[w.format]})`;
 // films, books and games have one release date; a single in-universe year makes them a dot
 const isSingle = w => w.kind !== "series";
 const isPoint = w => w.kind === "film" || (isSingle(w) && w.universe && w.universe.start === w.universe.end);
-const KIND_LABEL = { film: "film", series: "series", book: "novel", game: "video game" };
-const FORMAT_LABEL = { live: "Live action", animated: "Animated", book: "Book", game: "Game" };
+const KIND_LABEL = { film: "film", series: "series", book: "novel", game: "video game", comic: "comic series" };
+const FORMAT_LABEL = { live: "Live action", animated: "Animated", book: "Book", game: "Game", comic: "Comic" };
 
 // Both scales accept two extra values: TBA (works without a date on this axis, drawn in a
 // row below the axis) and, in-universe, years before FAR_PAST (drawn in a slot above it).
-const TBA = Infinity, FAR_PAST = -1000, FAR_H = 56, TBA_GAP = 48;
+const TBA = Infinity, FAR_PAST = -10000, FAR_H = 56, TBA_GAP = 48;
 const isPlanned = w => w.release.status === "tba" || w.release.status === "upcoming";
 
 function makeScale() {
@@ -395,16 +400,20 @@ function makeScale() {
     };
     // reach back further when books are on (High Republic novels go back to 382 BBY)
     const earliest = d3.min(data.works.filter(w => visible(w) && w.universe && w.universe.start > FAR_PAST), w => w.universe.start);
-    const lo = Math.min(-240, Math.floor((earliest ?? 0) / 20) * 20 - 10), hi = 55;
+    // …and later with Legends (Legacy comics, 130–139 ABY)
+    const latest = d3.max(data.works.filter(w => visible(w) && w.universe), w => w.universe.end);
+    const lo = Math.min(-240, Math.floor((earliest ?? 0) / 20) * 20 - 10), hi = Math.max(55, (latest ?? 0) + 6);
     const lin = d3.scaleLinear().domain([f(lo), f(hi)]).range([top, top + (f(hi) - f(lo)) * yearPx]);
     base = v => lin(f(v));
     base.range = () => lin.range();
+    // the far-past slot is one row: one tick, "25,000+ BBY" when several years share it
     const farYears = hasFar ? [...new Set(data.works.filter(w => visible(w) && w.universe?.start < FAR_PAST)
-      .map(w => w.universe.start))] : [];
-    ticks = [...farYears, ...[-400, -300].filter(v => v >= lo), -232, -200, -150, -100, -80, -60, -50, -40, -30,
-      ...d3.range(-20, 41, 5), 50];
-    major = new Set([-100, -20, 0, 20, 40]);
-    fmt = fmtYear;
+      .map(w => w.universe.start))].sort((a, b) => b - a) : [];
+    ticks = [...farYears.slice(0, 1), ...[-5000, -4000, -3000, -2000, -1000, -700, -500, -400, -300].filter(v => v >= lo),
+      -232, -200, -150, -100, -80, -60, -50, -40, -30, ...d3.range(-20, 41, 5), 50,
+      ...[60, 80, 100, 120, 140].filter(v => v <= hi)];
+    major = new Set([-1000, -100, -20, 0, 20, 40, 100]);
+    fmt = v => v < FAR_PAST && farYears.length > 1 ? `${fmtNum(-v)}+ BBY` : fmtYear(v);
   } else {
     base = d3.scaleUtc().domain([new Date(Date.UTC(1977, 0, 1)), new Date(Date.UTC(2028, 0, 1))])
       .range([top, top + 51 * 40]);
@@ -430,7 +439,12 @@ function makeScale() {
 function geometry(w, y) {
   const g = { parts: [], spans: [], markers: [] };
   if (state.axis === "release") {
-    if (isSingle(w)) {
+    if (w.kind === "comic" && w.release.start && w.release.end !== w.release.start) {
+      // a comic's publication run, first to last issue (still running: up to today)
+      const a = parseDate(w.release.start), y0 = y(a);
+      const b = w.release.end ? parseDate(w.release.end) : d3.max([a, today]);
+      g.parts.push({ type: "bar", y0, y1: Math.max(y(b), y0 + 5), upcoming: isPlanned(w) });
+    } else if (isSingle(w)) {
       g.parts.push({ type: "dot", cy: y(w.release.start ? parseDate(w.release.start) : TBA), upcoming: isPlanned(w) });
     } else {
       for (const s of w.seasons) {
@@ -479,6 +493,7 @@ function visible(w) {
   if (isPlanned(w) && !state.upcoming) return false;
   if (w.kind === "book" && !state.books) return false;
   if (w.kind === "game" && !state.games) return false;
+  if (w.kind === "comic" && !state.comics) return false;
   return true;
 }
 
@@ -486,7 +501,10 @@ function layout(y) {
   const laneOf = {};
   for (const l of LANES) for (const id of l.ids) laneOf[id] = l.key;
   for (const w of data.works) if (!laneOf[w.id]) {
-    laneOf[w.id] = w.canon === "legends" ? "legends" : w.kind === "book" ? "books" : w.kind === "game" ? "games" : "other";
+    // Legends works share the lanes of their canon counterparts (drawn in gray):
+    // novels with novels, comics with comics, live action with the spin-offs, animation with animation
+    laneOf[w.id] = { book: "books", game: "games", comic: "comics" }[w.kind]
+      || (w.format === "live" ? "spinoffs" : "other");
   }
 
   const avail = Math.max(document.querySelector(".chart-wrap").clientWidth, 320);
@@ -494,19 +512,22 @@ function layout(y) {
   COL_W = narrow ? 13 : 18; BAR_W = narrow ? 8 : 10; LANE_PAD = narrow ? 8 : 12;
 
   // --- 1. per lane: pack works into sub-columns ---
-  const groups = [];
-  for (const lane of LANES) {
-    const ws = data.works.filter(w => laneOf[w.id] === lane.key && visible(w))
+  const packed = LANES.map(lane => ({
+    lane,
+    ws: data.works.filter(w => laneOf[w.id] === lane.key && visible(w))
       .map(w => ({ w, g: geometry(w, y) })).filter(d => d.g)
       // same start → keep release order (The Force Awakens before The Last Jedi, both 34 ABY)
-      .sort((a, b) => a.g.top - b.g.top || d3.ascending(a.w.release.start || "9999", b.w.release.start || "9999"));
-    if (!ws.length) continue;
+      .sort((a, b) => a.g.top - b.g.top || d3.ascending(a.w.release.start || "9999", b.w.release.start || "9999")),
+  })).filter(l => l.ws.length);
 
-    // Greedy interval packing into sub-columns. A film that only just collides
-    // (same year as the previous one) is nudged down instead of opening a new column.
+  // Greedy interval packing into sub-columns. A film that only just collides
+  // (same year as the previous one) is nudged down instead of opening a new column.
+  // Returns the number of columns used.
+  function pack(ws, maxCols) {
     const bottoms = [];
     for (const d of ws) {
       let col = bottoms.findIndex(b => b + GAP <= d.g.top);
+      if (col < 0 && bottoms.length >= maxCols) col = d3.minIndex(bottoms); // budget used up: overlap
       if (col < 0 && d.g.parts.length === 1 && d.g.parts[0].type === "dot") {
         // stack tightly (2px) and allow up to one year's height of nudge, so films in
         // consecutive years stay in a single column and in order
@@ -518,14 +539,28 @@ function layout(y) {
       bottoms[col] = d.g.bottom;
       d.col = col;
     }
+    return bottoms.length;
+  }
+  // Screen lanes take the columns they need. Dense print lanes (hundreds of Legends novels)
+  // share what's left after every lane keeps a minimum label column, at most 7 columns each;
+  // past that a work goes into the column it overlaps least and is drawn over its neighbor.
+  for (const l of packed) if (!SPARSE_LANES.has(l.lane.key)) l.nCols = pack(l.ws, Infinity);
+  const sparse = packed.filter(l => SPARSE_LANES.has(l.lane.key));
+  const used = d3.sum(packed, l => l.nCols ? LANE_PAD + l.nCols * COL_W + 8 : 0);
+  const room = avail - AXIS_W - 4 - used - packed.length * MIN_LABEL_W - sparse.length * (LANE_PAD + 8);
+  const maxCols = Math.max(2, Math.min(7, Math.floor(room / Math.max(1, sparse.length) / COL_W)));
+  for (const l of sparse) l.nCols = pack(l.ws, maxCols);
+
+  const groups = [];
+  for (const { lane, ws, nCols } of packed) {
     if (SPARSE_LANES.has(lane.key)) groupSeries(ws);
     for (const d of ws) {
       d.text = d.suppress ? "" : d.groupLabel || d.w.label;
       d.fullW = d.text ? textWidth(d.text, LABEL_FONT) : 0;
     }
     groups.push({
-      key: lane.key, label: lane.label, ws, nCols: bottoms.length,
-      marksW: LANE_PAD + bottoms.length * COL_W + 8,
+      key: lane.key, label: lane.label, ws, nCols,
+      marksW: LANE_PAD + nCols * COL_W + 8,
       need: d3.max(ws, d => d.fullW) + 10,
     });
   }
@@ -816,11 +851,15 @@ function currentCharacter() {
 // clamped to the work's mark. Consecutive points at the same spot are merged.
 function arcPoints(ch, items, y) {
   const byId = new Map(items.map(d => [d.w.id, d]));
-  const pts = [];
+  const pts = [], seen = new Set();
   for (const e of ch.appearances) {
     if (e.kind !== "onscreen") continue;
     const d = byId.get(e.work);
     if (!d) continue; // filtered out
+    if (state.axis === "universe" && !d.w.universe) continue; // the "Unknown" row has no place in the story
+    // comic issues of parallel series interleave in the list (Star Wars 1, Darth Vader 1,
+    // Star Wars 2, …); visit each comic once instead of zigzagging between them
+    if (d.w.kind === "comic") { if (seen.has(e.work)) continue; seen.add(e.work); }
     let py;
     if (isPoint(d.w) || isSingle(d.w) && state.axis === "release" || !d.w.universe && state.axis === "universe") py = d.g.anchor;
     else if (state.axis === "universe") py = e.year == null ? d.g.anchor : y(e.year);
@@ -883,7 +922,14 @@ function showTip(event, d) {
   }
   for (const m of w.markers || []) rows.push([m.label, fmtYear(m.year)]);
   if (w.series) rows.push(["Series", w.series]);
-  if (isSingle(w)) {
+  if (w.kind === "comic") {
+    const r = w.release;
+    rows.push(["Published", !r.start ? "TBA (announced)"
+      : r.status === "upcoming" ? `from ${fmtDate(parseDate(r.start))} (upcoming)`
+      : !r.end ? `${fmtDate(parseDate(r.start))} – (running)`
+      : r.end === r.start ? fmtDate(parseDate(r.start))
+      : `${fmtDate(parseDate(r.start))} – ${fmtDate(parseDate(r.end))}`]);
+  } else if (isSingle(w)) {
     rows.push(["Released", !w.release.start ? "TBA (announced)"
       : fmtDate(parseDate(w.release.start)) + (w.release.status === "upcoming" ? " (upcoming)" : "")]);
   } else {
@@ -896,18 +942,27 @@ function showTip(event, d) {
   }
   const ch = currentCharacter();
   if (ch) rows.unshift([ch.label, characterInWork(ch, w)]);
-  const meta = [FORMAT_LABEL[w.format], w.format === "book" || w.format === "game" ? null : KIND_LABEL[w.kind],
-    w.episodes ? `${w.episodes} episodes` : null, w.canon === "legends" ? "Legends" : null].filter(Boolean).join(" · ");
+  const meta = [FORMAT_LABEL[w.format], w.format === "book" || w.format === "game" || w.format === "comic" ? null : KIND_LABEL[w.kind],
+    w.episodes ? `${w.episodes} episodes` : null, w.issues ? `${w.issues} issue${w.issues === 1 ? "" : "s"}` : null, w.canon === "legends" ? "Legends" : null].filter(Boolean).join(" · ");
   // poster: fixed width, height from the image's own aspect so the box doesn't jump while loading
   const poster = w.poster
     ? `<img class="poster" src="${w.poster.url}" alt="" referrerpolicy="no-referrer" style="aspect-ratio:${w.poster.w}/${w.poster.h}">`
     : "";
   tip.html(`${poster}<div class="body"><h3>${w.title}</h3><div class="meta">${meta}</div><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table></div>`)
     .style("opacity", 1);
-  const node = tip.node(), pad = 14;
+  placeTip(event);
+}
+// beside the cursor, flipped to the other side when it doesn't fit, and always kept 8px inside
+// the viewport (clientWidth leaves out the scrollbar)
+function placeTip(event) {
+  const node = tip.node(), pad = 14, m = 8;
+  const vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight;
+  const w = node.offsetWidth, h = node.offsetHeight;
   let left = event.clientX + pad, top = event.clientY + pad;
-  if (left + node.offsetWidth > window.innerWidth - 8) left = event.clientX - node.offsetWidth - pad;
-  if (top + node.offsetHeight > window.innerHeight - 8) top = event.clientY - node.offsetHeight - pad;
+  if (left + w > vw - m) left = event.clientX - w - pad;
+  if (top + h > vh - m) top = event.clientY - h - pad;
+  left = Math.max(m, Math.min(left, vw - w - m));
+  top = Math.max(m, Math.min(top, vh - h - m));
   tip.style("left", left + "px").style("top", top + "px");
 }
 function hideTip() { tip.style("opacity", 0); }
@@ -924,8 +979,15 @@ function characterInWork(ch, w) {
   if (!es.length) return "not in this one";
   const on = es.filter(e => e.kind === "onscreen");
   const other = [...new Set(es.filter(e => e.kind !== "onscreen").map(e => KIND_TEXT[e.kind]))];
-  if (isSingle(w)) return on.length ? (w.kind === "book" ? "appears" : w.kind === "game" ? "appears" : "on screen") : other.join(", ");
-  const n = k => `${k} episode${k === 1 ? "" : "s"}`;
+  const unit = w.kind === "comic" ? "issue" : "episode";
+  if (isSingle(w) && w.kind !== "comic") return on.length ? (w.kind === "book" || w.kind === "game" ? "appears" : "on screen") : other.join(", ");
+  const n = k => `${k} ${unit}${k === 1 ? "" : "s"}`;
+  if (w.kind === "comic") {  // "in 12 issues + 3 issues mentioned"
+    const ps = [];
+    if (on.length) ps.push(`in ${n(on.length)}`);
+    if (es.length > on.length) ps.push(`${on.length ? "+ " : ""}${n(es.length - on.length)} ${other.join(", ")}`);
+    return ps.join(" ");
+  }
   const parts = [];
   if (on.length) parts.push(`${n(on.length)} on screen`);
   if (es.length > on.length) parts.push(`${on.length ? "+ " : ""}${n(es.length - on.length)} ${other.join(", ")}`);
@@ -953,21 +1015,22 @@ function setupCharacters() {
     if (e.key === "Escape" && !d3.select(".chars").classed("collapsed")) setCharsOpen(false);
   });
   setCharsOpen(false);
-  const fromHash = decodeURIComponent(location.hash.slice(1));
-  if (characters.some(c => c.id === fromHash)) selectCharacter(fromHash, { render: false });
+  if (!characters.some(c => c.id === state.character)) state.character = null;
+  selectCharacter(state.character, { render: false });
 }
 
 function selectCharacter(id, { render: rerender = true } = {}) {
   state.character = id;
   d3.selectAll(".chars .chip").attr("aria-pressed", c => c.id === id);
   setCharsOpen(!d3.select(".chars").classed("collapsed"));
-  history.replaceState(null, "", id ? `#${id}` : location.pathname + location.search);
+  writeHash();
   const ch = currentCharacter();
   const card = d3.select(".char-card").property("hidden", !ch);
   if (ch) {
     const on = ch.appearances.filter(e => e.kind === "onscreen");
     const works = new Set(on.map(e => e.work));
-    const eps = on.filter(e => e.ep).length;
+    const kindOf = new Map(data.works.map(w => [w.id, w.kind]));
+    const eps = on.filter(e => e.ep && kindOf.get(e.work) === "series").length;
     card.html(`${ch.poster ? `<img src="${ch.poster.url}" alt="" referrerpolicy="no-referrer">` : ""}
       <span><b>${ch.name}</b>${ch.birth != null ? ` · born ${fmtYear(ch.birth)}` : ""} ·
       on screen in ${works.size} ${works.size === 1 ? "work" : "works"}${eps ? ` (${eps} episodes)` : ""} ·
@@ -979,15 +1042,57 @@ function selectCharacter(id, { render: rerender = true } = {}) {
   if (rerender && data) render();
 }
 
+// ---------------------------------------------------------------- URL hash
+// The view lives in the hash, e.g. #axis=release&show=live,animated,comics&c=ahsoka; anything at
+// its default is left out. The controls are set from the state on load, so a browser that
+// restores checkbox states across reloads can't get out of step with the chart.
+const FILTERS = ["live", "animated", "comics", "books", "games", "upcoming", "legends"];
+const DEFAULTS = { axis: state.axis, ...Object.fromEntries(FILTERS.map(f => [f, state[f]])) };
+
+function writeHash() {
+  const p = new URLSearchParams();
+  if (state.axis !== DEFAULTS.axis) p.set("axis", state.axis);
+  if (FILTERS.some(f => state[f] !== DEFAULTS[f])) p.set("show", FILTERS.filter(f => state[f]).join(",") || "none");
+  if (state.character) p.set("c", state.character);
+  const h = p.toString().replaceAll("%2C", ",");
+  history.replaceState(null, "", h ? `#${h}` : location.pathname + location.search);
+}
+
+function readHash() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  // older links: just a character id (#ahsoka)
+  const p = new URLSearchParams(h.includes("=") ? h : h ? `c=${h}` : "");
+  state.axis = p.get("axis") === "release" ? "release" : DEFAULTS.axis;
+  const show = p.get("show");
+  for (const f of FILTERS) state[f] = show == null ? DEFAULTS[f] : show.split(",").includes(f);
+  state.character = p.get("c") || null;
+}
+
+function syncControls() {
+  d3.selectAll(".seg button").attr("aria-pressed", function () { return this.dataset.axis === state.axis; });
+  d3.selectAll("[data-filter]").property("checked", function () { return state[this.dataset.filter]; });
+}
+
 d3.selectAll(".seg button").on("click", function () {
   state.axis = this.dataset.axis;
-  d3.selectAll(".seg button").attr("aria-pressed", function () { return this.dataset.axis === state.axis; });
+  syncControls();
+  writeHash();
   render();
 });
 d3.selectAll("[data-filter]").on("change", function () {
   state[this.dataset.filter] = this.checked;
+  writeHash();
   render();
 });
+// a pasted or edited link, or back/forward between hashes
+window.addEventListener("hashchange", () => {
+  if (!data) return;
+  readHash();
+  syncControls();
+  selectCharacter(characters.some(c => c.id === state.character) ? state.character : null);
+});
+readHash();
+syncControls();
 // Re-layout whenever the container width changes (window resize, or a page
 // scrollbar appearing after the first render).
 let resizeTimer, lastW = 0;

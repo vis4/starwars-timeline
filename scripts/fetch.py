@@ -104,7 +104,37 @@ def main():
 # hand-kept list. Novelizations retell the films, so they're left out.
 BOOK_CATEGORIES = ["Category:Canon adult novels", "Category:Canon young-adult novels"]
 GAME_CATEGORIES = ["Category:Canon console and computer games"]
-SKIP_TITLES = {"Untitled collectible card game"}  # filed under games, but not a video game
+# series-level only: issues, one-shots and annuals would swamp the lane
+COMIC_CATEGORIES = ["Category:Canon ongoing series", "Category:Canon comic miniseries"]
+# Legends (pre-2014 Expanded Universe); shown only when the Legends filter is on
+LEGENDS_BOOK_CATEGORIES = ["Category:Legends novels"]
+LEGENDS_COMIC_CATEGORIES = ["Category:Legends ongoing series", "Category:Legends comic miniseries"]
+# pages about a whole series, not a single novel
+NOT_A_NOVEL_CATEGORIES = ["Category:Legends novel series", "Category:Legends young-reader series"]
+SKIP_TITLES = {
+    "Untitled collectible card game",  # filed under games, but not a video game
+    "Star Wars: Black, White & Red",  # an umbrella for three miniseries that are listed themselves
+    # comics that retell a show or novel already on the timeline
+    "Star Wars: Ahsoka (comic series)", "Star Wars: Obi-Wan Kenobi (comic series)",
+    "Star Wars: The Book of Boba Fett (comic series)", "Star Wars: The Mandalorian (comic series)",
+    "Star Wars: The Mandalorian Season 2", "Star Wars: Thrawn (comic series)",
+    "Star Wars: Thrawn: Alliances (comic series)", "Star Wars Adventures: Smuggler's Run",
+    "Star Wars Adventures: The Weapon of a Jedi",
+    # Legends comics that adapt a film or novel
+    "Classic Star Wars: A New Hope (comic series)", "Classic Star Wars: The Empire Strikes Back (comic series)",
+    "Classic Star Wars: Return of the Jedi (comic series)", "Star Wars: A New Hope - The Special Edition",
+    "Star Wars: Episode I — The Phantom Menace (comic series)",
+    "Star Wars: Episode II — Attack of the Clones (comic series)",
+    "Star Wars: Episode III — Revenge of the Sith (comic series)", "Star Wars: Return of the Jedi (1983)",
+    "Star Wars: Heir to the Empire (comic series)", "Star Wars: Dark Force Rising (comic series)",
+    "Star Wars: The Last Command (comic series)", "Star Wars: Splinter of the Mind's Eye (comic series)",
+}
+
+
+def is_adaptation(title):
+    """Novelizations and film adaptations retell a film, so they'd only duplicate it."""
+    t = title.lower()
+    return "novelization" in t or t.endswith(" adaptation")
 
 
 def category_pages(cat):
@@ -128,25 +158,29 @@ def slug(title):
 
 
 def fetch_books_and_games():
-    """Lead section (infobox) of every canon novel and console/PC game, 50 pages per request."""
+    """Lead section (infobox) of every canon novel, console/PC game and comic series, 50 pages per request."""
     import re
     todo = []
-    for kind, cats in (("book", BOOK_CATEGORIES), ("game", GAME_CATEGORIES)):
+    not_novels = {t for c in NOT_A_NOVEL_CATEGORIES for t in category_pages(c)}
+    groups = (("book", "canon", BOOK_CATEGORIES), ("game", "canon", GAME_CATEGORIES),
+              ("comic", "canon", COMIC_CATEGORIES), ("book", "legends", LEGENDS_BOOK_CATEGORIES),
+              ("comic", "legends", LEGENDS_COMIC_CATEGORIES))
+    for kind, canon, cats in groups:
         titles = sorted({t for c in cats for t in category_pages(c)})
         for t in titles:
-            if "novelization" in t.lower() or t in SKIP_TITLES:
+            if is_adaptation(t) or t in SKIP_TITLES or t in not_novels or t.startswith("Category:"):
                 continue
-            wid = f"{kind}-{slug(t)}"
+            wid = f"{kind}-{slug(t)}" if canon == "canon" else f"legends-{kind}-{slug(t)}"
             if not (RAW / f"{wid}.json").exists():
-                todo.append((wid, t, kind))
+                todo.append((wid, t, kind, canon))
     for i in range(0, len(todo), 50):
         batch = todo[i:i + 50]
         d = api(action="query", prop="revisions", rvprop="content", rvslots="main",
-                titles="|".join(t for _, t, _ in batch))
+                titles="|".join(t for _, t, _, _ in batch))
         q = d["query"]
         norm = {n["to"]: n["from"] for n in q.get("normalized", [])}
         pages = {norm.get(p["title"], p["title"]): p for p in q["pages"].values()}
-        for wid, t, kind in batch:
+        for wid, t, kind, canon in batch:
             p = pages.get(t)
             if not p or "revisions" not in p:
                 print("!!", kind, t)
@@ -154,10 +188,10 @@ def fetch_books_and_games():
             w = p["revisions"][0]["slots"]["main"]["*"]
             first_heading = re.search(r"^==[^=]", w, re.M)
             (RAW / f"{wid}.json").write_text(json.dumps({
-                "id": wid, "title": p["title"], "kind": kind, "format": kind, "canon": "canon",
+                "id": wid, "title": p["title"], "kind": kind, "format": kind, "canon": canon,
                 "wikitext": w[:first_heading.start()] if first_heading else w,
             }, ensure_ascii=False))
-        print(f"books/games {i + len(batch)}/{len(todo)}")
+        print(f"books/games/comics {i + len(batch)}/{len(todo)}")
         time.sleep(0.5)
 
 

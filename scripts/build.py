@@ -118,6 +118,9 @@ def iso(d):
     return d.isoformat() if d else None
 
 
+PRINT_AND_GAMES = ("book", "game", "comic")
+
+
 def build_work(raw, overrides):
     w = raw["wikitext"]
     info = strip_refs(w)
@@ -133,7 +136,22 @@ def build_work(raw, overrides):
     }
 
     # --- real-world release ---
-    if raw["kind"] in ("film", "book", "game"):  # one release date
+    if raw["kind"] == "comic":  # a publication run: first to last issue
+        first = parse_dates(field(info, "start date"))
+        last = parse_dates(field(info, "end date"))
+        if first:
+            d, prec = min(first)
+            e = max(x for x, _ in last) if last else None
+            work["release"] = {"start": iso(d), "end": iso(e), "precision": prec,
+                               "status": "upcoming" if d > TODAY else status_for(d, e) if e else "ongoing"}
+            if work["release"]["status"] == "airing":
+                work["release"]["status"] = "ongoing"
+        else:
+            work["release"] = {"start": None, "end": None, "status": "tba"}
+        n = re.match(r"\s*(\d+)", field(info, "issues"))
+        if n:
+            work["issues"] = int(n.group(1))
+    elif raw["kind"] in ("film", "book", "game"):  # one release date
         dates = parse_dates(field(info, "release date"))
         if dates:
             d, prec = min(dates)  # earliest = original/premiere release
@@ -196,17 +214,17 @@ def build_work(raw, overrides):
             work["universe"] = {**rng, "start": rng["start"] + 1, "end": rng["end"] + 1, "approx": True}
         # Books and games that list separate periods ("19 BBY {{C|Past}}", "2 BBY {{C|Present}}",
         # flashbacks, chapters) become segments, like anthology episodes.
-        if raw["kind"] in ("book", "game"):
+        if raw["kind"] in PRINT_AND_GAMES:
             segs = period_segments(tl)
             if len(segs) > 1:
                 work["segments"] = segs
-    if raw["kind"] in ("book", "game"):
+    if raw["kind"] in PRINT_AND_GAMES:
         series = series_name(field(info, "series"))
         if series:
             work["series"] = series
     if "segments" in o:  # hand-curated periods (e.g. a game's campaign vs. multiplayer eras)
         work["segments"] = [{"approx": False, **s} for s in o["segments"]]
-    if work.get("segments") and raw["kind"] in ("book", "game"):
+    if work.get("segments") and raw["kind"] in PRINT_AND_GAMES:
         segs = work["segments"]
         main = next((s for s in segs if s.get("main")), None) \
             or next((s for s in segs if re.fullmatch(r"(main.*|present|)", s["label"], re.I)), segs[0])
@@ -253,11 +271,13 @@ def period_segments(value):
 
 
 def short_label(raw):
-    """Books and games: drop disambiguation suffixes and the 'Star Wars' prefix."""
+    """Books, games and comics: drop disambiguation suffixes and the 'Star Wars' prefix."""
     t = raw["title"]
-    if raw["kind"] in ("book", "game"):
+    if raw["kind"] in PRINT_AND_GAMES:
         t = re.sub(r" \((?:[\w-]+ )?novel\)$", "", t)
-        t = re.sub(r"^Star Wars:? ", "", t)
+        t = re.sub(r" \((?:comic series|miniseries|Marvel|one-shots)\)$", "", t)
+        # comics: keep "Star Wars (2015)" and "Star Wars Adventures", only drop "Star Wars: "
+        t = re.sub(r"^Star Wars: " if raw["kind"] == "comic" else r"^Star Wars:? ", "", t)
     return t
 
 
@@ -341,6 +361,7 @@ def build_characters(raws, works):
     ep_work = episode_index(raws)
     seasons = season_ranges(raws)
     episodes = json.loads((RAW / "episodes" / "episodes.json").read_text())
+    comic_by_name = {comic_key(w["title"]): w["id"] for w in works if w["kind"] == "comic"}
 
     chars = []
     for cid in cfg["characters"]:
@@ -371,6 +392,9 @@ def build_characters(raws, works):
                     t = link[1].strip()
                     wid = by_title.get(t) or ep_work.get(t)
                     ep = t if ep_work.get(t) else None
+                    if not wid:  # a comic issue: "Darth Vader (2017) 10" → its series
+                        wid = comic_series(t, comic_by_name)
+                        ep = t if wid else None
             if wid not in work_by_id:
                 continue
             flags = re.findall(r"\{\{(\w+)\}\}", line)
@@ -391,6 +415,21 @@ def build_characters(raws, works):
         on = {e["work"] for e in c["appearances"] if e["kind"] == "onscreen"}
         print(f"{c['id']:12} {len(c['appearances']):4} entries · {len(works_in):2} works · {len(on):2} on screen")
     return chars
+
+
+def comic_key(title):
+    """'Star Wars: Han Solo (comic series)' → 'Han Solo' (how issue pages are named)."""
+    t = re.sub(r"^Star Wars: ", "", title)  # but "Star Wars (2015)" stays: its issues are "Star Wars (2015) 7"
+    return re.sub(r" \((?:comic series|Marvel)\)$", "", t)
+
+
+def comic_series(issue, comic_by_name):
+    m = re.match(r"(.+?) (\d+)$", issue)
+    if not m:
+        return None
+    name = m[1]
+    # "Age of Rebellion - Han Solo 1" is an issue of the Age of Rebellion series
+    return comic_by_name.get(name) or comic_by_name.get(re.split(r" [-–—] ", name)[0])
 
 
 def place_entries(entries, work_by_id, episodes, seasons):
@@ -436,10 +475,25 @@ def place_entries(entries, work_by_id, episodes, seasons):
         i = j + 1
 
 
+def comic_series_from_titles(works):
+    """Few comic infoboxes name a series, but titles do: 'The High Republic Adventures – Pathfinders',
+    'Hyperspace Stories: The Bad Batch—Ghost Agents', 'Darth Vader (2020)'. A prefix shared by two or
+    more comics becomes their series (for grouping labels)."""
+    comics = [w for w in works if w["kind"] == "comic" and not w.get("series")]
+    base = {w["id"]: re.sub(r" \(\d{4}\)$", "", re.split(r" ?[–—]|: | - ", w["label"])[0]).strip() for w in comics}
+    counts = {}
+    for b in base.values():
+        counts[b] = counts.get(b, 0) + 1
+    for w in comics:
+        if counts[base[w["id"]]] > 1:
+            w["series"] = base[w["id"]]
+
+
 def main():
     overrides = json.loads((ROOT / "data" / "overrides.json").read_text())
     raws = [json.loads(f.read_text()) for f in sorted(RAW.glob("*.json"))]
     works = [build_work(raw, overrides) for raw in raws]
+    comic_series_from_titles(works)
     works.sort(key=lambda x: x["release"]["start"] or "9999")
     resolve_posters(works)
     chars = build_characters(raws, works)
